@@ -1,0 +1,64 @@
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+<Multi_key> <minus> <Right> : "→"
+<Multi_key> <minus> <Left> : "←"
+<Multi_key> <minus> <Up> : "↑"
+<Multi_key> <minus> <Down> : "↓"
+
+<Multi_key> <equal> <Right> : "⇒"
+<Multi_key> <equal> <Left> : "⇐"
+<Multi_key> <equal> <Up> : "⇑"
+<Multi_key> <equal> <Down> : "⇓"
+<Multi_key> <equal> <greater> : "⇒"
+
+<Multi_key> <apostrophe> <apostrophe> : "́" U0301 # ударение
+<Multi_key> <quotedbl> <quotedbl> : "̎"
+<Multi_key> <z>: "̶" U0336 # зачёркивание
+
+<Multi_key> <equal> <asciitilde> : "≈" U2248 # приблизительно равно
+<Multi_key> <8> : "∞"
+<Multi_key> <asciicircum> <Right> : "⃗"
+<Multi_key> <o> <period> : "Ꙭ"
+
+<Multi_key> <a> <a> : "α" # альфа
+<Multi_key> <b> <b> : "β" # бета
+<Multi_key> <g> <g> : "γ" # гамма
+<Multi_key> <d> <d> : "δ" # дельта
+<Multi_key> <e> <p> : "ε" # эпсилон
+<Multi_key> <d> <z> : "ζ" # дзета
+<Multi_key> <e> <t> : "η" # эта
+<Multi_key> <t> <e> : "θ" # тета
+<Multi_key> <i> <i> : "ι" # йота
+<Multi_key> <k> <k> : "κ" # каппа
+<Multi_key> <l> <l> : "λ" # лямбда
+<Multi_key> <m> <m> : "μ" # мю
+<Multi_key> <n> <n> : "ν" # ню
+<Multi_key> <k> <s> : "ξ" # кси
+#<Multi_key> <o> <o> : "ο" # омикрон
+<Multi_key> <p> <i> : "π" # пи
+<Multi_key> <r> <o> : "ρ" # ро
+<Multi_key> <s> <i> : "σ" # сигма
+<Multi_key> <t> <a> : "τ" # тау
+<Multi_key> <i> <p> : "υ" # ипсилон
+<Multi_key> <f> <i> : "φ" # фи
+<Multi_key> <h> <i> : "χ" # хи
+<Multi_key> <p> <s> : "ψ" # пси
+<Multi_key> <o> <m> : "ω" # омега
+
+<Multi_key> <D> <D> : "Δ" # дельта
+<Multi_key> <T> <E> : "Θ" # тета
+<Multi_key> <L> <L> : "Λ" # лямбда
+<Multi_key> <K> <S> : "Ξ" # кси
+<Multi_key> <S> <I> : "Σ" # сигма
+<Multi_key> <P> <S> : "Ψ" # пси
+<Multi_key> <O> <M> : "Ω" # омега
+
+<Multi_key> <Cyrillic_ie> <Cyrillic_ie> : "ѣ" # ять
+<Multi_key> <Cyrillic_IE> <Cyrillic_IE> : "Ѣ" # Ять
+<Multi_key> <Cyrillic_be> <Cyrillic_be> : "“"
+<Multi_key> <Cyrillic_io> <Cyrillic_io> : "”"
+<Multi_key> <Cyrillic_BE> <Cyrillic_BE>: "«" # открывающая кавычка-ёлочка (RUS)
+<Multi_key> <Cyrillic_YU> <Cyrillic_YU>: "»" # закрывающая кавычка-ёлочка (RUS)
+<Multi_key> <Cyrillic_ya> : "̶" # зачеркивание (комбинирующееся)
+<Multi_key> <Cyrillic_e> <Cyrillic_e> : "́" # ударениее (комбинирующееся)
+<Multi_key> <equal> <equal> : "≡"
