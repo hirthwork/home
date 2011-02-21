@@ -7,7 +7,7 @@ set autoindent
 set smartindent
 set softtabstop=4
 set shiftwidth=4
-set foldlevel=1
+set foldlevel=2
 
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y\ %=\ col:%3c%V\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l\/%L\ %P
