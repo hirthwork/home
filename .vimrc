@@ -7,6 +7,7 @@ set autoindent
 set smartindent
 set softtabstop=4
 set shiftwidth=4
+set foldlevel=1
 
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y\ %=\ col:%3c%V\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l\/%L\ %P
@@ -26,4 +27,6 @@ autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
+autocmd BufReadPre * setlocal foldmethod=indent
+autocmd BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 
