@@ -199,7 +199,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey }, "r",     function () mypromptbox[mouse.screen]:run() end),
 
     awful.key({ modkey }, "x",
               function ()
@@ -341,10 +341,10 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 awful.tag.setproperty(tags[1][1], "nmaster", 2)
 awful.tag.setproperty(tags[1][1], "mwfact", 0.2)
 awful.tag.setproperty(tags[1][1], "icon_only", true)
-awful.tag.setproperty(tags[1][2], "icon_only", true)
-awful.tag.setproperty(tags[1][9], "icon_only", true)
 awful.tag.seticon("/usr/share/icons/hicolor/24x24/apps/pidgin.png", tags[1][1])
+awful.tag.setproperty(tags[1][2], "icon_only", true)
 awful.tag.seticon("/usr/share/pixmaps/firefox-icon.png", tags[1][2])
+awful.tag.setproperty(tags[1][9], "icon_only", true)
 awful.tag.seticon("/usr/share/icons/hicolor/24x24/apps/evince.png", tags[1][9])
 
 function run_once(prg)
