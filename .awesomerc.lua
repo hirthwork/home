@@ -18,7 +18,7 @@ function file_exists(filename)
 end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-theme_file = os.getenv("HOME") .. "/.awesometheme.lua"
+theme_file = os.getenv("HOME") .. "/.config/awesome/theme.lua"
 if not file_exists(theme_file) then
     theme_file = "/usr/share/awesome/themes/default/theme.lua"
 end
@@ -67,6 +67,59 @@ end
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
+oldtotal = 0
+oldidle = 0
+cpu_widget = awful.widget.graph()
+cpu_widget:set_width(50)
+cpu_widget:set_height(22)
+cpu_widget:set_border_color('#000000')
+cpu_widget:set_background_color('#494B4F')
+cpu_widget:set_gradient_colors({ '#339977', '#33FF77' })
+function cpu_update()
+    local f = io.open("/proc/stat", "r")
+    local data = string.gmatch(f.read(f), "%d+")
+    local total = tonumber(data()) + tonumber(data()) + tonumber(data())
+    local idle = tonumber(data())
+    total = total + idle
+    cpu_widget:add_value(1 - (idle - oldidle) / (total - oldtotal))
+    oldtotal = total
+    oldidle = idle
+end
+cpu_update()
+
+memory_widget = awful.widget.graph()
+function mem_total()
+    local f = io.open("/proc/meminfo", "r")
+    local line = f.read(f)
+    local data = string.gmatch(line, "%S+")
+    data()
+    return tonumber(data())
+end
+memory_widget:set_width(50)
+memory_widget:set_height(22)
+memory_widget:set_max_value(mem_total())
+memory_widget:set_border_color('#000000')
+memory_widget:set_background_color('#494B4F')
+memory_widget:set_gradient_colors({ '#337799', '#3377FF' })
+
+memory_usage = {}
+memory_widget.widget:add_signal("mouse::enter", function()
+    local f = io.popen("free", "r")
+    memory_usage = naughty.notify({
+        text = string.format('<span font_desc="%s">%s</span>', "monospace", f.read(f, "*all")),
+        timeout = 0,
+        hover_timeout = 0.5,
+        screen = mouse.screen
+    })
+end)
+memory_widget.widget:add_signal('mouse::leave', function () naughty.destroy(memory_usage) end)
+
+function memory_update()
+    local f = io.popen("free | tail -n+3 | head -n1 | sed 's/.*: *//;s/ .*//'", "r")
+    memory_widget:add_value(tonumber(f.read(f)))
+end
+memory_update()
+
 network_widget = widget({ type = "textbox" })
 network_stat = {}
 network_timeout = 10
@@ -92,7 +145,7 @@ function network_update ()
         network_stat[iface]["recieved"] = recieved
         network_stat[iface]["sent"] = sent
     end
-    local text = ""
+    local text = " "
     for iface, data in pairs(network_stat) do
         text = text .. iface .. " <span color=\"#CC7777\">⇓ "
             .. string.format("%.1f",
@@ -107,7 +160,11 @@ end
 network_update()
 
 network_timer = timer({ timeout = network_timeout })
-network_timer:add_signal("timeout", function() network_update() end)
+network_timer:add_signal("timeout", function()
+    network_update()
+    memory_update()
+    cpu_update()
+end)
 network_timer:start()
 
 -- Create a systray
@@ -184,6 +241,8 @@ for s = 1, screen.count() do
         mytextclock,
         s == 1 and mysystray or nil,
         network_widget,
+        memory_widget.widget,
+        cpu_widget.widget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
