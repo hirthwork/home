@@ -67,6 +67,18 @@ end
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
+cal_usage = {}
+mytextclock:add_signal("mouse::enter", function()
+    local f = io.popen("cal", "r")
+    cal_usage = naughty.notify({
+        text = string.format('<span font_desc="%s">%s</span>', "monospace", f.read(f, "*all")),
+        timeout = 0,
+        hover_timeout = 0.5,
+        screen = mouse.screen
+    })
+end)
+mytextclock:add_signal('mouse::leave', function () naughty.destroy(cal_usage) end)
+
 oldtotal = 0
 oldidle = 0
 cpu_widget = awful.widget.graph()
@@ -75,6 +87,19 @@ cpu_widget:set_height(22)
 cpu_widget:set_border_color('#000000')
 cpu_widget:set_background_color('#494B4F')
 cpu_widget:set_gradient_colors({ '#339977', '#33FF77' })
+
+cpu_usage = {}
+cpu_widget.widget:add_signal("mouse::enter", function()
+    local f = io.popen("top -b -n1", "r")
+    cpu_usage = naughty.notify({
+        text = string.format('<span font_desc="%s">%s</span>', "monospace", f.read(f, "*all")),
+        timeout = 0,
+        hover_timeout = 0.5,
+        screen = mouse.screen
+    })
+end)
+cpu_widget.widget:add_signal('mouse::leave', function () naughty.destroy(cpu_usage) end)
+
 function cpu_update()
     local f = io.open("/proc/stat", "r")
     local data = string.gmatch(f.read(f), "%d+")
@@ -239,10 +264,10 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
-        s == 1 and mysystray or nil,
-        network_widget,
         memory_widget.widget,
         cpu_widget.widget,
+        s == 1 and mysystray or nil,
+        network_widget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
