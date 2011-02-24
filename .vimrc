@@ -21,7 +21,7 @@ map <F6> <esc>:setlocal nospell<CR>
 imap <F5> <esc>:setlocal spell spelllang=en<CR>a
 imap <F6> <esc>:setlocal nospell<CR>a
 colorscheme desert
-highlight UglyLine ctermbg=Brown
+highlight UglyLine ctermbg=Red
 autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>79v.\+', -1)
 autocmd BufWinEnter * let w:m2=matchadd('UglyLine', '\s\+$', -1)
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2

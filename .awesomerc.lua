@@ -67,6 +67,49 @@ end
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
+network_widget = widget({ type = "textbox" })
+network_stat = {}
+network_timeout = 10
+network_scale = network_timeout * 1024
+function network_update ()
+    local f = io.popen("cat /proc/net/dev|grep ':'|grep -vE '.*:([ ]+0){16}'", "r")
+    for line in f.lines(f) do
+        local data = string.gmatch(line, "%S+")
+        local iface = data()
+        local recieved = tonumber(data())
+        for i = 1, 7 do
+            data()
+        end
+        local sent = tonumber(data())
+        if network_stat[iface] then
+            network_stat[iface]["old_recieved"] = network_stat[iface]["recieved"]
+            network_stat[iface]["old_sent"] = network_stat[iface]["sent"]
+        else
+            network_stat[iface] = {}
+            network_stat[iface]["old_recieved"] = recieved
+            network_stat[iface]["old_sent"] = sent
+        end
+        network_stat[iface]["recieved"] = recieved
+        network_stat[iface]["sent"] = sent
+    end
+    local text = ""
+    for iface, data in pairs(network_stat) do
+        text = text .. iface .. " <span color=\"#CC7777\">⇓ "
+            .. string.format("%.1f",
+                (data["recieved"] - data["old_recieved"]) / network_scale)
+            .. " KB/s</span>  <span color=\"#77CC77\">"
+            .. string.format("%.1f",
+                (data["sent"] - data["old_sent"]) / network_scale)
+            .. " KB/s ⇑</span> "
+    end
+    network_widget.text = text
+end
+network_update()
+
+network_timer = timer({ timeout = network_timeout })
+network_timer:add_signal("timeout", function() network_update() end)
+network_timer:start()
+
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
@@ -140,6 +183,7 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
+        network_widget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
