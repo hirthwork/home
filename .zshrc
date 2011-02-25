@@ -72,6 +72,8 @@ source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 cd
 export GTK_IM_MODULE=xim
 export EDITOR=vim
+export PAGER=vimpager
+export MANPAGER=vimmanpager
 alias screen="screen -RR -D -h 20000"
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
 
