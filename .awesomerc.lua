@@ -70,8 +70,10 @@ mytextclock = awful.widget.textclock({ align = "right" })
 cal_usage = {}
 mytextclock:add_signal("mouse::enter", function()
     local f = io.popen("cal", "r")
+    local today = os.date("%d")
+    local cal = f.read(f, "*all"):gsub(" " .. today .. " ", " <u>" .. today .. "</u> ");
     cal_usage = naughty.notify({
-        text = string.format('<span font_desc="%s">%s</span>', "monospace", f.read(f, "*all")),
+        text = string.format('<span font_desc="%s">%s</span>', "monospace", cal),
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
