@@ -73,7 +73,7 @@ mytextclock:add_signal("mouse::enter", function()
     local today = os.date("%d")
     local cal = f.read(f, "*all"):gsub(" " .. today .. " ", " <u>" .. today .. "</u> ");
     cal_usage = naughty.notify({
-        text = string.format('<span font_desc="%s">%s</span>', "monospace", cal),
+        text = '<span font_desc="monospace">' .. cal .. '</span>',
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
@@ -84,8 +84,8 @@ mytextclock:add_signal('mouse::leave', function () naughty.destroy(cal_usage) en
 oldtotal = 0
 oldidle = 0
 cpu_widget = awful.widget.graph()
-cpu_widget:set_width(50)
-cpu_widget:set_height(22)
+cpu_widget:set_width(62)
+cpu_widget:set_height(19)
 cpu_widget:set_border_color('#000000')
 cpu_widget:set_background_color('#494B4F')
 cpu_widget:set_gradient_colors({ '#339977', '#33FF77' })
@@ -94,7 +94,7 @@ cpu_usage = {}
 cpu_widget.widget:add_signal("mouse::enter", function()
     local f = io.popen("top -b -n1", "r")
     cpu_usage = naughty.notify({
-        text = string.format('<span font_desc="%s">%s</span>', "monospace", f.read(f, "*all")),
+        text = '<span font_desc="monospace">' .. f.read(f, "*all") .. '</span>',
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
@@ -122,8 +122,8 @@ function mem_total()
     data()
     return tonumber(data())
 end
-memory_widget:set_width(50)
-memory_widget:set_height(22)
+memory_widget:set_width(62)
+memory_widget:set_height(19)
 memory_widget:set_max_value(mem_total())
 memory_widget:set_border_color('#000000')
 memory_widget:set_background_color('#494B4F')
@@ -133,7 +133,7 @@ memory_usage = {}
 memory_widget.widget:add_signal("mouse::enter", function()
     local f = io.popen("free", "r")
     memory_usage = naughty.notify({
-        text = string.format('<span font_desc="%s">%s</span>', "monospace", f.read(f, "*all")),
+        text = '<span font_desc="monospace">' .. f.read(f, "*all") .. '</span>',
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
@@ -172,7 +172,7 @@ function network_update ()
         network_stat[iface]["recieved"] = recieved
         network_stat[iface]["sent"] = sent
     end
-    local text = " "
+    local text = ' <span font_desc="monospace">'
     for iface, data in pairs(network_stat) do
         text = text .. iface .. " <span color=\"#CC7777\">⇓ "
             .. string.format("%.1f",
@@ -182,7 +182,7 @@ function network_update ()
                 (data["sent"] - data["old_sent"]) / network_scale)
             .. " KB/s ⇑</span> "
     end
-    network_widget.text = text
+    network_widget.text = text .. '</span>'
 end
 network_update()
 
@@ -471,11 +471,11 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 awful.tag.setproperty(tags[1][1], "nmaster", 2)
 awful.tag.setproperty(tags[1][1], "mwfact", 0.2)
 awful.tag.setproperty(tags[1][1], "icon_only", true)
-awful.tag.seticon("/usr/share/icons/hicolor/24x24/apps/pidgin.png", tags[1][1])
+awful.tag.seticon("/usr/share/icons/hicolor/22x22/apps/pidgin.png", tags[1][1])
 awful.tag.setproperty(tags[1][2], "icon_only", true)
 awful.tag.seticon("/usr/share/pixmaps/firefox-icon.png", tags[1][2])
 awful.tag.setproperty(tags[1][9], "icon_only", true)
-awful.tag.seticon("/usr/share/icons/hicolor/24x24/apps/evince.png", tags[1][9])
+awful.tag.seticon("/usr/share/icons/hicolor/22x22/apps/evince.png", tags[1][9])
 
 function run_once(prg)
     if not prg then
