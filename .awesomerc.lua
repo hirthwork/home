@@ -71,7 +71,7 @@ cal_usage = {}
 mytextclock:add_signal("mouse::enter", function()
     local f = io.popen("cal", "r")
     local today = os.date("%d")
-    local cal = f.read(f, "*all"):gsub(" " .. today .. " ", " <u>" .. today .. "</u> ");
+    local cal = f.read(f, "*all"):gsub("[^%d]" .. today .. "[^%d]", "<u>%1</u>")
     cal_usage = naughty.notify({
         text = '<span font_desc="monospace">' .. cal .. '</span>',
         timeout = 0,
