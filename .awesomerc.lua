@@ -172,15 +172,15 @@ function network_update ()
         network_stat[iface]["recieved"] = recieved
         network_stat[iface]["sent"] = sent
     end
-    local text = ' <span font_desc="monospace">'
+    local text = ' <span font_desc="serif">'
     for iface, data in pairs(network_stat) do
-        text = text .. iface .. " <span color=\"#CC7777\">⇓ "
+        text = text .. iface .. " <span color=\"#CC7777\">↓"
             .. string.format("%.1f",
                 (data["recieved"] - data["old_recieved"]) / network_scale)
             .. " KB/s</span>  <span color=\"#77CC77\">"
             .. string.format("%.1f",
                 (data["sent"] - data["old_sent"]) / network_scale)
-            .. " KB/s ⇑</span> "
+            .. " KB/s↑</span> "
     end
     network_widget.text = text .. '</span>'
 end
