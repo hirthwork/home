@@ -84,8 +84,8 @@ mytextclock:add_signal('mouse::leave', function () naughty.destroy(cal_usage) en
 oldtotal = 0
 oldidle = 0
 cpu_widget = awful.widget.graph()
-cpu_widget:set_width(62)
-cpu_widget:set_height(19)
+cpu_widget:set_width(32)
+cpu_widget:set_height(16)
 cpu_widget:set_border_color('#000000')
 cpu_widget:set_background_color('#494B4F')
 cpu_widget:set_gradient_colors({ '#339977', '#33FF77' })
@@ -122,8 +122,8 @@ function mem_total()
     data()
     return tonumber(data())
 end
-memory_widget:set_width(62)
-memory_widget:set_height(19)
+memory_widget:set_width(32)
+memory_widget:set_height(16)
 memory_widget:set_max_value(mem_total())
 memory_widget:set_border_color('#000000')
 memory_widget:set_background_color('#494B4F')
@@ -256,7 +256,7 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", height = "16", screen = s })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -471,11 +471,11 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 awful.tag.setproperty(tags[1][1], "nmaster", 2)
 awful.tag.setproperty(tags[1][1], "mwfact", 0.2)
 awful.tag.setproperty(tags[1][1], "icon_only", true)
-awful.tag.seticon("/usr/share/icons/hicolor/22x22/apps/pidgin.png", tags[1][1])
+awful.tag.seticon("/usr/share/icons/hicolor/16x16/apps/pidgin.png", tags[1][1])
 awful.tag.setproperty(tags[1][2], "icon_only", true)
 awful.tag.seticon("/usr/share/pixmaps/firefox-icon.png", tags[1][2])
 awful.tag.setproperty(tags[1][9], "icon_only", true)
-awful.tag.seticon("/usr/share/icons/hicolor/22x22/apps/evince.png", tags[1][9])
+awful.tag.seticon("/usr/share/icons/hicolor/16x16/apps/evince.png", tags[1][9])
 
 function run_once(prg)
     if not prg then
