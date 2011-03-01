@@ -125,7 +125,7 @@ memory_widget:set_width(32)
 memory_widget:set_height(16)
 memory_widget:set_max_value(mem_total())
 memory_widget:set_background_color('#222222')
-memory_widget:set_gradient_colors({ '#444444', '#3377FF' })
+memory_widget:set_gradient_colors({ '#222222', '#3377FF' })
 
 memory_usage = {}
 memory_widget.widget:add_signal("mouse::enter", function()
