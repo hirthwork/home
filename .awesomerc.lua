@@ -112,12 +112,12 @@ function cpu_update()
 end
 cpu_update()
 
-memory_widget = awful.widget.graph()
 function mem_total()
     local data = io.open("/proc/meminfo", "r"):read():gmatch("%S+")
     data()
     return tonumber(data())
 end
+memory_widget = awful.widget.graph()
 memory_widget:set_width(32)
 memory_widget:set_height(16)
 memory_widget:set_max_value(mem_total())
@@ -140,8 +140,25 @@ function memory_update()
 end
 memory_update()
 
-network_widget = widget({ type = "textbox" })
+network_widget = awful.widget.graph()
+network_widget:set_width(32)
+network_widget:set_height(16)
+network_widget:set_scale(true)
+network_widget:set_stack(true)
+network_widget:set_stack_colors({
+    '#006666', '#660066', '#666600', '#0000CC', '#00CC00', '#CC0000',
+    '#004488', '#008844', '#440088', '#448800', '#880044', '#884400' })
+network_widget:set_background_color('#222222')
 network_stat = {}
+for line in io.popen("cat /proc/net/dev|grep ':'"):lines() do
+    local data = string.gmatch(line, "%S+")
+    local iface = data()
+    network_stat[iface] = {}
+    network_stat[iface]["old_recieved"] = 0
+    network_stat[iface]["old_sent"] = 0
+    network_stat[iface]["recieved"] = 0
+    network_stat[iface]["sent"] = 0
+end
 network_timeout = 10
 network_scale = network_timeout * 1024
 function network_update ()
@@ -153,30 +170,43 @@ function network_update ()
             data()
         end
         local sent = tonumber(data())
-        if network_stat[iface] then
-            network_stat[iface]["old_recieved"] = network_stat[iface]["recieved"]
-            network_stat[iface]["old_sent"] = network_stat[iface]["sent"]
-        else
-            network_stat[iface] = {}
-            network_stat[iface]["old_recieved"] = recieved
-            network_stat[iface]["old_sent"] = sent
-        end
+        network_stat[iface]["old_recieved"] = network_stat[iface]["recieved"]
+        network_stat[iface]["old_sent"] = network_stat[iface]["sent"]
         network_stat[iface]["recieved"] = recieved
         network_stat[iface]["sent"] = sent
     end
-    local text = ' '
+    local group = 0
     for iface, data in pairs(network_stat) do
-        text = text .. iface .. " <span color=\"#CC7777\">⇓"
-            .. string.format("%.1f",
-                (data["recieved"] - data["old_recieved"]) / network_scale)
-            .. " KB/s</span>  <span color=\"#77CC77\">"
-            .. string.format("%.1f",
-                (data["sent"] - data["old_sent"]) / network_scale)
-            .. " KB/s⇑</span> "
+        group = group + 1
+        if data["old_recieved"] > 0 then
+            network_widget:add_value(data["recieved"] - data["old_recieved"], group)
+        end
     end
-    network_widget.text = text
 end
 network_update()
+
+network_usage = {}
+network_widget.widget:add_signal("mouse::enter", function()
+    local text = ' '
+    for iface, data in pairs(network_stat) do
+        if data["sent"] + data["recieved"] > 0 then
+            text = text .. iface .. " <span color=\"#CC7777\">⇓"
+                .. string.format("%.1f",
+                    (data["recieved"] - data["old_recieved"]) / network_scale)
+                .. " KB/s</span>  <span color=\"#77CC77\">"
+                .. string.format("%.1f",
+                    (data["sent"] - data["old_sent"]) / network_scale)
+                .. " KB/s⇑</span> "
+        end
+    end
+    network_usage = naughty.notify({
+        text = text,
+        timeout = 0,
+        hover_timeout = 0.5,
+        screen = mouse.screen
+    })
+end)
+network_widget.widget:add_signal('mouse::leave', function () naughty.destroy(network_usage) end)
 
 network_timer = timer({ timeout = network_timeout })
 network_timer:add_signal("timeout", function()
@@ -260,8 +290,8 @@ for s = 1, screen.count() do
         mytextclock,
         memory_widget.widget,
         cpu_widget.widget,
+        network_widget.widget,
         s == 1 and mysystray or nil,
-        network_widget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
