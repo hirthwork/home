@@ -150,6 +150,7 @@ network_widget:set_stack_colors({
     '#004488', '#008844', '#440088', '#448800', '#880044', '#884400' })
 network_widget:set_background_color('#222222')
 network_stat = {}
+network_max = 0
 for line in io.popen("cat /proc/net/dev|grep ':'"):lines() do
     local data = string.gmatch(line, "%S+")
     local iface = data()
@@ -181,9 +182,16 @@ function network_update ()
         network_stat[iface]["sent"] = sent
     end
     local group = 0
+    local total = 0
     for iface, data in pairs(network_stat) do
         group = group + 1
-        network_widget:add_value(data["recieved"] - data["old_recieved"], group)
+        local recieved = data["recieved"] - data["old_recieved"]
+        total = total + recieved
+        network_widget:add_value(recieved, group)
+    end
+    if total > network_max then
+        network_max = total
+        network_widget:set_max_value(network_max)
     end
 end
 network_update()
