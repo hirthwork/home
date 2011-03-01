@@ -74,7 +74,7 @@ mytextclock:add_signal("mouse::enter", function()
         today = today:sub(2,2)
     end
     cal_usage = naughty.notify({
-        text = io.popen("cal", "r"):read("*all"):gsub("[^%d]" .. today .. "[^%d]", "<u>%1</u>"),
+        text = io.popen("cal", "r"):read("*all"):gsub("[^%d]" .. today .. "[^%d]", "<span color=\"#33FF33\">%1</span>"),
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
