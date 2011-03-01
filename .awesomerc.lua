@@ -153,11 +153,16 @@ network_stat = {}
 for line in io.popen("cat /proc/net/dev|grep ':'"):lines() do
     local data = string.gmatch(line, "%S+")
     local iface = data()
+    local recieved = tonumber(data())
+    for i = 1, 7 do
+        data()
+    end
+    local sent = tonumber(data())
     network_stat[iface] = {}
-    network_stat[iface]["old_recieved"] = 0
-    network_stat[iface]["old_sent"] = 0
-    network_stat[iface]["recieved"] = 0
-    network_stat[iface]["sent"] = 0
+    network_stat[iface]["old_recieved"] = recieved
+    network_stat[iface]["old_sent"] = sent
+    network_stat[iface]["recieved"] = recieved
+    network_stat[iface]["sent"] = sent
 end
 network_timeout = 10
 network_scale = network_timeout * 1024
@@ -178,10 +183,7 @@ function network_update ()
     local group = 0
     for iface, data in pairs(network_stat) do
         group = group + 1
-        local recieved = data["recieved"] - data["old_recieved"]
-        if data["old_recieved"] > 0 and recieved > 0 then
-            network_widget:add_value(recieved, group)
-        end
+        network_widget:add_value(data["recieved"] - data["old_recieved"], group)
     end
 end
 network_update()
