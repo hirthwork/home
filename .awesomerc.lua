@@ -69,9 +69,11 @@ mytextclock = awful.widget.textclock({ align = "right" })
 
 cal_usage = {}
 mytextclock:add_signal("mouse::enter", function()
-    local f = io.popen("cal", "r")
     local today = os.date("%d")
-    local cal = f.read(f, "*all"):gsub("[^%d]" .. today .. "[^%d]", "<u>%1</u>")
+    if today:sub(1,1) == '0' then
+        today = today:sub(2,2)
+    end
+    local cal = io.popen("cal", "r"):read("*all"):gsub("[^%d]" .. today .. "[^%d]", "<u>%1</u>")
     cal_usage = naughty.notify({
         text = '<span font_desc="monospace">' .. cal .. '</span>',
         timeout = 0,
@@ -91,9 +93,8 @@ cpu_widget:set_gradient_colors({ '#222222', '#33FF77' })
 
 cpu_usage = {}
 cpu_widget.widget:add_signal("mouse::enter", function()
-    local f = io.popen("top -b -n1", "r")
     cpu_usage = naughty.notify({
-        text = '<span font_desc="monospace">' .. f.read(f, "*all") .. '</span>',
+        text = '<span font_desc="monospace">' .. io.popen("top -b -n1", "r"):read("*all") .. '</span>',
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
@@ -102,8 +103,7 @@ end)
 cpu_widget.widget:add_signal('mouse::leave', function () naughty.destroy(cpu_usage) end)
 
 function cpu_update()
-    local f = io.open("/proc/stat", "r")
-    local data = string.gmatch(f.read(f), "%d+")
+    local data = io.open("/proc/stat", "r"):read():gmatch("%d+")
     local total = tonumber(data()) + tonumber(data()) + tonumber(data())
     local idle = tonumber(data())
     total = total + idle
@@ -115,9 +115,7 @@ cpu_update()
 
 memory_widget = awful.widget.graph()
 function mem_total()
-    local f = io.open("/proc/meminfo", "r")
-    local line = f.read(f)
-    local data = string.gmatch(line, "%S+")
+    local data = io.open("/proc/meminfo", "r"):read():gmatch("%S+")
     data()
     return tonumber(data())
 end
@@ -129,9 +127,8 @@ memory_widget:set_gradient_colors({ '#222222', '#3377FF' })
 
 memory_usage = {}
 memory_widget.widget:add_signal("mouse::enter", function()
-    local f = io.popen("free", "r")
     memory_usage = naughty.notify({
-        text = '<span font_desc="monospace">' .. f.read(f, "*all") .. '</span>',
+        text = '<span font_desc="monospace">' .. io.popen("free", "r"):read("*all") .. '</span>',
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
@@ -140,8 +137,7 @@ end)
 memory_widget.widget:add_signal('mouse::leave', function () naughty.destroy(memory_usage) end)
 
 function memory_update()
-    local f = io.popen("free | tail -n+3 | head -n1 | sed 's/.*: *//;s/ .*//'", "r")
-    memory_widget:add_value(tonumber(f.read(f)))
+    memory_widget:add_value(tonumber(io.popen("free | tail -n+3 | head -n1 | sed 's/.*: *//;s/ .*//'", "r"):read()))
 end
 memory_update()
 
@@ -150,8 +146,7 @@ network_stat = {}
 network_timeout = 10
 network_scale = network_timeout * 1024
 function network_update ()
-    local f = io.popen("cat /proc/net/dev|grep ':'|grep -vE '.*:([ ]+0){16}'", "r")
-    for line in f.lines(f) do
+    for line in io.popen("cat /proc/net/dev|grep ':'|grep -vE '.*:([ ]+0){16}'", "r"):lines() do
         local data = string.gmatch(line, "%S+")
         local iface = data()
         local recieved = tonumber(data())
