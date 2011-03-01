@@ -178,8 +178,9 @@ function network_update ()
     local group = 0
     for iface, data in pairs(network_stat) do
         group = group + 1
-        if data["old_recieved"] > 0 then
-            network_widget:add_value(data["recieved"] - data["old_recieved"], group)
+        local recieved = data["recieved"] - data["old_recieved"]
+        if data["old_recieved"] > 0 and recieved > 0 then
+            network_widget:add_value(recieved, group)
         end
     end
 end
