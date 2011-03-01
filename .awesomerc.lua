@@ -219,11 +219,60 @@ network_widget.widget:add_signal("mouse::enter", function()
 end)
 network_widget.widget:add_signal('mouse::leave', function () naughty.destroy(network_usage) end)
 
+io_widget = awful.widget.graph()
+io_widget:set_width(32)
+io_widget:set_height(16)
+io_widget:set_scale(true)
+io_widget:set_stack(true)
+io_widget:set_stack_colors({'#CC8800', '#CC0088' })
+io_widget:set_background_color('#222222')
+io_stat = {}
+function io_init()
+    local line = io.popen('cat /proc/diskstats | grep " sda " | sed -E "s/^.*sda [0-9]+ [0-9]+ [0-9]+ //"'):read()
+    local data = string.gmatch(line, "%S+")
+    local read = tonumber(data())
+    for i = 1, 3 do
+        data()
+    end
+    local write = tonumber(data())
+    io_stat["old_read"] = read
+    io_stat["old_write"] = write
+    io_stat["read"] = read
+    io_stat["write"] = write
+end
+
+io_max = 0
+function io_update ()
+    local line = io.popen('cat /proc/diskstats | grep " sda " | sed -E "s/^.*sda [0-9]+ [0-9]+ [0-9]+ //"'):read()
+    local data = string.gmatch(line, "%S+")
+    local read = tonumber(data())
+    for i = 1, 3 do
+        data()
+    end
+    local write = tonumber(data())
+    io_stat["old_read"] = io_stat["read"]
+    io_stat["old_write"] = io_stat["write"]
+    io_stat["read"] = read
+    io_stat["write"] = write
+    local total = io_stat["read"] - io_stat["old_read"]
+    local written = io_stat["write"] - io_stat["old_write"]
+    io_widget:add_value(written, 1)
+    io_widget:add_value(total, 2)
+    total = total + written
+    if total > io_max then
+        io_max = total
+        io_widget:set_max_value(io_max)
+    end
+end
+io_init()
+io_update()
+
 network_timer = timer({ timeout = network_timeout })
 network_timer:add_signal("timeout", function()
     network_update()
     memory_update()
     cpu_update()
+    io_update()
 end)
 network_timer:start()
 
@@ -302,6 +351,7 @@ for s = 1, screen.count() do
         memory_widget.widget,
         cpu_widget.widget,
         network_widget.widget,
+        io_widget.widget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
