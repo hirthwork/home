@@ -73,9 +73,8 @@ mytextclock:add_signal("mouse::enter", function()
     if today:sub(1,1) == '0' then
         today = today:sub(2,2)
     end
-    local cal = io.popen("cal", "r"):read("*all"):gsub("[^%d]" .. today .. "[^%d]", "<u>%1</u>")
     cal_usage = naughty.notify({
-        text = '<span font_desc="monospace">' .. cal .. '</span>',
+        text = io.popen("cal", "r"):read("*all"):gsub("[^%d]" .. today .. "[^%d]", "<u>%1</u>"),
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
@@ -94,7 +93,7 @@ cpu_widget:set_gradient_colors({ '#222222', '#33FF77' })
 cpu_usage = {}
 cpu_widget.widget:add_signal("mouse::enter", function()
     cpu_usage = naughty.notify({
-        text = '<span font_desc="monospace">' .. io.popen("top -b -n1", "r"):read("*all") .. '</span>',
+        text = io.popen("top -b -n1", "r"):read("*all"),
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
@@ -128,7 +127,7 @@ memory_widget:set_gradient_colors({ '#222222', '#3377FF' })
 memory_usage = {}
 memory_widget.widget:add_signal("mouse::enter", function()
     memory_usage = naughty.notify({
-        text = '<span font_desc="monospace">' .. io.popen("free", "r"):read("*all") .. '</span>',
+        text = io.popen("free", "r"):read("*all"),
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
@@ -165,17 +164,17 @@ function network_update ()
         network_stat[iface]["recieved"] = recieved
         network_stat[iface]["sent"] = sent
     end
-    local text = ' <span font_desc="serif">'
+    local text = ' '
     for iface, data in pairs(network_stat) do
-        text = text .. iface .. " <span color=\"#CC7777\">↓"
+        text = text .. iface .. " <span color=\"#CC7777\">⇓"
             .. string.format("%.1f",
                 (data["recieved"] - data["old_recieved"]) / network_scale)
             .. " KB/s</span>  <span color=\"#77CC77\">"
             .. string.format("%.1f",
                 (data["sent"] - data["old_sent"]) / network_scale)
-            .. " KB/s↑</span> "
+            .. " KB/s⇑</span> "
     end
-    network_widget.text = text .. '</span>'
+    network_widget.text = text
 end
 network_update()
 
