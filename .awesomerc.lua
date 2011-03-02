@@ -228,7 +228,7 @@ io_widget:set_stack_colors({'#CC8800', '#CC0088' })
 io_widget:set_background_color('#222222')
 io_stat = {}
 function io_init()
-    local line = io.popen('cat /proc/diskstats | grep " sda " | sed -E "s/^.*sda [0-9]+ [0-9]+ [0-9]+ //"'):read()
+    local line = io.popen('cat /proc/diskstats | grep " sda " | sed -E "s/^.*sda [0-9]+ [0-9]+ //"'):read()
     local data = string.gmatch(line, "%S+")
     local read = tonumber(data())
     for i = 1, 3 do
@@ -242,7 +242,7 @@ function io_init()
 end
 
 function io_update ()
-    local line = io.popen('cat /proc/diskstats | grep " sda " | sed -E "s/^.*sda [0-9]+ [0-9]+ [0-9]+ //"'):read()
+    local line = io.popen('cat /proc/diskstats | grep " sda " | sed -E "s/^.*sda [0-9]+ [0-9]+ //"'):read()
     local data = string.gmatch(line, "%S+")
     local read = tonumber(data())
     for i = 1, 3 do
@@ -260,14 +260,14 @@ io_init()
 io_update()
 
 io_usage = {}
-io_scale = network_timeout * 10
+io_scale = network_timeout
 io_widget.widget:add_signal("mouse::enter", function()
     io_usage = naughty.notify({
         text = " <span color=\"#FF7777\">⇓"
             .. (io_stat["write"] - io_stat["old_write"]) / io_scale
-            .. " %</span>  <span color=\"#77FF77\">"
+            .. " </span>  <span color=\"#77FF77\">"
             .. (io_stat["read"] - io_stat["old_read"]) / io_scale
-            .. " %⇑</span> ",
+            .. " ⇑</span> sectors per second ",
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
