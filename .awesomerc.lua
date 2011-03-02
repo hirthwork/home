@@ -241,7 +241,6 @@ function io_init()
     io_stat["write"] = write
 end
 
-io_max = 0
 function io_update ()
     local line = io.popen('cat /proc/diskstats | grep " sda " | sed -E "s/^.*sda [0-9]+ [0-9]+ [0-9]+ //"'):read()
     local data = string.gmatch(line, "%S+")
@@ -254,15 +253,8 @@ function io_update ()
     io_stat["old_write"] = io_stat["write"]
     io_stat["read"] = read
     io_stat["write"] = write
-    local total = io_stat["read"] - io_stat["old_read"]
-    local written = io_stat["write"] - io_stat["old_write"]
-    io_widget:add_value(written, 1)
-    io_widget:add_value(total, 2)
-    total = total + written
-    if total > io_max then
-        io_max = total
-        io_widget:set_max_value(io_max)
-    end
+    io_widget:add_value(io_stat["write"] - io_stat["old_write"], 1)
+    io_widget:add_value(io_stat["read"] - io_stat["old_read"], 2)
 end
 io_init()
 io_update()
