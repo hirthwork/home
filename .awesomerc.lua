@@ -259,6 +259,22 @@ end
 io_init()
 io_update()
 
+io_usage = {}
+io_scale = network_timeout * 10
+io_widget.widget:add_signal("mouse::enter", function()
+    io_usage = naughty.notify({
+        text = " <span color=\"#FF7777\">⇓"
+            .. (io_stat["write"] - io_stat["old_write"]) / io_scale
+            .. " %</span>  <span color=\"#77FF77\">"
+            .. (io_stat["read"] - io_stat["old_read"]) / io_scale
+            .. " %⇑</span> ",
+        timeout = 0,
+        hover_timeout = 0.5,
+        screen = mouse.screen
+    })
+end)
+io_widget.widget:add_signal('mouse::leave', function () naughty.destroy(io_usage) end)
+
 network_timer = timer({ timeout = network_timeout })
 network_timer:add_signal("timeout", function()
     network_update()
