@@ -16,9 +16,11 @@ map <F4> :bn!<cr>
 imap <F3> <esc>:bp!<cr>a
 imap <F4> <esc>:bn!<cr>a
 map <F5> <esc>:setlocal spell spelllang=en<CR>
-map <F6> <esc>:setlocal nospell<CR>
+map <F6> <esc>:setlocal spell spelllang=ru<CR>
+map <F7> <esc>:setlocal nospell<CR>
 imap <F5> <esc>:setlocal spell spelllang=en<CR>a
-imap <F6> <esc>:setlocal nospell<CR>a
+imap <F6> <esc>:setlocal spell spelllang=ru<CR>a
+imap <F7> <esc>:setlocal nospell<CR>a
 colorscheme desert
 highlight UglyLine ctermbg=Red
 autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>79v.\+', -1)
