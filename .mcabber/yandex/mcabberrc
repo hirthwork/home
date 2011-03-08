@@ -218,7 +218,7 @@ set statefile = ~/.mcabber/yandex/mcabber.state
 #   $events_command UNREAD "N x y z"        (number of unread buddy buffers)
 #   (x=attention y=muc unread buffers z=muc unread buffers with attention sign)
 # See sample script in contrib/ directory.
-set events_command = ~/.mcabber/yandex/eventcmd
+set events_command = ~/.mcabber/eventcmd
 #
 #set events_ignore_active_window = 0
 #
@@ -503,4 +503,4 @@ bind 521 = buffer up
 bind 514 = buffer down
 
 # Sample alias to join mcabber channel with "/jmc"
-#alias jmc = room join mcabber@conf.lilotux.net
+alias cpp = room join c_plus_plus@conference.jabber.ru
