@@ -1,8 +1,9 @@
 #! /bin/sh
-event=$1
-arg1=$2
-arg2=$3
-filename=$4
+account=$1
+event=$2
+arg1=$3
+arg2=$4
+filename=$5
 # Note that the 4th argument is only provided for incoming messages
 # and when 'event_log_files' is set.
 
@@ -10,8 +11,8 @@ if [ $event = "MSG" ]; then
     case "$arg1" in
         IN)
             # Incoming message from buddy $arg2
-            str="\"<span color='#3333CC'>$arg2</span>: \" .. io.open('$filename','r'):read('*all')"
-            command="naughty.notify({text=$str,timeout=3,screen=mouse.screen})"
+            str="\"<span color='#8888CC'>$arg2 ($account)</span>: \" .. io.open('$filename','r'):read('*all')"
+            command="naughty.notify({text=$str,timeout=5,screen=mouse.screen,width=400})"
             echo $command|awesome-client
             if [ -n "$filename" -a -f "$filename" ]; then
                 # We could process filename here...
@@ -29,5 +30,6 @@ elif [ $event = "UNREAD" ]; then
     # $arg1 contains 4 numbers separated with space chars:
     # Nr of unread buffers, nr of unread buffers with attention sign,
     # nr of MUC unread buffers, nr of MUC unread buffers with attention sign.
-    echo -ne "\ek"$arg1"\e\\"
+    count=`echo $arg1|grep -o "^[0-9]"`
+    echo "mcabber_stat[\"$account\"]=$count update_mcabber()"|awesome-client
 fi

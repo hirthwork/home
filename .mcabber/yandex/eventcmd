@@ -1,0 +1,2 @@
+#!/bin/sh
+$HOME/.mcabber/eventcmd yandex $@

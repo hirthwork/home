@@ -284,6 +284,21 @@ network_timer:add_signal("timeout", function()
 end)
 network_timer:start()
 
+mcabber = widget({ type = "textbox" })
+mcabber_stat = {}
+function update_mcabber()
+    local text = ""
+    for account, count in pairs(mcabber_stat) do
+        if count > 0 then
+            text = text .. account .. " "
+        end
+    end
+    if string.len(text) > 0 then
+        text = "<span color='#8888CC'>Unread messages in: </span>" .. text
+    end
+    mcabber.text = text
+end
+
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
@@ -361,6 +376,7 @@ for s = 1, screen.count() do
         network_widget.widget,
         io_widget.widget,
         s == 1 and mysystray or nil,
+        mcabber,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
