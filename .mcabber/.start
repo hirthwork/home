@@ -1,0 +1,12 @@
+#!/bin/sh
+screenrc=$HOME/.mcabber/.screenrc
+echo vbell off>$screenrc
+echo hardstatus alwayslastline %Lw>>$screenrc
+for x in `find .mcabber -name 'mcabberrc'`
+do
+    echo screen mcabber -f $x>>$screenrc
+    name=`echo $x|grep -o "[^/]*/mcabberrc$" | grep -o "^[^/]*"`
+    echo title $name>>$screenrc
+done
+/usr/bin/screen -c $screenrc
+
