@@ -5,22 +5,18 @@ arg2=$3
 filename=$4
 # Note that the 4th argument is only provided for incoming messages
 # and when 'event_log_files' is set.
-echo "$event-$arg1-$arg2-$filename">>/home/dpotapov/log
 
-if [ $event = "MSG"]; then
+if [ $event = "MSG" ]; then
     case "$arg1" in
         IN)
             # Incoming message from buddy $arg2
-            str="<span color='#3333CC'>$arg2</span>"
+            str="\"<span color='#3333CC'>$arg2</span>: \" .. io.open('$filename','r'):read('*all')"
+            command="naughty.notify({text=$str,timeout=3,screen=mouse.screen})"
+            echo $command|awesome-client
             if [ -n "$filename" -a -f "$filename" ]; then
                 # We could process filename here...
-                content=`cat $filename`
-                str=$str": $content"
                 /bin/rm $filename
             fi
-            command="naughty.notify({text=\"$str\",timeout=3,screen=mouse.screen})"
-            echo executing $command>>/home/dpotapov/log
-            echo $command|awesome-client
             ;;
         MUC)
             if [ -n "$filename" -a -f "$filename" ]; then
@@ -33,6 +29,5 @@ elif [ $event = "UNREAD" ]; then
     # $arg1 contains 4 numbers separated with space chars:
     # Nr of unread buffers, nr of unread buffers with attention sign,
     # nr of MUC unread buffers, nr of MUC unread buffers with attention sign.
-    echo changing name to $arg1>>/home/dpotapov/log
     echo -ne "\ek"$arg1"\e\\"
 fi
