@@ -30,6 +30,6 @@ elif [ $event = "UNREAD" ]; then
     # $arg1 contains 4 numbers separated with space chars:
     # Nr of unread buffers, nr of unread buffers with attention sign,
     # nr of MUC unread buffers, nr of MUC unread buffers with attention sign.
-    count=`echo $arg1|grep -o "^[0-9]"`
+    count=`echo $arg1|grep -o "^[0-9]*"`
     echo "mcabber_stat[\"$account\"]=$count update_mcabber()"|awesome-client
 fi

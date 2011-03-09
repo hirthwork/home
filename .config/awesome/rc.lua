@@ -290,7 +290,7 @@ function update_mcabber()
     local text = ""
     for account, count in pairs(mcabber_stat) do
         if count > 0 then
-            text = text .. account .. " "
+            text = text .. account .. " (" .. count .. ") "
         end
     end
     if string.len(text) > 0 then
@@ -578,9 +578,22 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 awful.tag.setproperty(tags[1][1], "nmaster", 2)
 awful.tag.setproperty(tags[1][1], "mwfact", 0.2)
 awful.tag.setproperty(tags[1][1], "icon_only", true)
-awful.tag.seticon("/usr/share/icons/hicolor/16x16/apps/pidgin.png", tags[1][1])
+
+first_tab_icon = "/usr/share/pixmaps/thunderbird-icon.png"
+if not file_exists(first_tab_icon) then
+    first_tab_icon = "/usr/share/icons/hicolor/16x16/apps/htop.png"
+end
+awful.tag.seticon(first_tab_icon, tags[1][1])
+
 awful.tag.setproperty(tags[1][2], "icon_only", true)
 awful.tag.seticon("/usr/share/pixmaps/firefox-icon.png", tags[1][2])
+
+transmission_icon = "/usr/share/icons/hicolor/16x16/apps/transmission.png"
+if file_exists(transmission_icon) then
+    awful.tag.setproperty(tags[1][8], "icon_only", true)
+    awful.tag.seticon(transmission_icon, tags[1][8])
+end
+
 awful.tag.setproperty(tags[1][9], "icon_only", true)
 awful.tag.seticon("/usr/share/icons/hicolor/16x16/apps/evince.png", tags[1][9])
 
@@ -595,7 +608,6 @@ run_once("firefox")
 run_once("thunderbird")
 -- Sometimes you want to start X session without automatic connect to IMs
 if not os.getenv("NOIM") then
-    run_once("pidgin")
     awful.util.spawn_with_shell("pgrep -f -u $USER -x ./skype || (skype)")
 end
 
