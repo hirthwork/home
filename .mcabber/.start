@@ -7,7 +7,6 @@ do
     echo screen mcabber -f $x>>$screenrc
     name=`echo $x|grep -o "[^/]*/mcabberrc$" | grep -o "^[^/]*"`
     echo title $name>>$screenrc
-    echo monitor>>$screenrc
 done
 /usr/bin/screen -c $screenrc
 
