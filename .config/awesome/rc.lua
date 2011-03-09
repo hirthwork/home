@@ -290,7 +290,7 @@ function update_mcabber()
     local text = ""
     for account, count in pairs(mcabber_stat) do
         if count > 0 then
-            text = text .. account .. " (" .. count .. ") "
+            text = text .. account .. " "
         end
     end
     if string.len(text) > 0 then
