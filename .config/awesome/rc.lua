@@ -290,7 +290,7 @@ function update_mcabber()
     local text = ""
     for account, count in pairs(mcabber_stat) do
         if count > 0 then
-            text = text .. account .. " "
+            text = text .. account .. " (" .. count .. ") "
         end
     end
     if string.len(text) > 0 then
@@ -581,7 +581,7 @@ awful.tag.setproperty(tags[1][1], "icon_only", true)
 
 first_tab_icon = "/usr/share/pixmaps/thunderbird-icon.png"
 if not file_exists(first_tab_icon) then
-    first_tab_icon = "/usr/share/icons/hicolor/16x16/apps/htop.png"
+    first_tab_icon = "/usr/share/pixmaps/htop.png"
 end
 awful.tag.seticon(first_tab_icon, tags[1][1])
 

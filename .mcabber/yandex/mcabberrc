@@ -300,10 +300,10 @@ set event_log_dir = ~/.mcabber/yandex/event_files
 # 2: (in_and_out) display joining/leaving members
 # 3: (all)        display joining/leaving members and member status changes
 # (default: in_and_out)
-set muc_print_status = 2
+#set muc_print_status = 2
 # Set 'muc_auto_whois' to 1 if you want to call /room whois each time
 # somebody joins a room. (default: 0)
-set muc_auto_whois = 1
+#set muc_auto_whois = 1
 #
 # Set 'muc_disable_nick_hl' to 1 if you don't want mcabber to color lines
 # containing your nickname in a MUC room.
@@ -385,7 +385,7 @@ set escdelay = 50
 
 # You can let mcabber color nicks in MUC.
 # These colors will by used automatically:
-#set nick_colors = red green blue
+set nick_colors = red green blue cyan yellow magenta white brightred brightgreen brightblue brightcyan brightyellow brightmagenta 
 # This turns coloring of all mucs on:
 color muc * on
 #
@@ -449,7 +449,7 @@ set log_display_sender = 1
 #
 # Set 'url_regex' to a regular expression matching urls.  If it matches an
 # url in an incoming messages, it'll print it to the log window.
-set url_regex = "(((https?|ftps?|nntp)://)|www[.][-a-z0-9.]+|(mailto:|news:))(%[0-9A-F]{2}|[-_.!~*';/?:@&=+$,#[:alnum:]])+"
+#set url_regex = "(((https?|ftps?|nntp)://)|www[.][-a-z0-9.]+|(mailto:|news:))(%[0-9A-F]{2}|[-_.!~*';/?:@&=+$,#[:alnum:]])+"
 
 # Contacts PGP information
 # You can provide a PGP key to be used for a given Jabber user, or
