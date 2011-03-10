@@ -145,9 +145,10 @@ network_widget:set_width(32)
 network_widget:set_height(16)
 network_widget:set_scale(true)
 network_widget:set_stack(true)
-network_widget:set_stack_colors({
+network_stack_colors = {
     '#006666', '#660066', '#666600', '#0000CC', '#00CC00', '#CC0000',
-    '#004488', '#008844', '#440088', '#448800', '#880044', '#884400' })
+    '#004488', '#008844', '#440088', '#448800', '#880044', '#884400'}
+network_widget:set_stack_colors(network_stack_colors);
 network_widget:set_background_color('#222222')
 network_stat = {}
 network_max = 0
@@ -186,8 +187,11 @@ function network_update ()
     for iface, data in pairs(network_stat) do
         group = group + 1
         local recieved = data["recieved"] - data["old_recieved"]
-        total = total + recieved
         network_widget:add_value(recieved, group)
+        group = group + 1
+        local sent = data["sent"] - data["old_sent"]
+        network_widget:add_value(sent, group)
+        total = total + recieved + sent
     end
     if total > network_max then
         network_max = total
@@ -199,16 +203,19 @@ network_update()
 network_usage = {}
 network_widget.widget:add_signal("mouse::enter", function()
     local text = ' '
+    local group = 0
     for iface, data in pairs(network_stat) do
+        group = group + 1
         if data["sent"] + data["recieved"] > 0 then
-            text = text .. iface .. " <span color=\"#CC7777\">⇓"
+            text = text .. iface .. " <span color=\"" .. network_stack_colors[group] .. "\">⇓"
                 .. string.format("%.1f",
                     (data["recieved"] - data["old_recieved"]) / network_scale)
-                .. " KB/s</span>  <span color=\"#77CC77\">"
+                .. " KB/s</span>  <span color=\"" .. network_stack_colors[group + 1] .."\">"
                 .. string.format("%.1f",
                     (data["sent"] - data["old_sent"]) / network_scale)
                 .. " KB/s⇑</span> "
         end
+        group = group + 1
     end
     network_usage = naughty.notify({
         text = text,
@@ -224,7 +231,7 @@ io_widget:set_width(32)
 io_widget:set_height(16)
 io_widget:set_scale(true)
 io_widget:set_stack(true)
-io_widget:set_stack_colors({'#CC8800', '#CC0088' })
+io_widget:set_stack_colors({'#FF7777', '#77FF77' })
 io_widget:set_background_color('#222222')
 io_stat = {}
 function io_init()

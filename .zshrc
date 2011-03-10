@@ -74,6 +74,5 @@ export EDITOR=vim
 export PAGER=vimpager
 export MANPAGER=less
 export LANG=ru_RU.UTF-8
-alias screen="screen -RR -D -h 20000"
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
 
