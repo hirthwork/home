@@ -53,6 +53,7 @@ layouts =
     awful.layout.suit.floating
 }
 -- }}}
+bgcolor = '#222222'
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
@@ -87,8 +88,8 @@ oldidle = 0
 cpu_widget = awful.widget.graph()
 cpu_widget:set_width(32)
 cpu_widget:set_height(16)
-cpu_widget:set_background_color('#222222')
-cpu_widget:set_gradient_colors({ '#222222', '#33FF77' })
+cpu_widget:set_background_color(bgcolor)
+cpu_widget:set_gradient_colors({ bgcolor, '#33FF77' })
 
 cpu_usage = {}
 cpu_widget.widget:add_signal("mouse::enter", function()
@@ -121,8 +122,8 @@ memory_widget = awful.widget.graph()
 memory_widget:set_width(32)
 memory_widget:set_height(16)
 memory_widget:set_max_value(mem_total())
-memory_widget:set_background_color('#222222')
-memory_widget:set_gradient_colors({ '#222222', '#3377FF' })
+memory_widget:set_background_color(bgcolor)
+memory_widget:set_gradient_colors({ bgcolor, '#3377FF' })
 
 memory_usage = {}
 memory_widget.widget:add_signal("mouse::enter", function()
@@ -146,12 +147,11 @@ network_widget:set_height(16)
 network_widget:set_scale(true)
 network_widget:set_stack(true)
 network_stack_colors = {
-    '#006666', '#660066', '#666600', '#0000CC', '#00CC00', '#CC0000',
-    '#004488', '#008844', '#440088', '#448800', '#880044', '#884400'}
+    '#004488', '#008844', '#440088', '#448800', '#880044', '#884400',
+    '#660066', '#006666', '#666600', '#0000CC', '#CC0000', '#00CC00'}
 network_widget:set_stack_colors(network_stack_colors);
-network_widget:set_background_color('#222222')
+network_widget:set_background_color(bgcolor)
 network_stat = {}
-network_max = 0
 for line in io.popen("cat /proc/net/dev|grep ':'"):lines() do
     local data = string.gmatch(line, "%S+")
     local iface = data()
@@ -183,19 +183,11 @@ function network_update ()
         network_stat[iface]["sent"] = sent
     end
     local group = 0
-    local total = 0
     for iface, data in pairs(network_stat) do
         group = group + 1
-        local recieved = data["recieved"] - data["old_recieved"]
-        network_widget:add_value(recieved, group)
+        network_widget:add_value(data["recieved"] - data["old_recieved"], group)
         group = group + 1
-        local sent = data["sent"] - data["old_sent"]
-        network_widget:add_value(sent, group)
-        total = total + recieved + sent
-    end
-    if total > network_max then
-        network_max = total
-        network_widget:set_max_value(network_max)
+        network_widget:add_value(data["sent"] - data["old_sent"], group)
     end
 end
 network_update()
@@ -231,8 +223,9 @@ io_widget:set_width(32)
 io_widget:set_height(16)
 io_widget:set_scale(true)
 io_widget:set_stack(true)
-io_widget:set_stack_colors({'#FF7777', '#77FF77' })
-io_widget:set_background_color('#222222')
+io_stack_colors = {'#FF4444', '#44FF44' }
+io_widget:set_stack_colors(io_stack_colors)
+io_widget:set_background_color(bgcolor)
 io_stat = {}
 function io_init()
     local line = io.popen('cat /proc/diskstats | grep " sda " | sed -E "s/^.*sda [0-9]+ [0-9]+ //"'):read()
@@ -270,9 +263,9 @@ io_usage = {}
 io_scale = network_timeout
 io_widget.widget:add_signal("mouse::enter", function()
     io_usage = naughty.notify({
-        text = " <span color=\"#FF7777\">⇓"
+        text = " <span color=\"" .. io_stack_colors[1] .. "\">⇓"
             .. (io_stat["write"] - io_stat["old_write"]) / io_scale
-            .. " </span>  <span color=\"#77FF77\">"
+            .. " </span>  <span color=\"" .. io_stack_colors[2] .. "\">"
             .. (io_stat["read"] - io_stat["old_read"]) / io_scale
             .. " ⇑</span> sectors per second ",
         timeout = 0,
@@ -583,7 +576,7 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 -- }}}
 
 awful.tag.setproperty(tags[1][1], "nmaster", 2)
-awful.tag.setproperty(tags[1][1], "mwfact", 0.2)
+awful.tag.setproperty(tags[1][1], "mwfact", 0.8)
 awful.tag.setproperty(tags[1][1], "icon_only", true)
 
 first_tab_icon = "/usr/share/pixmaps/thunderbird-icon.png"
