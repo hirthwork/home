@@ -385,7 +385,7 @@ set escdelay = 50
 
 # You can let mcabber color nicks in MUC.
 # These colors will by used automatically:
-set nick_colors = red green blue cyan yellow magenta white brightred brightgreen brightblue brightcyan brightyellow brightmagenta 
+set nick_colors = red green blue yellow magenta brightred brightgreen brightblue brightcyan brightyellow brightmagenta 
 # This turns coloring of all mucs on:
 color muc * on
 #
