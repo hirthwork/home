@@ -541,6 +541,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][8] } },
     { rule = { class = "Evince" },
       properties = { tag = tags[1][9] } },
+    { rule = { class = "Apvlv" },
+      properties = { tag = tags[1][9] } },
 }
 -- }}}
 
@@ -595,7 +597,7 @@ if file_exists(transmission_icon) then
 end
 
 awful.tag.setproperty(tags[1][9], "icon_only", true)
-awful.tag.seticon("/usr/share/icons/hicolor/16x16/apps/evince.png", tags[1][9])
+awful.tag.seticon("/usr/share/pixmaps/apvlv.png", tags[1][9])
 
 function run_once(prg)
     if not prg then

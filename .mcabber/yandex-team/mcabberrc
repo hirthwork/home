@@ -501,6 +501,8 @@ bind 276 = roster toggle
 # Ctrl-Up/Ctrl-Down bound to /buffer up/down  (like Ctrl-p/Ctrl-n)
 bind 521 = buffer up
 bind 514 = buffer down
+# Ctrl-PgUp bound to roster top
+bind MK3 = roster top
 
 # Sample alias to join mcabber channel with "/jmc"
 alias cpp = room join c_plus_plus@conference.jabber.ru
