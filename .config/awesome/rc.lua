@@ -60,7 +60,7 @@ bgcolor = '#222222'
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ "1:mail", "2:www", "3:term","4:term", "5:term", "6:term", "7:draw", "8:p2p", "9:doc" }, s, layouts[1])
 end
 -- }}}
 
@@ -524,9 +524,9 @@ awful.rules.rules = {
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "Dia" },
-      properties = { floating = true } },
+      properties = { floating = true, tag = tags[1][7] } },
     { rule = { class = "gimp" },
-      properties = { floating = true } },
+      properties = { floating = true, tag = tags[1][7] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[1][1] } },
     { rule = { class = "Pidgin" },
@@ -540,6 +540,10 @@ awful.rules.rules = {
     { rule = { class = "Transmission" },
       properties = { tag = tags[1][8] } },
     { rule = { class = "Evince" },
+      properties = { tag = tags[1][9] } },
+    { rule = { class = "Abiword" },
+      properties = { tag = tags[1][9] } },
+    { rule = { class = "Gnumeric" },
       properties = { tag = tags[1][9] } },
     { rule = { class = "Apvlv" },
       properties = { tag = tags[1][9] } },
@@ -576,28 +580,6 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
-awful.tag.setproperty(tags[1][1], "nmaster", 2)
-awful.tag.setproperty(tags[1][1], "mwfact", 0.8)
-awful.tag.setproperty(tags[1][1], "icon_only", true)
-
-first_tab_icon = "/usr/share/pixmaps/thunderbird-icon.png"
-if not file_exists(first_tab_icon) then
-    first_tab_icon = "/usr/share/pixmaps/htop.png"
-end
-awful.tag.seticon(first_tab_icon, tags[1][1])
-
-awful.tag.setproperty(tags[1][2], "icon_only", true)
-awful.tag.seticon("/usr/share/pixmaps/firefox-icon.png", tags[1][2])
-
-transmission_icon = "/usr/share/icons/hicolor/16x16/apps/transmission.png"
-if file_exists(transmission_icon) then
-    awful.tag.setproperty(tags[1][8], "icon_only", true)
-    awful.tag.seticon(transmission_icon, tags[1][8])
-end
-
-awful.tag.setproperty(tags[1][9], "icon_only", true)
-awful.tag.seticon("/usr/share/pixmaps/apvlv.png", tags[1][9])
 
 function run_once(prg)
     if not prg then
