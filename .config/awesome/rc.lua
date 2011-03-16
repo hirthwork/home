@@ -60,7 +60,7 @@ bgcolor = '#222222'
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "1:mail", "2:www", "3:term","4:term", "5:term", "6:term", "7:draw", "8:p2p", "9:doc" }, s, layouts[1])
+    tags[s] = awful.tag({ "1:mail", "2:www", "3:tty","4:tty", "5:tty", "6:tty", "7:draw", "8:p2p", "9:doc" }, s, layouts[1])
 end
 -- }}}
 
