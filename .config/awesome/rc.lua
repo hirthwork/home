@@ -444,7 +444,8 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+    awful.key({modkey}, "s", function () awful.util.spawn("scrot /tmp/'%Y%m%d-%H%M%S.png'") end)
 )
 
 clientkeys = awful.util.table.join(
