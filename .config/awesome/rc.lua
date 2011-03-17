@@ -68,20 +68,20 @@ end
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
-cal_usage = {}
+calendar_usage = {}
 mytextclock:add_signal("mouse::enter", function()
     local today = os.date("%d")
     if today:sub(1,1) == '0' then
         today = today:sub(2,2)
     end
-    cal_usage = naughty.notify({
+    calendar_usage = naughty.notify({
         text = io.popen("cal", "r"):read("*all"):gsub("[^%d]" .. today .. "[^%d]", "<span color=\"#33FF33\">%1</span>"),
         timeout = 0,
         hover_timeout = 0.5,
         screen = mouse.screen
     })
 end)
-mytextclock:add_signal('mouse::leave', function () naughty.destroy(cal_usage) end)
+mytextclock:add_signal('mouse::leave', function () naughty.destroy(calendar_usage) end)
 
 oldtotal = 0
 oldidle = 0

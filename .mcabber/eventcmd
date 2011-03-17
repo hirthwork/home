@@ -11,7 +11,7 @@ if [ $event = "MSG" ]; then
     case "$arg1" in
         IN)
             # Incoming message from buddy $arg2
-            str="\"<span color='#8888CC'>$arg2 ($account)</span>: \" .. io.open('$filename','r'):read('*all')"
+            str="\"<span color='#8888CC'>$arg2</span>: \" .. awful.util.escape(io.open('$filename','r'):read('*all'))"
             command="naughty.notify({text=$str,timeout=5,screen=mouse.screen,width=400})"
             echo $command|awesome-client
             if [ -n "$filename" -a -f "$filename" ]; then
@@ -20,7 +20,7 @@ if [ $event = "MSG" ]; then
             fi
             ;;
         MUC)
-            str="io.open('$filename','r'):read('*all')"
+            str="awful.util.escape(io.open('$filename','r'):read('*all')):gsub('&lt;[^&]+&gt;', '<span color=\"#8888CC\">%1</span>')"
             command="naughty.notify({text=$str,timeout=5,screen=mouse.screen,width=400})"
             echo $command|awesome-client
             if [ -n "$filename" -a -f "$filename" ]; then
