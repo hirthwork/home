@@ -1,0 +1,5 @@
+#!/bin/sh
+screenrc=/tmp/.onlinerc
+. ./.mutt/start
+. ./.mcabber/start
+/usr/bin/screen -c $screenrc

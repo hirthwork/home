@@ -20,6 +20,9 @@ if [ $event = "MSG" ]; then
             fi
             ;;
         MUC)
+            str="io.open('$filename','r'):read('*all')"
+            command="naughty.notify({text=$str,timeout=5,screen=mouse.screen,width=400})"
+            echo $command|awesome-client
             if [ -n "$filename" -a -f "$filename" ]; then
                 # We could process filename here...
                 /bin/rm $filename

@@ -299,6 +299,21 @@ function update_mcabber()
     mcabber.text = text
 end
 
+mutt = widget({ type = "textbox" })
+mutt_stat = {}
+function update_mutt()
+    local text = ""
+    for account, count in pairs(mutt_stat) do
+        if count > 0 then
+            text = text .. account .. " (" .. count .. ") "
+        end
+    end
+    if string.len(text) > 0 then
+        text = "<span color='#8888CC'>Unread e-mails in: </span>" .. text
+    end
+    mutt.text = text
+end
+
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
@@ -377,6 +392,7 @@ for s = 1, screen.count() do
         io_widget.widget,
         s == 1 and mysystray or nil,
         mcabber,
+        mutt,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }

@@ -1,0 +1,20 @@
+#!/bin/sh
+if [ $screenrc"x" = "x" ]
+then
+    screenrc=$HOME/.mutt/.screenrc
+    cp $HOME/.screenrc $screenrc
+    should_start=yes
+fi
+
+for x in `find .mutt -name 'muttrc'`
+do
+    echo screen mutt -F $x>>$screenrc
+    name=`echo $x|grep -o "[^/]*/muttrc$" | grep -o "^[^/]*"`
+    echo title mail@$name>>$screenrc
+done
+
+if [ $should_start"x" = "yesx" ]
+then
+    /usr/bin/screen -c $screenrc
+fi
+

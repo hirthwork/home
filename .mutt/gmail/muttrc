@@ -1,0 +1,43 @@
+set from = "potapov.d@gmail.com"
+set realname = "Dmitry Potapov"
+
+set imap_user = "potapov.d@gmail.com"
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+
+set header_cache = ~/.mutt/gmail/cache/headers
+set message_cachedir = ~/.mutt/gmail/cache/bodies
+set certificate_file = ~/.mutt/gmail/certificates
+
+set smtp_url = "smtp://potapov.d@smtp.gmail.com:587/"
+unset imap_passive
+set imap_check_subscribed
+set mail_check = 60
+set timeout = 10
+
+set sort = threads
+set menu_scroll = yes
+set send_charset = "utf-8"
+set assumed_charset = "cp1251"
+set pager_format = " %C - %[%H:%M] %.20v, %s%* %?H? [%H] ?"
+set editor = "vim -c 'set syntax=mail ft=mail enc=utf-8'"
+
+set sidebar_width = 18
+set sidebar_visible = yes
+set sidebar_delim = '|'
+
+color sidebar_new yellow default
+
+bind index \CP sidebar-prev
+bind index \CN sidebar-next
+bind index \CO sidebar-open
+bind pager \CP sidebar-prev
+bind pager \CN sidebar-next
+bind pager \CO sidebar-open
+
+macro index b '<enter-command>toggle sidebar_visible<enter>'
+macro pager b '<enter-command>toggle sidebar_visible<enter>'
+
+set status_format="./.mutt/awesome-mutt gmail %u|"

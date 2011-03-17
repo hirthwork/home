@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "mutt_stat[\"$1\"]=$2 update_mutt()"|awesome-client
+

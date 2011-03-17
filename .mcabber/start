@@ -1,0 +1,20 @@
+#!/bin/sh
+if [ $screenrc"x" = "x" ]
+then
+    screenrc=$HOME/.mcabber/.screenrc
+    cp $HOME/.screenrc $screenrc
+    should_start=yes
+fi
+
+for x in `find .mcabber -name 'mcabberrc'`
+do
+    echo screen mcabber -f $x>>$screenrc
+    name=`echo $x|grep -o "[^/]*/mcabberrc$" | grep -o "^[^/]*"`
+    echo title xmpp@$name>>$screenrc
+done
+
+if [ $should_start"x" = "yesx" ]
+then
+    /usr/bin/screen -c $screenrc
+fi
+
