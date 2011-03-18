@@ -562,7 +562,11 @@ awful.rules.rules = {
       properties = { tag = tags[1][9] } },
     { rule = { class = "Gnumeric" },
       properties = { tag = tags[1][9] } },
+    { rule = { class = "mupdf" },
+      properties = { tag = tags[1][9] } },
     { rule = { class = "Apvlv" },
+      properties = { tag = tags[1][9] } },
+    { rule = { class = "xchm" },
       properties = { tag = tags[1][9] } },
 }
 -- }}}
