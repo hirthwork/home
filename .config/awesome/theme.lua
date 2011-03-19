@@ -7,11 +7,11 @@ theme = {}
 theme.font          = "monospace 8"
 
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
+theme.bg_focus      = theme.bg_normal
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 
-theme.fg_normal     = "#aaaaaa"
+theme.fg_normal     = "#888888"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"

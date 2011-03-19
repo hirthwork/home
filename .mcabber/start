@@ -1,7 +1,7 @@
 #!/bin/sh
 if [ $screenrc"x" = "x" ]
 then
-    screenrc=$HOME/.mcabber/.screenrc
+    screenrc=/tmp/.mcabberscreenrc
     cp $HOME/.screenrc $screenrc
     should_start=yes
 fi

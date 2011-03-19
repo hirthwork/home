@@ -1,5 +1,6 @@
 #!/bin/sh
 screenrc=/tmp/.onlinerc
+cp $HOME/.screenrc $screenrc
 . ./.mutt/start
 . ./.mcabber/start
 /usr/bin/screen -c $screenrc

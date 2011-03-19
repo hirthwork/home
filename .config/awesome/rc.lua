@@ -24,11 +24,6 @@ if not file_exists(theme_file) then
 end
 beautiful.init(theme_file)
 
--- This is used later as the default terminal and editor to run.
-terminal = "roxterm"
-editor = os.getenv("EDITOR") or "nano"
-editor_cmd = terminal .. " -e " .. editor
-
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -53,7 +48,7 @@ layouts =
     awful.layout.suit.floating
 }
 -- }}}
-bgcolor = '#222222'
+bgcolor = beautiful.get().bg_normal
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
@@ -294,7 +289,7 @@ function update_mcabber()
         end
     end
     if string.len(text) > 0 then
-        text = "<span color='#8888CC'>Unread messages in: </span>" .. text
+        text = "<span color='#8888CC'>Messages: </span>" .. text
     end
     mcabber.text = text
 end
@@ -309,7 +304,7 @@ function update_mutt()
         end
     end
     if string.len(text) > 0 then
-        text = "<span color='#8888CC'>Unread e-mails in: </span>" .. text
+        text = "<span color='#8888CC'>E-mails: </span>" .. text
     end
     mutt.text = text
 end
@@ -343,8 +338,6 @@ mytasklist.buttons = awful.util.table.join(
                                               if instance then
                                                   instance:hide()
                                                   instance = nil
-                                              else
-                                                  instance = awful.menu.clients({ width=250 })
                                               end
                                           end),
                      awful.button({ }, 4, function ()
@@ -438,7 +431,7 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "Return", function () awful.util.spawn("roxterm") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -541,8 +534,8 @@ awful.rules.rules = {
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "Dia" },
-      properties = { floating = true, tag = tags[1][7] } },
-    { rule = { class = "gimp" },
+      properties = { tag = tags[1][7] } },
+    { rule = { class = "Gimp" },
       properties = { floating = true, tag = tags[1][7] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[1][1] } },
