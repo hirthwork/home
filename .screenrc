@@ -1,3 +1,3 @@
 vbell off
 nethack on
-hardstatus alwayslastline '%{= kG}%H:%{W}%Lw'
+hardstatus alwayslastline '%{= dG}%H:%{w}%Lw'

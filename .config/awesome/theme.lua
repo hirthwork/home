@@ -16,8 +16,8 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.border_width  = "1"
-theme.border_normal = "#000000"
+theme.border_width  = "0"
+theme.border_normal = "#222222"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
 
@@ -75,11 +75,11 @@ theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/defau
 
 background = os.getenv("HOME") .. "/sova1600x1200.jpg"
 if not file_exists(background) then
-    background = "/usr/share/awesome/themes/default/background.png"
+    background = os.getenv("HOME") .. "/.config/awesome/bg.xpm"
 end
 
 -- You can use your own command to set your wallpaper
-theme.wallpaper_cmd = { "awsetbg " .. background }
+theme.wallpaper_cmd = { "awsetbg -u feh " .. background }
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"

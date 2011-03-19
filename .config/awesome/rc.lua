@@ -60,6 +60,8 @@ end
 -- }}}
 
 -- {{{ Wibox
+local panel_height = 14
+local widget_width = 30
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
@@ -81,8 +83,8 @@ mytextclock:add_signal('mouse::leave', function () naughty.destroy(calendar_usag
 oldtotal = 0
 oldidle = 0
 cpu_widget = awful.widget.graph()
-cpu_widget:set_width(32)
-cpu_widget:set_height(16)
+cpu_widget:set_width(widget_width)
+cpu_widget:set_height(panel_height)
 cpu_widget:set_background_color(bgcolor)
 cpu_widget:set_gradient_colors({ bgcolor, '#33FF77' })
 
@@ -114,8 +116,8 @@ function mem_total()
     return tonumber(data())
 end
 memory_widget = awful.widget.graph()
-memory_widget:set_width(32)
-memory_widget:set_height(16)
+memory_widget:set_width(widget_width)
+memory_widget:set_height(panel_height)
 memory_widget:set_max_value(mem_total())
 memory_widget:set_background_color(bgcolor)
 memory_widget:set_gradient_colors({ bgcolor, '#3377FF' })
@@ -137,8 +139,8 @@ end
 memory_update()
 
 network_widget = awful.widget.graph()
-network_widget:set_width(32)
-network_widget:set_height(16)
+network_widget:set_width(widget_width)
+network_widget:set_height(panel_height)
 network_widget:set_scale(true)
 network_widget:set_stack(true)
 network_stack_colors = {
@@ -214,8 +216,8 @@ end)
 network_widget.widget:add_signal('mouse::leave', function () naughty.destroy(network_usage) end)
 
 io_widget = awful.widget.graph()
-io_widget:set_width(32)
-io_widget:set_height(16)
+io_widget:set_width(widget_width)
+io_widget:set_height(panel_height)
 io_widget:set_scale(true)
 io_widget:set_stack(true)
 io_stack_colors = {'#FF4444', '#44FF44' }
@@ -369,7 +371,7 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", height = "16", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", height = panel_height, screen = s })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -533,6 +535,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
+    { rule = { class = "feh" },
+      properties = { tag = tags[1][7] } },
     { rule = { class = "Dia" },
       properties = { tag = tags[1][7] } },
     { rule = { class = "Gimp" },
