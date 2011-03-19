@@ -369,10 +369,10 @@ set color_background   = default
 #set color_msgout       = cyan
 #set color_msghl        = yellow
 set color_bgstatus     = default
-set color_status       = brightwhite
+set color_status       = brightgreen
 #set color_roster       = green
 set color_bgrostersel  = default
-#set color_rostersel    = blue
+set color_rostersel    = brightblue
 #set color_rosterselmsg = red
 #set color_rosternewmsg = red
 
