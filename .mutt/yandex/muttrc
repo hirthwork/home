@@ -40,6 +40,6 @@ macro pager b '<enter-command>toggle sidebar_visible<enter>'
 
 set status_format="./.mutt/awesome-mutt yandex %u|"
 
-color sidebar_new yellow default
+color sidebar_new blue default
 color status brightwhite default
 color indicator brightgreen default
