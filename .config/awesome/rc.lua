@@ -607,7 +607,6 @@ function run_once(prg)
 end
 
 run_once("firefox")
-run_once("thunderbird")
 -- Sometimes you want to start X session without automatic connect to IMs
 if not os.getenv("NOIM") then
     awful.util.spawn_with_shell("pgrep -f -u $USER -x ./skype || (skype)")
