@@ -255,7 +255,7 @@ set event_log_dir = ~/.mcabber/gmail/event_files
 # When FIFO  is configured, you can turn it off and on in real time with
 # the 'fifo_ignore' option (default: 0).  When set to 1, the FIFO input is
 # still read but it is discarded.
-#set fifo_name = ~/.mcabber/mcabber.fifo
+set fifo_name = ~/.mcabber/mcabber.fifo
 #set fifo_hide_commands = 0
 #set fifo_ignore = 0
 
@@ -508,3 +508,20 @@ bind MK4 = roster bottom
 
 # Sample alias to join mcabber channel with "/jmc"
 #alias jmc = room join mcabber@conf.lilotux.net
+
+#load extsay module
+set extsay_script_path = /usr/lib/mcabber/extsay.sh
+module load extsay
+
+#load avatar module
+set avatar_directory=/tmp
+set avatar_font_height = 14
+set avatar_font_width  = 8
+set avatar_background = 0
+module load avatar
+
+#load jingle module
+module load jingle
+module load jingle-ft
+module load jingle-ibb
+module load jingle-s5b
