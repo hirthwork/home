@@ -24,7 +24,7 @@ set assumed_charset = "cp1251"
 set pager_format = " %C - %[%H:%M] %.20v, %s%* %?H? [%H] ?"
 set editor = "vim -c 'set syntax=mail ft=mail enc=utf-8'"
 
-set sidebar_width = 18
+set sidebar_width = 28
 set sidebar_visible = yes
 set sidebar_delim = '|'
 
@@ -39,6 +39,7 @@ macro index b '<enter-command>toggle sidebar_visible<enter>'
 macro pager b '<enter-command>toggle sidebar_visible<enter>'
 
 set status_format="./.mutt/awesome-mutt gmail %u|"
+auto_view text/html
 
 color sidebar_new blue default
 color status brightwhite default
