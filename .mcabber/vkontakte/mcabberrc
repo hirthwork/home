@@ -5,7 +5,7 @@
 # - Empty lines and lines beginning with a '#' are ignored.
 
 # Please provide your Jabber (XMPP) identifier:
-set jid = dmitry.potapov@vkontakte.ru
+set jid = dmitry.potapov@vk.com
 
 # If password is not given, it will be interactively asked for.
 # Note: if the password contains leading or trailing spaces, you must
