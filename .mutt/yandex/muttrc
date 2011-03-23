@@ -10,8 +10,11 @@ set postponed = "+[Yandex]/Drafts"
 set header_cache = ~/.mutt/yandex/cache/headers
 set message_cachedir = ~/.mutt/yandex/cache/bodies
 set certificate_file = ~/.mutt/yandex/certificates
+set include = yes
+set record = ~/.mutt/yandex/sent
 
 set smtp_url = "smtp://analizer@smtp.yandex.ru:25/"
+set smtp_authenticators="login"
 unset imap_passive
 set imap_check_subscribed
 set mail_check = 60
