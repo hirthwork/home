@@ -1,2 +1,1 @@
-text/html; w3m %s; nametemplate=%s.html
-text/html; w3m -dump %s; nametemplate=%s.html; copiousoutput
+text/html; elinks -dump -dump-charset utf8 -default-mime-type text/html %s; needsterminal; copiousoutput;

@@ -40,6 +40,7 @@ macro pager b '<enter-command>toggle sidebar_visible<enter>'
 
 set status_format="./.mutt/awesome-mutt gmail %u|"
 auto_view text/html
+set implicit_autoview
 
 color sidebar_new blue default
 color status brightwhite default
