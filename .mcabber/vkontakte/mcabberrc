@@ -511,6 +511,7 @@ bind MK4 = roster bottom
 
 #load extsay module
 set extsay_script_path = /usr/lib/mcabber/extsay.sh
+set extsay_split_win = 1
 module load extsay
 
 #load avatar module
