@@ -508,6 +508,7 @@ bind MK4 = roster bottom
 
 # Sample alias to join mcabber channel with "/jmc"
 alias cpp = room join c_plus_plus@conference.jabber.ru
+alias gentoo = room join gentoo@conference.jabber.ru
 
 #load extsay module
 set extsay_script_path = /usr/lib/mcabber/extsay.sh
