@@ -73,6 +73,6 @@ export GTK_IM_MODULE=xim
 export EDITOR=vim
 export PAGER=vimpager
 export MANPAGER=less
-export LANG=ru_RU.UTF-8
+export LANG=
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
 
