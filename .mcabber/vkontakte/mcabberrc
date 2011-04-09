@@ -503,8 +503,10 @@ bind 521 = buffer up
 bind 514 = buffer down
 # Ctrl-PgUp bound to roster top
 bind MK3 = roster top
+bind 550 = roster top
 # Ctrl-PgUp bound to roster bottom
 bind MK4 = roster bottom
+bind 545 = roster bottom
 
 # Sample alias to join mcabber channel with "/jmc"
 #alias jmc = room join mcabber@conf.lilotux.net
