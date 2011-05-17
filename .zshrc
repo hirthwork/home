@@ -69,10 +69,9 @@ source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 [[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
 
 cd
-export GTK_IM_MODULE=xim
 export EDITOR=vim
 export PAGER=vimpager
-export MANPAGER=less
+export MANPAGER=vimmanpager
 export LANG=ru_RU.UTF-8
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
 
