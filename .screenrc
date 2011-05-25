@@ -1,3 +1,2 @@
 vbell off
-nethack on
 hardstatus alwayslastline '%{= dG}%H:%{w}%Lw'
