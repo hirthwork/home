@@ -13,6 +13,8 @@ promptinit; prompt gentoo
 # End of lines added by compinstall
 autoload -Uz vcs_info
 zstyle ':completion::complete:*' use-cache 1
+setopt correctall
+setopt extendedglob
 
 local -a clr
 local -A pc
