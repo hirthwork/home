@@ -86,18 +86,7 @@ cpu_widget = awful.widget.graph()
 cpu_widget:set_width(widget_width)
 cpu_widget:set_height(panel_height)
 cpu_widget:set_background_color(bgcolor)
-cpu_widget:set_gradient_colors({ bgcolor, '#33FF77' })
-
-cpu_usage = {}
-cpu_widget.widget:add_signal("mouse::enter", function()
-    cpu_usage = naughty.notify({
-        text = io.popen("top -b -n1", "r"):read("*all"),
-        timeout = 0,
-        hover_timeout = 0.5,
-        screen = mouse.screen
-    })
-end)
-cpu_widget.widget:add_signal('mouse::leave', function () naughty.destroy(cpu_usage) end)
+cpu_widget:set_gradient_colors({ bgcolor, '#c5f779' })
 
 function cpu_update()
     local data = io.open("/proc/stat", "r"):read():gmatch("%d+")
@@ -120,7 +109,7 @@ memory_widget:set_width(widget_width)
 memory_widget:set_height(panel_height)
 memory_widget:set_max_value(mem_total())
 memory_widget:set_background_color(bgcolor)
-memory_widget:set_gradient_colors({ bgcolor, '#3377FF' })
+memory_widget:set_gradient_colors({ bgcolor, '#4186be' })
 
 memory_usage = {}
 memory_widget.widget:add_signal("mouse::enter", function()
@@ -144,8 +133,8 @@ network_widget:set_height(panel_height)
 network_widget:set_scale(true)
 network_widget:set_stack(true)
 network_stack_colors = {
-    '#004488', '#008844', '#440088', '#448800', '#880044', '#884400',
-    '#660066', '#006666', '#666600', '#0000CC', '#CC0000', '#00CC00'}
+    '#fff796', '#4186be', '#cf9ebe', '#71bebe', '#cf6171', '#c5f779',
+    '#968a38', '#414171', '#963c59', '#418179', '#9e1828', '#aece92'}
 network_widget:set_stack_colors(network_stack_colors);
 network_widget:set_background_color(bgcolor)
 network_stat = {}
@@ -220,7 +209,7 @@ io_widget:set_width(widget_width)
 io_widget:set_height(panel_height)
 io_widget:set_scale(true)
 io_widget:set_stack(true)
-io_stack_colors = {'#FF4444', '#44FF44' }
+io_stack_colors = {'#cf6171', '#c5f779' }
 io_widget:set_stack_colors(io_stack_colors)
 io_widget:set_background_color(bgcolor)
 io_stat = {}
@@ -433,7 +422,7 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn('urxvt +sb -fn "xft:Terminus:10" --color0 rgb:00/00/10 --color1 rgb:9e/18/28 --color2 rgb:ae/ce/92 --color3 rgb:96/8a/38 --color4 rgb:41/41/71 --color5 rgb:96/3c/59 --color6 rgb:41/81/79 --color7 rgb:be/be/be --color8 rgb:66/66/66 --color9 rgb:cf/61/71 --color10 rgb:c5/f7/79 --color11 rgb:ff/f7/96 --color12 rgb:41/86/be --color13 rgb:cf/9e/be --color14 rgb:71/be/be --color15 rgb:ff/ff/ff --background rgb:22/22/22 --foreground gray') end),
+    awful.key({ modkey,           }, "Return", function () awful.util.spawn('/usr/bin/urxvt +sb -fn "xft:Terminus:10" --color0 rgb:00/00/10 --color1 rgb:9e/18/28 --color2 rgb:ae/ce/92 --color3 rgb:96/8a/38 --color4 rgb:41/41/71 --color5 rgb:96/3c/59 --color6 rgb:41/81/79 --color7 rgb:be/be/be --color8 rgb:66/66/66 --color9 rgb:cf/61/71 --color10 rgb:c5/f7/79 --color11 rgb:ff/f7/96 --color12 rgb:41/86/be --color13 rgb:cf/9e/be --color14 rgb:71/be/be --color15 rgb:ff/ff/ff --background rgb:22/22/22 --foreground rgb:be/be/be -cr white -b 0 -bc -uc') end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
