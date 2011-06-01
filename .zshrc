@@ -44,6 +44,7 @@ export MANPAGER=vimmanpager
 export LANG=ru_RU.UTF-8
 export GTK_IM_MODULE=xim
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
+alias urxvt='urxvt +sb -fn "xft:Terminus:10" -bg rgb:22/22/22 -fg gray'
 alias grep="grep --color"
 alias ls="ls --color"
 alias man="LANG= man"

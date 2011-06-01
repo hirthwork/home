@@ -433,7 +433,7 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn("roxterm") end),
+    awful.key({ modkey,           }, "Return", function () awful.util.spawn('urxvt +sb -fn "xft:Terminus:10" -bg rgb:22/22/22 -fg gray') end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
