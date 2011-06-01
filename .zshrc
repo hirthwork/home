@@ -1,18 +1,16 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=100000
+HISTSIZE=2000
+SAVEHIST=${HISTSIZE}
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 
-autoload -Uz compinit promptinit vcs_info
+autoload compinit zkbd
 compinit
-promptinit
 # End of lines added by compinstall
-zstyle ':completion::complete:*' use-cache 1
-setopt correctall
-setopt extendedglob
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
 
 preexec() {
 if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]; then
@@ -24,7 +22,6 @@ prompt="%F{cyan}%n@%m %F{blue}%~ %(?.%F{green}:).%F{red}:()%f "
 prompt_opts=( cr percent )
 precmd () { }
 
-autoload zkbd
 [[ ! -f ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} ]] && zkbd
 source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 [[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
@@ -41,12 +38,13 @@ source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 
 cd
 export EDITOR=vim
+export BROWSER=elinks
 export PAGER=vimpager
 export MANPAGER=vimmanpager
 export LANG=ru_RU.UTF-8
 export GTK_IM_MODULE=xim
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
-alias ls="ls --color"
 alias grep="grep --color"
+alias ls="ls --color"
 alias man="LANG= man"
 
