@@ -17,7 +17,7 @@ if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]; then
     echo -ne "\ek"`pwd | grep -o "[^/]*/[^/]*$"`"\e\\"
 fi
 }
-prompt="%F{cyan}%n@%m %F{blue}%~ %(?.%F{green}:).%F{red}:()%f "
+prompt="%B%F{cyan}%n@%m %F{blue}%~ %(?.%F{green}:).%F{red}:()%f%b "
 
 prompt_opts=( cr percent )
 precmd () { }
