@@ -1,2 +1,4 @@
 vbell off
 hardstatus alwayslastline '%{= dG}%H:%{w}%Lw'
+bufferfile /tmp/screen-exchange
+bind b eval writebuf 'exec /bin/sh -c "xsel -i < /tmp/screen-exchange"'
