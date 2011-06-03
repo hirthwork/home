@@ -32,7 +32,7 @@ chpwd() {
 preexec() {
     if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
     then
-        name=`echo $1|sed 's/^sudo[ ]*//'`
+        name=`echo $1|sed 's/^sudo[ ]*//;s/[ ]*\([&][&]\|[|][|]\|[;]\).*//'`
         if ! echo "$name"|grep -qE "^(emerge|wine|layman|tail|sleep|qfile|list|screen|mutt|mcabber|man|less|vimpager)"
         then
             get_short_pwd
