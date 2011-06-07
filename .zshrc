@@ -36,13 +36,13 @@ preexec() {
         if ! echo "$name"|grep -qE "^(emerge|wine|layman|tail|sleep|qfile|list|screen|mutt|mcabber|man|less|vimpager)"
         then
             get_short_pwd
-            name=`echo $name|sed 's/ .*//'`\ @\ $short_pwd
+            name=`echo $name|sed 's/ .*//'`@$short_pwd
         elif echo "$name"|grep -q "^mutt"
         then
-            name=mail\ @\ `echo $name|sed 's/^[^/]*[/]//;s/[/].*//'`
+            name=mail@`echo $name|sed 's/^[^/]*[/]//;s/[/].*//'`
         elif echo "$name"|grep -q "^mcabber"
         then
-            name=xmpp\ @\ `echo $name|sed 's/^[^/]*[/]//;s/[/].*//'`
+            name=xmpp@`echo $name|sed 's/^[^/]*[/]//;s/[/].*//'`
         fi
         echo -ne "\ek"$name"\e\\"
     fi
