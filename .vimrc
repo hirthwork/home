@@ -22,7 +22,7 @@ imap <F5> <esc>:setlocal spell spelllang=en<CR>a
 imap <F6> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F7> <esc>:setlocal nospell<CR>a
 colorscheme peachpuff
-highlight UglyLine ctermbg=Red
+highlight UglyLine ctermbg=Cyan
 autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>80v.\+', -1)
 autocmd BufWinEnter * let w:m2=matchadd('UglyLine', '\s\+$', -1)
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
