@@ -6,8 +6,9 @@ bindkey -e
 
 if ! pgrep -u $USER -x ssh-agent>/dev/null
 then
-    ssh-agent>/tmp/sshinit$USER && . /tmp/sshinit$USER>/dev/null && rm /tmp/sshinit$USER
+    ssh-agent>/tmp/sshinit$USER
 fi
+. /tmp/sshinit$USER>/dev/null
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
