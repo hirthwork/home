@@ -11,6 +11,8 @@ set shiftwidth=4
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y\ %=\ col:%3c%V\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l\/%L\ %P
 
+set wildmode=longest,list,full
+
 map <F3> :bp!<cr>
 map <F4> :bn!<cr>
 imap <F3> <esc>:bp!<cr>a
