@@ -545,6 +545,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][8] } },
     { rule = { class = "Evince" },
       properties = { tag = tags[1][9] } },
+    { rule = { class = "Djview" },
+      properties = { tag = tags[1][9] } },
     { rule = { class = "Abiword" },
       properties = { tag = tags[1][9] } },
     { rule = { class = "Gnumeric" },
@@ -589,16 +591,9 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-function run_once(prg)
-    if not prg then
-        do return nil end
-    end
-    awful.util.spawn_with_shell("pgrep -f -u $USER -x " .. prg .. " || (" .. prg .. ")")
-end
-
-run_once("firefox")
 -- Sometimes you want to start X session without automatic connect to IMs
 if not os.getenv("NOIM") then
     awful.util.spawn_with_shell("pgrep -f -u $USER -x ./skype || (skype)")
+    awful.util.spawn_with_shell("pgrep -f -u $USER -x firefox-bin || (firefox)")
 end
 
