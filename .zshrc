@@ -83,6 +83,7 @@ alias grep="grep --color"
 alias ls="ls --color"
 alias man="LANG= man"
 alias gimp="gimp -s"
+alias diff="diff -d -u"
 alias -s exe=wine
 alias -s {htm,html}=firefox
 alias -s {pdf,djvu}=evince
