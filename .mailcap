@@ -1,1 +1,1 @@
-text/html; w3m -dump -o display_link_number=true -T text/html %s; needsterminal; copiousoutput;
+text/html; elinks -dump -dump-charset utf8 -default-mime-type text/html %s; needsterminal; copiousoutput;
