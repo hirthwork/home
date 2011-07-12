@@ -423,7 +423,6 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn('/usr/bin/urxvt +sb -fn "xft:Terminus,xft:Fixed" --background rgb:22/22/22 --foreground rgb:be/be/be -cr white -b 0 -bc -uc') end),
-    --awful.key({ modkey,           }, "Return", function () awful.util.spawn('/usr/bin/urxvt +sb -fn "xft:Terminus,xft:Fixed" --color0 rgb:00/00/10 --color1 rgb:9e/18/28 --color2 rgb:ae/ce/92 --color3 rgb:96/8a/38 --color4 rgb:41/41/71 --color5 rgb:96/3c/59 --color6 rgb:41/81/79 --color7 rgb:be/be/be --color8 rgb:66/66/66 --color9 rgb:cf/61/71 --color10 rgb:c5/f7/79 --color11 rgb:ff/f7/96 --color12 rgb:41/86/be --color13 rgb:cf/9e/be --color14 rgb:71/be/be --color15 rgb:ff/ff/ff --background rgb:22/22/22 --foreground rgb:be/be/be -cr white -b 0 -bc -uc') end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
