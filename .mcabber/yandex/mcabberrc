@@ -516,16 +516,3 @@ alias gentoo = room join gentoo@conference.jabber.ru
 set extsay_script_path = /usr/lib/mcabber/extsay.sh
 set extsay_split_win = 1
 module load extsay
-
-#load avatar module
-set avatar_directory=/tmp
-set avatar_font_height = 14
-set avatar_font_width  = 8
-set avatar_background = 0
-module load avatar
-
-#load jingle module
-module load jingle
-module load jingle-ft
-module load jingle-ibb
-module load jingle-s5b
