@@ -15,7 +15,12 @@ do
 done
 [ X"$mail"X == XX ] || status="$status unread e-mails: $mail"
 
-cpu="CPU: `(echo -n 100- ;mpstat 1 1|tail -n1|grep -o '[0-9.]\+$')|calc -p`%"
+cpu=
+if [ -f /tmp/.cpuusage ]
+then
+    cpu="CPU: `(echo -n 100- ;tail -n1 /tmp/.cpuusage|grep -o '[0-9.]\+$')|calc -p`%"
+fi
+
 mem="`free -m|(read;tr -d '\n'|sed 's/Mem:[^0-9]*//;s/Swap:.*//;s/\([0-9]\+\) .* \([0-9]\+\)/\2\/\1 MB/')`"
 status="$status $cpu $mem `date -R|sed 's/:[^:]*$//'`"
 
