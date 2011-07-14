@@ -36,7 +36,7 @@ elif [ $event = "UNREAD" ]; then
     count=`echo $arg1|grep -o "^[0-9]*"`
     if [ $count -eq 0 ]
     then
-        rm $HOME/.mcabber/$account/state
+        rm $HOME/.mcabber/$account/state 2>/dev/null
     else
         echo $count >$HOME/.mcabber/$account/state
     fi
