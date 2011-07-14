@@ -6,8 +6,8 @@ then
     feh --bg-scale '.config/awesome/bg.xpm'
     while true
     do
-        #xsetroot -name "`dstat 1 1`" -bg "#222222"
-        sleep 5
+        sh $HOME/.dwm.update
+        sleep 10
     done &
     dwm
 else

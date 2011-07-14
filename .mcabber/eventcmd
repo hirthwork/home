@@ -34,5 +34,11 @@ elif [ $event = "UNREAD" ]; then
     # Nr of unread buffers, nr of unread buffers with attention sign,
     # nr of MUC unread buffers, nr of MUC unread buffers with attention sign.
     count=`echo $arg1|grep -o "^[0-9]*"`
-    echo "mcabber_stat[\"$account\"]=$count update_mcabber()"|awesome-client
+    if [ $count -eq 0 ]
+    then
+        rm $HOME/.mcabber/$account/state
+    else
+        echo $count >$HOME/.mcabber/$account/state
+    fi
+    sh $HOME/.dwm.update
 fi
