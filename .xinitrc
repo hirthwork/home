@@ -3,6 +3,7 @@ setxkbmap -option grp:caps_toggle,compose:menu,grp_led:scroll us,ru
 
 if [ "X${WOW}X" == "XX" ]
 then
+    xsetroot -solid "#222222"
     mpstat 10 >/tmp/.cpuusage&
     while true
     do
