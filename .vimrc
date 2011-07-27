@@ -15,6 +15,7 @@ set statusline=%<%F%h%m%r%h%w%y\ %=\ col:%3c%V\ ascii:%3b[0x%2B]\ pos:%6o\ line:
 
 set wildmode=longest,list,full
 
+map <Insert> <Nop>
 map <F3> :tabprev<cr>
 map <F4> :tabnext<cr>
 imap <F3> <esc>:tabprev<cr>a
@@ -25,7 +26,6 @@ map <F7> <esc>:setlocal nospell<CR>
 imap <F5> <esc>:setlocal spell spelllang=en<CR>a
 imap <F6> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F7> <esc>:setlocal nospell<CR>a
-map <Insert> <Esc>
 colorscheme koehler
 highlight UglyLine ctermbg=Cyan
 autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>80v.\+', -1)
