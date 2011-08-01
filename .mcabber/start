@@ -6,7 +6,7 @@ then
     should_start=yes
 fi
 
-for x in `find .mcabber -name 'mcabberrc'`
+for x in `find .mcabber -maxdepth 2 -name 'mcabberrc'`
 do
     echo screen mcabber -f $x>>$screenrc
     name=`echo $x|grep -o "[^/]*/mcabberrc$" | grep -o "^[^/]*"`

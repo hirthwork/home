@@ -6,7 +6,7 @@ then
     should_start=yes
 fi
 
-for x in `find .mutt -name 'muttrc'`
+for x in `find .mutt -maxdepth 2 -name 'muttrc'`
 do
     echo screen mutt -F $x>>$screenrc
     name=`echo $x|grep -o "[^/]*/muttrc$" | grep -o "^[^/]*"`
