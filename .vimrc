@@ -28,7 +28,7 @@ imap <F6> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F7> <esc>:setlocal nospell<CR>a
 colorscheme koehler
 highlight UglyLine ctermbg=Cyan
-autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>80v.\+', -1)
+autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>78v.\+', -1)
 autocmd BufWinEnter * let w:m2=matchadd('UglyLine', '\s\+$', -1)
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2
