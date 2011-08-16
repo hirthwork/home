@@ -30,9 +30,15 @@ colorscheme koehler
 highlight UglyLine ctermbg=Cyan
 autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>78v.\+')
 autocmd BufWinEnter * let w:m2=matchadd('UglyLine', '\s\+$')
+autocmd BufRead,BufNewFile *.proto setfiletype proto
+autocmd BufRead,BufNewFile AUTHORS setfiletype txt
+autocmd BufRead,BufNewFile COPYING setfiletype txt
+autocmd BufRead,BufNewFile INSTALL setfiletype txt
+autocmd BufRead,BufNewFile README setfiletype txt
+autocmd BufRead,BufNewFile TODO setfiletype txt
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+autocmd FileType txt setlocal textwidth=78
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
-autocmd BufRead,BufNewFile *.proto setfiletype proto
 
