@@ -36,9 +36,10 @@ autocmd BufRead,BufNewFile COPYING setfiletype txt
 autocmd BufRead,BufNewFile INSTALL setfiletype txt
 autocmd BufRead,BufNewFile README setfiletype txt
 autocmd BufRead,BufNewFile TODO setfiletype txt
-autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2
-autocmd FileType txt setlocal textwidth=78
+autocmd FileType python setlocal shiftwidth=2 softtabstop=2
+autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
+autocmd FileType txt setlocal textwidth=78
 
