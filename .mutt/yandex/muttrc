@@ -29,26 +29,14 @@ set assumed_charset = "cp1251"
 set pager_format = " %C - %[%H:%M] %.20v, %s%* %?H? [%H] ?"
 set editor = "vim -c 'set syntax=mail ft=mail enc=utf-8'"
 set pager = vimpager
-set quit = ask-yes
+set quit = ask-no
 
-set sidebar_width = 19
-set sidebar_visible = yes
-set sidebar_delim = '|'
-
-bind index \CP sidebar-prev
-bind index \CN sidebar-next
-bind index \CO sidebar-open
-bind pager \CP sidebar-prev
-bind pager \CN sidebar-next
-bind pager \CO sidebar-open
-
-macro index b '<enter-command>toggle sidebar_visible<enter>'
-macro pager b '<enter-command>toggle sidebar_visible<enter>'
+bind index y next-unread
+bind index Y next-unread-mailbox
 
 set status_format="./.mutt/awesome-mutt yandex %u|"
 auto_view text/html
 set implicit_autoview
 
-color sidebar_new blue default
 color status brightwhite default
 color indicator brightgreen default
