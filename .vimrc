@@ -26,6 +26,7 @@ map <F7> <esc>:setlocal nospell<CR>
 imap <F5> <esc>:setlocal spell spelllang=en<CR>a
 imap <F6> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F7> <esc>:setlocal nospell<CR>a
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 colorscheme koehler
 highlight UglyLine ctermbg=Cyan
 autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>78v.\+')
