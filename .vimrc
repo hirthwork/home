@@ -27,10 +27,10 @@ imap <F5> <esc>:setlocal spell spelllang=en<CR>a
 imap <F6> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F7> <esc>:setlocal nospell<CR>a
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-highlight StatusLine ctermbg=Blue
-highlight TabLine cterm=bold ctermfg=Blue ctermbg=White
-highlight TabLineFill cterm=bold ctermfg=Blue ctermbg=White
-highlight TabLineSel ctermfg=White ctermbg=Blue
+highlight StatusLine ctermbg=Black
+highlight TabLine cterm=bold ctermfg=White ctermbg=Black
+highlight TabLineFill cterm=bold ctermfg=White ctermbg=Black
+highlight TabLineSel ctermfg=Black ctermbg=White
 highlight UglyLine ctermbg=Cyan
 autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>78v.\+')
 autocmd BufWinEnter * let w:m2=matchadd('UglyLine', '\s\+$')
