@@ -27,7 +27,7 @@ imap <F5> <esc>:setlocal spell spelllang=en<CR>a
 imap <F6> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F7> <esc>:setlocal nospell<CR>a
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-highlight StatusLine ctermbg=Black
+highlight StatusLine ctermfg=Gray ctermbg=Black
 highlight TabLine cterm=bold ctermfg=White ctermbg=Black
 highlight TabLineFill cterm=bold ctermfg=White ctermbg=Black
 highlight TabLineSel ctermfg=Black ctermbg=White
