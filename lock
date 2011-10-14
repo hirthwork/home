@@ -1,0 +1,13 @@
+#!/bin/sh
+for x in ~/.mcabber/*/mcabber.fifo
+do
+    echo "/status away" > $x
+done
+
+slock
+
+for x in ~/.mcabber/*/mcabber.fifo
+do
+    echo "/status online" > $x
+done
+
