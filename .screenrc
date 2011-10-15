@@ -1,4 +1,8 @@
 vbell off
-hardstatus alwayslastline '%{= dG}%H:%{W}%Lw'
+deflogin off
+backtick 1 10 10 $HOME/.status
+backtick 2 15 15 uptime
+caption always '%{= dG}%H: %{C}[%= %{Y}%1` %=%{C}] %{R}%2`'
+hardstatus alwayslastline '%Lw'
 bufferfile /tmp/screen-exchange
 bind b eval writebuf 'exec /bin/sh -c "xsel -i < /tmp/screen-exchange;rm -f /tmp/screen-exchange"'
