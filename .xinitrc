@@ -4,9 +4,9 @@ xset s off -dpms +fp /usr/share/fonts/terminus
 
 if [ "X${WOW}X" == "XX" ]
 then
-    xsetroot -solid "#222222"
+    xsetroot -solid "#000000"
     top -b -d 10 -p 1 >/tmp/.cpuusage&
-    trayer --edge top --height 16 --widthtype pixel --width 66 --align right --alpha 220 --transparent true&
+    trayer --edge top --height 16 --widthtype pixel --width 66 --align right --alpha 255 --transparent true&
     while true
     do
         sh $HOME/.dwm.update
