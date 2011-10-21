@@ -32,7 +32,8 @@ highlight TabLine cterm=bold ctermfg=White ctermbg=Black
 highlight TabLineFill cterm=bold ctermfg=White ctermbg=Black
 highlight TabLineSel ctermfg=Black ctermbg=White
 highlight UglyLine ctermbg=Cyan
-autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>78v.\+')
+set textwidth=80
+autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>80v.\+')
 autocmd BufWinEnter * let w:m2=matchadd('UglyLine', '\s\+$')
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile AUTHORS setfiletype txt
@@ -45,5 +46,4 @@ autocmd FileType python setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
-autocmd FileType txt setlocal textwidth=78
 
