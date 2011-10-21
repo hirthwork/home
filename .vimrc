@@ -28,9 +28,9 @@ imap <F6> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F7> <esc>:setlocal nospell<CR>a
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 highlight StatusLine ctermfg=Gray ctermbg=Black
-highlight TabLine cterm=bold ctermfg=White ctermbg=Black
-highlight TabLineFill cterm=bold ctermfg=White ctermbg=Black
-highlight TabLineSel ctermfg=Black ctermbg=White
+highlight TabLine cterm=bold ctermfg=Gray ctermbg=Black
+highlight TabLineFill cterm=bold ctermfg=Gray ctermbg=Black
+highlight TabLineSel ctermfg=Black ctermbg=Gray
 highlight UglyLine ctermbg=Cyan
 set textwidth=80
 autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>80v.\+')
