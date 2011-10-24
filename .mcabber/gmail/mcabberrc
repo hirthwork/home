@@ -363,16 +363,16 @@ set escdelay = 50
 # rosternewmsg: text color of items with unread messages
 #
 set color_background   = default
-set color_general      = brightwhite
-set color_info         = brightwhite
+set color_general      = white
+set color_info         = white
 #set color_msgin        = white
 #set color_msgout       = cyan
 #set color_msghl        = yellow
 set color_bgstatus     = default
-set color_status       = brightgreen
+set color_status       = green
 #set color_roster       = green
 set color_bgrostersel  = default
-set color_rostersel    = brightblue
+set color_rostersel    = blue
 #set color_rosterselmsg = red
 #set color_rosternewmsg = red
 
@@ -385,7 +385,7 @@ set color_rostersel    = brightblue
 
 # You can let mcabber color nicks in MUC.
 # These colors will by used automatically:
-set nick_colors = red green blue yellow magenta brightred brightgreen brightblue brightcyan brightyellow brightmagenta 
+set nick_colors = red green blue yellow magenta cyan brightblack brightred brightgreen brightblue brightcyan brightyellow brightmagenta brightcyan
 # This turns coloring of all mucs on:
 color muc * on
 #
