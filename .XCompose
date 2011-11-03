@@ -10,6 +10,28 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <equal> <Up> : "⇑"
 <Multi_key> <equal> <Down> : "⇓"
 <Multi_key> <equal> <greater> : "⇒"
+<Multi_key> <i> <f> <f> : "⇔"
+
+<Multi_key> <equal> <equal> : "≡"
+<Multi_key> <d> <e> <f> : "≝"
+<Multi_key> <a> <l> <l> : "∀"
+<Multi_key> <e> <x> : "∃"
+<Multi_key> <n> <e> <x> : "∄"
+<Multi_key> <e> <l> : "∈"
+<Multi_key> <n> <e> <l> : "∉"
+<Multi_key> <s> <u> <b> : "⊂"
+<Multi_key> <n> <s> <u> <b> : "⊄"
+<Multi_key> <c> <o> <n> : "∧"
+<Multi_key> <d> <i> <s> : "∨"
+<Multi_key> <n> <u> <l> <l> : "∅"
+
+<Multi_key> <s> <q> <r> <t> : "√"
+<Multi_key> <s> <q> <r> <3> : "∛"
+<Multi_key> <s> <q> <r> <4> : "∜"
+
+<Multi_key> <minus> <plus> : "∓"
+
+<Multi_key> <f> <f> : "ﬀ"
 
 <Multi_key> <apostrophe> <apostrophe> : "́" U0301 # ударение
 <Multi_key> <quotedbl> <quotedbl> : "̎"
@@ -61,4 +83,3 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <Cyrillic_YU> <Cyrillic_YU>: "»" # закрывающая кавычка-ёлочка (RUS)
 <Multi_key> <Cyrillic_ya> : "̶" # зачеркивание (комбинирующееся)
 <Multi_key> <Cyrillic_e> <Cyrillic_e> : "́" # ударениее (комбинирующееся)
-<Multi_key> <equal> <equal> : "≡"
