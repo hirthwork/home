@@ -3,7 +3,8 @@ set realname = "Dmitry Potapov"
 
 set imap_user = "analizer"
 
-set folder = "imaps://imap.yandex.ru:993"
+unset ssl_starttls
+set folder = "imap://imap.yandex.ru:143"
 set spoolfile = "+INBOX"
 set postponed = "+[Yandex]/Drafts"
 
