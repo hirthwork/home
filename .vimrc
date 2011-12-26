@@ -46,4 +46,5 @@ autocmd FileType python setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
+autocmd FileType man call matchdelete(w:m1)
 
