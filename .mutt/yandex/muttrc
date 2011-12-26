@@ -3,11 +3,9 @@ set realname = "Dmitry Potapov"
 
 set imap_user = "analizer"
 
-unset ssl_starttls
-set folder = "imap://imap.yandex.ru:143"
+set folder = "imaps://imap.yandex.ru:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Yandex]/Drafts"
-set imap_keepalive = 300
 
 set header_cache = ~/.mutt/yandex/cache/headers
 set message_cachedir = ~/.mutt/yandex/cache/bodies
