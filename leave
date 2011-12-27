@@ -1,13 +1,13 @@
 #!/bin/sh
 for x in ~/.mcabber/*/mcabber.fifo
 do
-    echo "/status offline" > $x
+    echo "/disconnect" > $x
 done
 
 slock
 
 for x in ~/.mcabber/*/mcabber.fifo
 do
-    echo "/status online" > $x
+    echo "/connect" > $x
 done
 
