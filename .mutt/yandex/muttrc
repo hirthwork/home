@@ -3,6 +3,7 @@ set realname = "Dmitry Potapov"
 
 set imap_user = "analizer"
 
+set imap_authenticators = "login"
 set folder = "imaps://imap.yandex.ru:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Yandex]/Drafts"
@@ -15,8 +16,7 @@ set save_name = yes
 set force_name = yes
 fcc-save-hook . "+Отправленные"
 
-set smtp_url = "smtp://analizer@smtp.yandex.ru:25/"
-set smtp_authenticators="login"
+set smtp_url = "smtps://analizer@smtp.yandex.ru/"
 unset imap_passive
 set imap_check_subscribed
 set mail_check = 60
