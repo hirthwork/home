@@ -33,8 +33,28 @@ highlight TabLineFill cterm=bold ctermfg=Gray ctermbg=Black
 highlight TabLineSel ctermfg=Black ctermbg=Gray
 highlight UglyLine ctermbg=Cyan
 set textwidth=80
-autocmd BufWinEnter * let w:m1=matchadd('UglyLine', '\%>80v.\+')
-autocmd BufWinEnter * let w:m2=matchadd('UglyLine', '\s\+$')
+
+fun! <SID>is_pager_mode()
+    let l:ppidc = ""
+    try
+        if filereadable("/lib/libc.so.6")
+            let l:ppid = libcallnr("/lib/libc.so.6", "getppid", "")
+        elseif filereadable("/lib/libc.so.0")
+            let l:ppid = libcallnr("/lib/libc.so.0", "getppid", "")
+        else
+            let l:ppid = ""
+        endif
+        let l:ppidc = system("ps -p " . l:ppid . " -o comm=")
+        let l:ppidc = substitute(l:ppidc, "\\n", "", "g")
+    catch
+    endtry
+    return l:ppidc ==# "less.sh" ||
+        \ l:ppidc ==# "vimpager" ||
+        \ l:ppidc ==# "manpager.sh" ||
+        \ l:ppidc ==# "vimmanpager"
+endfun
+
+autocmd BufWinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>80v.\+') | let w:m2=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile AUTHORS setfiletype txt
 autocmd BufRead,BufNewFile COPYING setfiletype txt
@@ -46,5 +66,4 @@ autocmd FileType python setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
-autocmd FileType man call matchdelete(w:m1)
 
