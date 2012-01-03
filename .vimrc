@@ -56,6 +56,7 @@ endfun
 
 autocmd BufWinEnter,WinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>80v.\+') | let w:m2=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.proto setfiletype proto
+autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile AUTHORS setfiletype txt
 autocmd BufRead,BufNewFile COPYING setfiletype txt
 autocmd BufRead,BufNewFile INSTALL setfiletype txt
