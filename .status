@@ -16,5 +16,8 @@ do
 done
 [ X"$mail"X == XX ] || status="$status mail: $mail"
 
+irssi=`cat /tmp/irssi.state`
+[ X"$irssi"X == XX ] || status="$status irssi: $irssi"
+
 echo $status
 
