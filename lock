@@ -4,7 +4,7 @@ do
     echo "/status away" > $x
 done
 
-slock
+while ! slock; do :; done;
 
 for x in ~/.mcabber/*/mcabber.fifo
 do
