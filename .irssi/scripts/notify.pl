@@ -24,13 +24,13 @@ sub sig_window_activity {
         {
             $status = $status." ".$window->{refnum};
         }
+        if ($window->{data_level} > 2)
+        {
+            $status = $status." !".$window->{refnum};
+        }
     }
     open(STATUS, ">/tmp/irssi.state");
     print STATUS $status;
     close(STATUS);
-    #system "xsetroot -name 'window cativity: ".$old_level." - ".
-    #    $window->{refnum}." - ".$window->{hilight_color}." - ".
-    #    $window->{level}." - ".$window->{data_level}.
-    #    "                  '";
 }
 
