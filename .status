@@ -2,6 +2,9 @@
 
 status=
 
+irssi=`cat /tmp/irssi.state`
+[ X"$irssi"X == XX ] || status="$status irssi: $irssi"
+
 xmpp=
 for x in `ls $HOME/.mcabber/*/state 2>/dev/null`
 do
@@ -15,9 +18,6 @@ do
     mail="$mail `echo $x|sed 's/.*[/][.]mutt[/]//;s/[/]state$//'`(`cat $x`)"
 done
 [ X"$mail"X == XX ] || status="$status mail: $mail"
-
-irssi=`cat /tmp/irssi.state`
-[ X"$irssi"X == XX ] || status="$status irssi: $irssi"
 
 echo $status
 
