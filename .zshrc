@@ -53,7 +53,7 @@ precmd() {
     chpwd
 }
 
-prompt="%B%F{green}%n%b%F{yellow}@%F{green}%m %F{cyan}%~ %(?.%F{green}$.%F{red}%?)%f "
+prompt="%B%F{green}%n%b%F{yellow}@%B%F{red}%m%b %F{cyan}%~ %(?.%F{green}$.%F{red}%?)%f "
 
 prompt_opts=( cr percent )
 
