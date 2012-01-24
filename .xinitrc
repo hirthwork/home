@@ -4,6 +4,7 @@ setxkbmap -option grp:caps_toggle,compose:menu,grp_led:scroll us,ru
 if [ "X${WOW}X" == "XX" ]
 then
     xsetroot -solid "#000000"
+    xrdb -merge $HOME/.Xresources
     top -b -d 10 -p 1 >/tmp/.cpuusage&
     trayer --edge top --height 16 --widthtype pixel --width 66 --align right --alpha 255 --transparent true&
     while true

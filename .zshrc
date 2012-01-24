@@ -2,6 +2,8 @@
 HISTFILE=~/.zsh_history
 HISTSIZE=20000
 SAVEHIST=${HISTSIZE}
+setopt APPEND_HISTORY
+
 bindkey -e
 
 if ! pgrep -u $USER -x ssh-agent>/dev/null
@@ -13,7 +15,8 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
 
-autoload -Uz compinit zkbd colors
+autoload -Uz compinit zkbd colors tetris
+zle -N tetris
 compinit
 colors
 
