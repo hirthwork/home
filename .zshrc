@@ -1,6 +1,6 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
-HISTSIZE=2000
+HISTSIZE=20000
 SAVEHIST=${HISTSIZE}
 bindkey -e
 
@@ -53,7 +53,7 @@ precmd() {
     chpwd
 }
 
-prompt="%F{green}%n%F{yellow}@%F{green}%m %F{cyan}%~ %(?.%F{green}$.%F{red}%?)%f%b "
+prompt="%B%F{green}%n%b%F{yellow}@%F{green}%m %F{cyan}%~ %(?.%F{green}$.%F{red}%?)%f "
 
 prompt_opts=( cr percent )
 
@@ -79,7 +79,7 @@ export MANPAGER=vimmanpager
 export LANG=ru_RU.UTF-8
 export GTK_IM_MODULE=xim
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
-alias grep="grep --color"
+alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
 alias man="LANG= man"
 alias gimp="gimp -s"
