@@ -1,0 +1,4 @@
+XTerm*eightBitInput: false
+XTerm*metaSendsEscape: true
+UXTerm*eightBitInput: false
+UXTerm*metaSendsEscape: true
