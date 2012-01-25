@@ -32,7 +32,7 @@ highlight TabLine cterm=bold ctermfg=Gray ctermbg=Black
 highlight TabLineFill cterm=bold ctermfg=Gray ctermbg=Black
 highlight TabLineSel ctermfg=Black ctermbg=Gray
 highlight UglyLine ctermbg=Cyan
-set textwidth=80
+set textwidth=79
 
 fun! <SID>is_pager_mode()
     let l:ppidc = ""
@@ -54,7 +54,7 @@ fun! <SID>is_pager_mode()
         \ l:ppidc ==# "vimmanpager"
 endfun
 
-autocmd BufWinEnter,WinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>80v.\+') | let w:m2=matchadd('UglyLine', '\s\+$') | endif
+autocmd BufWinEnter,WinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>79v.\+') | let w:m2=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile AUTHORS setfiletype txt

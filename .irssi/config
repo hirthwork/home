@@ -258,7 +258,7 @@ statusbar = {
 };
 settings = {
   core = {
-    real_name = "Unknown";
+    real_name = "Hirthwork McGillah";
     user_name = "hirthwork";
     nick = "hirthwork";
   };
