@@ -1,2 +1,2 @@
 #!/bin/sh
-$HOME/.mcabber/eventcmd hirthwork $@
+$HOME/.mcabber/eventcmd tmkis $@
