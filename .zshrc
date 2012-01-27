@@ -90,6 +90,7 @@ alias diff="diff -d -u"
 alias vim="vim -p"
 alias less="less -E"
 alias -s exe=wine
+alias -s {bat,BAT}=dosbox
 alias -s {htm,html}=firefox
 alias -s {pdf,djvu}=evince
 alias -s {doc,rtf}=abiword
