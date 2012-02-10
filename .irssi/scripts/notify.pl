@@ -32,5 +32,7 @@ sub sig_window_activity {
     open(STATUS, ">/tmp/irssi.state");
     print STATUS $status;
     close(STATUS);
+    my @args = ('sh', './.dwm.update');
+    system(@args);
 }
 
