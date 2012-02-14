@@ -29,7 +29,7 @@ sub sig_window_activity {
             $status = $status." !".$window->{refnum};
         }
     }
-    open(STATUS, ">/tmp/irssi.state");
+    open(STATUS, ">$ENV{'HOME'}/.irssi/state");
     print STATUS $status;
     close(STATUS);
     my @args = ('sh', './.dwm.update');

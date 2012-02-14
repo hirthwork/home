@@ -2,7 +2,7 @@
 
 status=
 
-irssi=`cat /tmp/irssi.state`
+irssi=`cat $HOME/.irssi/state`
 [ X"$irssi"X == XX ] || status="$status irssi: $irssi"
 
 xmpp=
