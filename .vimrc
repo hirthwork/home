@@ -15,6 +15,8 @@ set statusline=%<%F%h%m%r%h%w%y\ %=\ col:%3c%V\ ascii:%3b[0x%2B]\ pos:%6o\ line:
 
 set wildmode=longest,list,full
 
+set backspace=eol,start,indent
+
 map <Insert> <Nop>
 map <F3> :tabprev<cr>
 map <F4> :tabnext<cr>
