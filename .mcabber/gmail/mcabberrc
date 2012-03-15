@@ -71,7 +71,7 @@ set tls = 1
 # This nickname is used when joining a room, when no nick is explicitly
 # specified by the user.  Note that when the nickname option is not set,
 # the jid variable can be used.
-set nickname = analizer
+set nickname = hirthwork
 
 # Proxy
 # mcabber can use a proxy if it supports the CONNECT method
@@ -509,7 +509,11 @@ bind MK4 = roster bottom
 bind 545 = roster bottom
 
 # Sample alias to join mcabber channel with "/jmc"
-#alias jmc = room join mcabber@conf.lilotux.net
+alias cpp = room join c_plus_plus@conference.jabber.ru
+alias gentoo = room join gentoo@conference.jabber.ru
+alias gtalks = room join gentoo-talks@conference.jabber.ru
+alias leechcraft = room join leechcraft@conference.jabber.ru
+alias programming = room join programming@conference.jabber.ru
 
 #load extsay module
 set extsay_script_path = /usr/lib/mcabber/extsay.sh
