@@ -56,6 +56,8 @@ fun! <SID>is_pager_mode()
         \ l:ppidc ==# "vimmanpager"
 endfun
 
+let g:clang_complete_copen = 1
+let g:clang_no_cache = 1
 autocmd BufWinEnter,WinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
@@ -69,4 +71,5 @@ autocmd FileType python setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
+autocmd Filetype java setlocal completefunc=javacomplete#Complete
 
