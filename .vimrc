@@ -57,9 +57,9 @@ fun! <SID>is_pager_mode()
 endfun
 
 function! TabExec(cmd)
-  echo "Executing: '".a:cmd."'..."
+  echo "Executing: '".substitute(a:cmd, '^!', '', 'g')."'..."
   tabnew
-  silent! execute "read !".a:cmd
+  silent! execute "read ".a:cmd
   set nomodified
 endfunction
 command! -nargs=+ -complete=command TabExec call TabExec(<q-args>)
