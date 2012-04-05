@@ -56,6 +56,14 @@ fun! <SID>is_pager_mode()
         \ l:ppidc ==# "vimmanpager"
 endfun
 
+function! TabExec(cmd)
+  echo "Executing: '".a:cmd."'..."
+  tabnew
+  silent! execute "read !".a:cmd
+  set nomodified
+endfunction
+command! -nargs=+ -complete=command TabExec call TabExec(<q-args>)
+
 let g:clang_complete_copen = 1
 let g:clang_no_cache = 1
 autocmd BufWinEnter,WinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
