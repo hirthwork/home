@@ -520,3 +520,16 @@ alias java = room join java@conference.jabber.ru
 set extsay_script_path = /usr/lib/mcabber/extsay.sh
 set extsay_split_win = 1
 module load extsay
+
+module load commands
+add_custom_command pc psto@psto.net #[a-z]+(/[0-9]+)? echo "/say_to psto@psto.net %s" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command pr psto@psto.net #[a-z]+(/[0-9]+)? echo "/say_to psto@psto.net ! %s" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command pf psto@psto.net #[a-z]+ echo "/say_to psto@psto.net %s+" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command ps psto@psto.net #[a-z]+ echo "/say_to psto@psto.net s %s" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command pu psto@psto.net #[a-z]+ echo "/say_to psto@psto.net u %s" > ~/.mcabber/gmail/mcabber.fifo
+
+add_custom_command jc juick@juick.com #[0-9]+(/[0-9]+)? echo "/say_to juick@juick.com %s" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command jf juick@juick.com #[0-9]+ echo "/say_to juick@juick.com %s+" > ~/.mcabber/gmail/mcabber.fifo
+
+add_custom_command ff .* http://(?!(([a-zA-Z0-9_]+[.])?psto[.]net|juick.com))[a-zA-Z0-9%/.-]+ firefox "%s"
+add_custom_command feh .* http://(?!(([a-zA-Z0-9_]+[.])?psto[.]net|juick.com))[a-zA-Z0-9%/.-]+[.](?i)(jpg|png|gif) feh "%s"
