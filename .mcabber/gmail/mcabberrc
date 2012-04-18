@@ -528,7 +528,10 @@ add_custom_command pf psto@psto.net #[a-z]+ echo "/say_to psto@psto.net %s+" > ~
 add_custom_command ps psto@psto.net #[a-z]+ echo "/say_to psto@psto.net s %s" > ~/.mcabber/gmail/mcabber.fifo
 add_custom_command pu psto@psto.net #[a-z]+ echo "/say_to psto@psto.net u %s" > ~/.mcabber/gmail/mcabber.fifo
 
-add_custom_command jc juick@juick.com \D#[0-9]+(/[0-9]+)? echo "/say_to juick@juick.com %s" > ~/.mcabber/gmail/mcabber.fifo
-add_custom_command jf juick@juick.com \D#[0-9]+ echo "/say_to juick@juick.com %s+" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command jc juick@juick.com #[0-9]{5,}(/[0-9]+)? echo "/say_to juick@juick.com %s" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command jr juick@juick.com #[0-9]{5,} echo "/say_to juick@juick.com ! %s" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command jf juick@juick.com #[0-9]{5,} echo "/say_to juick@juick.com %s+" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command js juick@juick.com #[0-9]{5,} echo "/say_to juick@juick.com s %s" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command ju juick@juick.com #[0-9]{5,} echo "/say_to juick@juick.com u %s" > ~/.mcabber/gmail/mcabber.fifo
 
 source ~/.mcabber/linkscommands
