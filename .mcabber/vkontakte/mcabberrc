@@ -516,6 +516,4 @@ set extsay_script_path = /usr/lib/mcabber/extsay.sh
 set extsay_split_win = 1
 module load extsay
 
-module load commands
-add_custom_command ff .* http://(?!(([a-zA-Z0-9_]+[.])?psto[.]net|juick.com))[a-zA-Z0-9%/.-]+ firefox "%s"
-add_custom_command feh .* http://(?!(([a-zA-Z0-9_]+[.])?psto[.]net|juick.com))[a-zA-Z0-9%/.-]+[.](?i)(jpg|png|gif) feh "%s"
+source ~/.mcabber/linkscommands
