@@ -522,16 +522,16 @@ set extsay_split_win = 1
 module load extsay
 
 module load commands
-add_custom_command pc psto@psto.net #[a-z]+(/[0-9]+)? echo "/say_to psto@psto.net %s" > ~/.mcabber/gmail/mcabber.fifo
-add_custom_command pr psto@psto.net #[a-z]+(/[0-9]+)? echo "/say_to psto@psto.net ! %s" > ~/.mcabber/gmail/mcabber.fifo
-add_custom_command pf psto@psto.net #[a-z]+ echo "/say_to psto@psto.net %s+" > ~/.mcabber/gmail/mcabber.fifo
-add_custom_command ps psto@psto.net #[a-z]+ echo "/say_to psto@psto.net s %s" > ~/.mcabber/gmail/mcabber.fifo
-add_custom_command pu psto@psto.net #[a-z]+ echo "/say_to psto@psto.net u %s" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command pc psto@psto.net #[a-z]+(/[0-9]+)? sh .mcabber/sayto psto@psto.net "%s" gmail
+add_custom_command pr psto@psto.net #[a-z]+(/[0-9]+)? sh .mcabber/sayto psto@psto.net "! %s" gmail
+add_custom_command pf psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "%s+" gmail
+add_custom_command ps psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "s %s" gmail
+add_custom_command pu psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "u %s" gmail
 
-add_custom_command jc juick@juick.com #[0-9]{5,}(/[0-9]+)? echo "/say_to juick@juick.com %s" > ~/.mcabber/gmail/mcabber.fifo
-add_custom_command jr juick@juick.com #[0-9]{5,} echo "/say_to juick@juick.com ! %s" > ~/.mcabber/gmail/mcabber.fifo
-add_custom_command jf juick@juick.com #[0-9]{5,} echo "/say_to juick@juick.com %s+" > ~/.mcabber/gmail/mcabber.fifo
-add_custom_command js juick@juick.com #[0-9]{5,} echo "/say_to juick@juick.com s %s" > ~/.mcabber/gmail/mcabber.fifo
-add_custom_command ju juick@juick.com #[0-9]{5,} echo "/say_to juick@juick.com u %s" > ~/.mcabber/gmail/mcabber.fifo
+add_custom_command jc juick@juick.com #[0-9]{5,}(/[0-9]+)? sh .mcabber/sayto juick@juick.com "%s" gmail
+add_custom_command jr juick@juick.com #[0-9]{5,} sh .mcabber/sayto juick@juick.com "! %s" gmail
+add_custom_command jf juick@juick.com #[0-9]{5,} sh .mcabber/sayto juick@juick.com "%s+" gmail
+add_custom_command js juick@juick.com #[0-9]{5,} sh .mcabber/sayto juick@juick.com "s %s" gmail
+add_custom_command ju juick@juick.com #[0-9]{5,} sh .mcabber/sayto juick@juick.com "u %s" gmail
 
 source ~/.mcabber/linkscommands

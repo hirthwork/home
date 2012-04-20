@@ -1,0 +1,1 @@
+echo "/say_to $1 $2" > ~/.mcabber/$3/mcabber.fifo
