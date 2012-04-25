@@ -1,3 +1,3 @@
 module load commands
 add_custom_command ff .* https?://(?!(([a-zA-Z0-9_-]+[.])?psto[.]net|juick.com))\S+ firefox "%s"
-add_custom_command feh .* https?://(?!(([a-zA-Z0-9_-]+[.])?psto[.]net|juick.com))(\S+[.](?i)(jpe?g|png|gif)|(img-fotki.yandex.ru/get/|pics.livejournal.com/\S+/pic/)\S+) feh "%s"
+add_custom_command feh .* https?://(?!(([a-zA-Z0-9_-]+[.])?psto[.]net|juick.com))(\S+[.](?i)(jpe?g|png|gif)|(img-fotki.yandex.ru/get/|pics.livejournal.com/\S+/pic/|l-userpic.livejournal.com)\S+) feh "%s"
