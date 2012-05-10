@@ -63,7 +63,7 @@ prompt_opts=( cr percent )
 [[ ! -f ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} ]] && zkbd
 source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 [[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
-[[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" overwrite-mode
+[[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" beep
 [[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
 [[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" up-line-or-history
 [[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char

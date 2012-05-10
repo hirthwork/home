@@ -17,17 +17,16 @@ set wildmode=longest,list,full
 
 set backspace=eol,start,indent
 
-map <Insert> <Nop>
 map <F3> :tabprev<cr>
 map <F4> :tabnext<cr>
 imap <F3> <esc>:tabprev<cr>a
 imap <F4> <esc>:tabnext<cr>a
-map <F5> <esc>:setlocal spell spelllang=en<CR>
-map <F6> <esc>:setlocal spell spelllang=ru<CR>
-map <F7> <esc>:setlocal nospell<CR>
-imap <F5> <esc>:setlocal spell spelllang=en<CR>a
-imap <F6> <esc>:setlocal spell spelllang=ru<CR>a
-imap <F7> <esc>:setlocal nospell<CR>a
+map <F6> <esc>:setlocal spell spelllang=en<CR>
+map <F7> <esc>:setlocal spell spelllang=ru<CR>
+map <F8> <esc>:setlocal nospell<CR>
+imap <F6> <esc>:setlocal spell spelllang=en<CR>a
+imap <F7> <esc>:setlocal spell spelllang=ru<CR>a
+imap <F8> <esc>:setlocal nospell<CR>a
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 highlight StatusLine ctermfg=Gray ctermbg=Black
 highlight TabLine cterm=bold ctermfg=Gray ctermbg=Black
@@ -67,6 +66,8 @@ command! -nargs=+ -complete=command TabExec call TabExec(<q-args>)
 let g:clang_complete_copen = 1
 let g:clang_no_cache = 1
 let g:clang_auto_select = 1
+let g:clang_complete_auto = 0
+
 autocmd BufWinEnter,WinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
