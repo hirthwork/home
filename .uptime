@@ -1,2 +1,2 @@
 #!/bin/sh
-uptime|sed 's/,//g;s/[[:space:]]*[[:digit:]]*[[:space:]]*user.\?[[:space:]]*/ /;s/[[:space:]]*average//;s/:[0-5][0-9][[:space:]]up[[:space:]]*/ /;s/^[[:space:]]*//'
+LANG= uptime|sed 's/,//g;s/[[:space:]]*[[:digit:]]*[[:space:]]*user.\?[[:space:]]*/ /;s/[[:space:]]*average//;s/:[0-5][0-9][[:space:]]up[[:space:]]*/ /;s/^[[:space:]]*//'
