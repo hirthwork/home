@@ -1,4 +1,5 @@
 #!/bin/sh
+killall skype
 for x in ~/.mcabber/*/mcabber.fifo
 do
     echo "/disconnect" > $x
@@ -10,4 +11,6 @@ for x in ~/.mcabber/*/mcabber.fifo
 do
     echo "/connect" > $x
 done
+
+nohup skype >/dev/null 2>&1 &
 

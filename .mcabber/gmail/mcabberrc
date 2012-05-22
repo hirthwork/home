@@ -515,6 +515,7 @@ alias gtalks = room join gentoo-talks@conference.jabber.ru
 alias leechcraft = room join leechcraft@conference.jabber.ru
 alias programming = room join programming@conference.jabber.ru
 alias java = room join java@conference.jabber.ru
+alias ct = room join codingteam@conference.jabber.ru
 
 #load extsay module
 set extsay_script_path = /usr/lib/mcabber/extsay.sh
