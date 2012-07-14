@@ -25,12 +25,25 @@ get_short_pwd() {
     short_pwd=`pwd|sed "s,$HOME,~,"|grep -o "[^/]*\(/[^/]*\)\?$"`
 }
 
+local current_dir
+
 chpwd() {
+    if [[ -e $OLDPWD/.zshout && "X"$current_dir"X" == "X"`pwd`"X" ]]
+    then
+        . $OLDPWD/.zshout
+    fi
+
+    if [[ -e `pwd`/.zshin && "X"$current_dir"X" != "X"`pwd`"X" ]]
+    then
+        . `pwd`/.zshin
+    fi
+
     if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
     then
         get_short_pwd
         echo -ne "\ek"$short_pwd"\e\\"
     fi
+    current_dir=`pwd`
 }
 
 preexec() {

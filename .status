@@ -2,8 +2,11 @@
 
 status=
 
-irssi=`cat $HOME/.irssi/state`
-[ X"$irssi"X == XX ] || status="$status irssi: $irssi"
+if [ -e $HOME/.irssi/state ]
+then
+    irssi=`cat $HOME/.irssi/state`
+    [ X"$irssi"X == XX ] || status="$status irssi: $irssi"
+fi
 
 xmpp=
 for x in `ls $HOME/.mcabber/*/state 2>/dev/null`
