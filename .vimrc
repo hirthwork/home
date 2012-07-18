@@ -17,10 +17,6 @@ set wildmode=longest,list,full
 
 set backspace=eol,start,indent
 
-map <F3> :tabprev<cr>
-map <F4> :tabnext<cr>
-imap <F3> <esc>:tabprev<cr>a
-imap <F4> <esc>:tabnext<cr>a
 map <F6> <esc>:setlocal spell spelllang=en<CR>
 map <F7> <esc>:setlocal spell spelllang=ru<CR>
 map <F8> <esc>:setlocal nospell<CR>
