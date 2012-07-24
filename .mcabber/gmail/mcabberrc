@@ -275,7 +275,7 @@ set fifo_name = ~/.mcabber/gmail/mcabber.fifo
 # (command, message, move in the buddylist...).  Note: auto-away only changes
 # the status when it is "available" (online) or "free_for_chat".
 # See 'message_autoaway' below.
-set autoaway = 300
+set autoaway = 0
 
 # Message blocking
 # Set 'block_unsubscribed' to 1 if you want to block (drop) incoming
@@ -528,6 +528,7 @@ add_custom_command pr psto@psto.net #[a-z]+(/[0-9]+)? sh .mcabber/sayto psto@pst
 add_custom_command pf psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "%s+" gmail
 add_custom_command ps psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "s %s" gmail
 add_custom_command pu psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "u %s" gmail
+add_custom_command po .* https?://([a-zA-Z0-9_-]+[.])?psto[.]net/\S+ firefox "%s"
 
 add_custom_command jc juick@juick.com #[0-9]{5,}(/[0-9]+)? sh .mcabber/sayto juick@juick.com "%s" gmail
 add_custom_command jr juick@juick.com #[0-9]{5,} sh .mcabber/sayto juick@juick.com "! %s" gmail
