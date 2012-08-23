@@ -3,6 +3,7 @@ setxkbmap -option grp:caps_toggle,compose:menu,grp_led:scroll us,ru
 
 if [ "X${WOW}X" == "XX" ]
 then
+    xset +fp /usr/share/fonts/terminus
     xsetroot -solid "#000000"
     xrdb -merge $HOME/.Xresources
     top -b -d 10 -p 1 >/tmp/.cpuusage&
