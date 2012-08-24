@@ -3,6 +3,7 @@ setxkbmap -option grp:caps_toggle,compose:menu,grp_led:scroll us,ru
 
 if [ "X${WOW}X" == "XX" ]
 then
+    xset r rate 300 50
     xset +fp /usr/share/fonts/terminus
     xsetroot -solid "#000000"
     xrdb -merge $HOME/.Xresources
