@@ -19,6 +19,8 @@ set wildmode=longest,list,full
 
 set backspace=eol,start,indent
 
+set langmap=№;#,ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\\,.,ЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;~QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
+
 map <F6> <esc>:setlocal spell spelllang=en<CR>
 map <F7> <esc>:setlocal spell spelllang=ru<CR>
 map <F8> <esc>:setlocal nospell<CR>
