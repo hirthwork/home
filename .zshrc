@@ -98,7 +98,6 @@ export VDPAU_NVIDIA_NO_OVERLAY=1
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
-alias man="LANG= man"
 alias gimp="gimp -s"
 alias diff="diff -d -u"
 alias vim="vim -p"
