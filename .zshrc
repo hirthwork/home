@@ -6,11 +6,13 @@ setopt APPEND_HISTORY
 
 bindkey -e
 
-if ! pgrep -u $USER -x ssh-agent>/dev/null
+if [ $SSH_AGENT_PID"X" = "X" ]
 then
-    ssh-agent>/tmp/sshinit$USER
+    sshinit=$(mktemp)
+    ssh-agent>$sshinit
+    . $sshinit>/dev/null
+    rm -f $sshinit
 fi
-. /tmp/sshinit$USER>/dev/null
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
