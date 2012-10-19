@@ -110,6 +110,9 @@ if exists("+showtabline")
     set tabline=%!MyTabLine()
 endif
 
+set updatetime=200
+let g:tagbar_autoshowtag=1
+
 autocmd BufWinEnter,WinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
@@ -124,4 +127,5 @@ autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
 autocmd Filetype java setlocal completefunc=javacomplete#Complete
+autocmd VimEnter * nested :call tagbar#autoopen(1)
 
