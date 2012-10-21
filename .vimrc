@@ -30,6 +30,9 @@ highlight TabLineFill ctermfg=Gray ctermbg=Black cterm=none
 highlight TabLineSel ctermfg=Green ctermbg=Black cterm=bold
 highlight TabNumber ctermfg=Black ctermbg=Gray
 highlight UglyLine ctermfg=Black ctermbg=Cyan
+highlight Pmenu ctermfg=White ctermbg=Blue
+highlight PmenuSel ctermfg=Blue ctermbg=Gray
+highlight PmenuSbar ctermbg=Cyan
 
 set textwidth=79
 
@@ -132,9 +135,6 @@ if exists("+showtabline")
     set tabline=%!MyTabLine()
 endif
 
-set updatetime=200
-let g:tagbar_autoshowtag=1
-
 autocmd BufWinEnter,WinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
@@ -149,5 +149,4 @@ autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
 autocmd Filetype java setlocal completefunc=javacomplete#Complete
-autocmd BufWinEnter,WinEnter * nested :call tagbar#autoopen(1)
 
