@@ -29,11 +29,11 @@ imap <F7> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F8> <esc>:setlocal nospell<CR>a
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 highlight StatusLine ctermfg=Gray ctermbg=Black
-highlight TabLine cterm=bold ctermbg=Gray ctermfg=Black
-highlight TabLineFill cterm=bold ctermfg=Gray ctermbg=Black
-highlight TabLineSel ctermfg=Black ctermbg=Green
+highlight TabLine ctermfg=Gray ctermbg=Black cterm=none
+highlight TabLineFill ctermfg=Gray ctermbg=Black cterm=none
+highlight TabLineSel ctermfg=Gray ctermbg=Black cterm=underline
 highlight UglyLine ctermbg=Cyan
-highlight TabNumber ctermfg=Red ctermbg=Black
+highlight TabNumber ctermfg=Black ctermbg=Gray
 set textwidth=79
 
 fun! <SID>is_pager_mode()
