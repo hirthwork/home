@@ -70,10 +70,10 @@ let g:clang_auto_select = 1
 let g:clang_complete_auto = 0
 
 if exists("+showtabline")
-    function MyTabLine()
-        let tabcount = tabpagenr('$')
+    function ParsedTabnames()
         let tabnames = []
         let i = 1
+        let tabcount = tabpagenr('$')
         while i <= tabcount
             let tabname = fnamemodify(
                         \ bufname(tabpagebuflist(i)[tabpagewinnr(i) - 1]),
@@ -84,13 +84,18 @@ if exists("+showtabline")
             call add(tabnames, reverse(split(tabname, '/')))
             let i = i + 1
         endwhile
+        return tabnames
+    endfunction
+
+    function MyTabLine()
+        let tabnames = ParsedTabnames()
+        let tabcount = tabpagenr('$')
         let s = ''
         let t = tabpagenr()
         let i = 1
         while i <= tabcount
-            let buflist = tabpagebuflist(i)
             let m = 0 "modified buffers flag
-            for b in buflist
+            for b in tabpagebuflist(i)
                 if getbufvar(b, '&modified')
                     let m = 1
                 endif
@@ -108,20 +113,18 @@ if exists("+showtabline")
             let s .= '%*'
             let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
             let file = copy(tabnames[i - 1])
-            let j = 0
             let maxhit = 0
-            while j < tabcount
-                if tabnames[j] != file
+            for current in tabnames
+                if current != file
                     let hit = 0
-                    while get(tabnames[j], hit) == get(file, hit)
+                    while get(current, hit) == get(file, hit)
                         let hit = hit + 1
                     endwhile
                     if hit > maxhit
                         let maxhit = hit
                     endif
                 endif
-                let j = j + 1
-            endwhile
+            endfor
             let s .= join(reverse(remove(file, 0, maxhit)), '/')
             let i = i + 1
         endwhile
@@ -149,5 +152,5 @@ autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
 autocmd Filetype java setlocal completefunc=javacomplete#Complete
-autocmd VimEnter * nested :call tagbar#autoopen(1)
+autocmd BufWinEnter,WinEnter * nested :call tagbar#autoopen(1)
 
