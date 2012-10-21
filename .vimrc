@@ -31,9 +31,9 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 highlight StatusLine ctermfg=Gray ctermbg=Black
 highlight TabLine cterm=bold ctermfg=Gray ctermbg=Black
 highlight TabLineFill cterm=bold ctermfg=Gray ctermbg=Black
-highlight TabLineSel ctermfg=Black ctermbg=Gray
+highlight TabLineSel ctermfg=Black ctermbg=Green
 highlight UglyLine ctermbg=Cyan
-highlight TabNumber ctermfg=Red
+highlight TabNumber ctermfg=Red ctermbg=Gray
 set textwidth=79
 
 fun! <SID>is_pager_mode()
@@ -102,13 +102,10 @@ if exists("+showtabline")
             endfor
             let s .= '%' . i . 'T'
             let s .= (i == t ? '%1*' : '%2*')
-            let s .= ' '
             let s .= '%#TabNumber#'
             let s .= i
             if m == 1
                 let s .= '+'
-            else
-                let s .= ' '
             endif
             let s .= '%*'
             let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
