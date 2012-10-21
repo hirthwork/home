@@ -25,20 +25,16 @@ imap <F6> <esc>:setlocal spell spelllang=en<CR>a
 imap <F7> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F8> <esc>:setlocal nospell<CR>a
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-highlight StatusLine ctermfg=White ctermbg=Blue cterm=bold
-highlight StatusLineNC ctermfg=White ctermbg=Blue cterm=none
-highlight StatusLineMove ctermfg=Blue ctermbg=Gray cterm=none
-highlight StatusLineEnd ctermfg=Black ctermbg=Gray cterm=none
 highlight TabLine ctermfg=Gray ctermbg=Black cterm=none
 highlight TabLineFill ctermfg=Gray ctermbg=Black cterm=none
 highlight TabLineSel ctermfg=Gray ctermbg=Black cterm=underline
-highlight UglyLine ctermbg=Cyan
 highlight TabNumber ctermfg=Black ctermbg=Gray
+highlight UglyLine ctermfg=Black ctermbg=Cyan
 
 set textwidth=79
 
 set laststatus=2
-set statusline=%<%F%h%m%r%h%w%y%#StatusLineMove#▇▆▅▄▃▂▁%#StatusLineEnd#%=\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l:%c%V\/%L
+set statusline=%<%F%h%m%r%h%w%y%=\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l:%c%V\/%L
 
 fun! <SID>is_pager_mode()
     let l:ppidc = ""
