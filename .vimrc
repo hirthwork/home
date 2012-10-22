@@ -30,7 +30,7 @@ highlight TabLineFill ctermfg=Gray ctermbg=Black cterm=none
 highlight TabLineSel ctermfg=Green ctermbg=Black cterm=bold
 highlight TabNumber ctermfg=Black ctermbg=Gray
 highlight UglyLine ctermfg=Black ctermbg=Cyan
-highlight Pmenu ctermfg=White ctermbg=Blue
+highlight Pmenu ctermfg=Gray ctermbg=Blue
 highlight PmenuSel ctermfg=Blue ctermbg=Gray
 highlight PmenuSbar ctermbg=Cyan
 
@@ -39,7 +39,7 @@ set textwidth=79
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y%=\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l:%c%V\/%L
 
-fun! <SID>is_pager_mode()
+function! <SID>is_pager_mode()
     let l:ppidc = ""
     try
         if filereadable("/lib/libc.so.6")
@@ -135,7 +135,7 @@ if exists("+showtabline")
     set tabline=%!MyTabLine()
 endif
 
-autocmd BufWinEnter,WinEnter * if !<SID>is_pager_mode() | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
+autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile AUTHORS setfiletype txt
