@@ -52,7 +52,7 @@ preexec() {
     if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
     then
         name=`echo $1|sed 's/^sudo[ ]*//;s/^\([a-zA-Z0-9_-]\+=\( \|"[^"]*"\)[ ]*\)\+//;s/[ ]*\([&][&]\|[|][|]\|[;]\).*//'`
-        if ! echo "$name"|grep -qE "^(emerge|wine|layman|tail|sleep|qfile|list|screen|mutt|mcabber|man|less|vimpager)"
+        if ! echo "$name"|grep -qE "^(emerge|wine|layman|tail|sleep|qfile|list|screen|mutt|mcabber|man|less|vimpager|irssi)"
         then
             get_short_pwd
             name=`echo $name|sed 's/ .*//'`@$short_pwd
@@ -62,6 +62,9 @@ preexec() {
         elif echo "$name"|grep -q "^mcabber"
         then
             name=xmpp@`echo $name|sed 's/^[^/]*[/]//;s/[/].*//'`
+        elif echo "$name"|grep -q "^irssi"
+        then
+            name=irc@`echo $name|sed 's/.*--connect=//;s/[.][^.]\+ .*//;s/.*[.]//'`
         fi
         echo -ne "\ek"$name"\e\\"
     fi
