@@ -97,7 +97,6 @@ export EDITOR=vim
 export BROWSER=elinks
 export PAGER=vimpager
 export MANPAGER=vimmanpager
-export LANG=ru_RU.UTF-8
 export GTK_IM_MODULE=xim
 export VDPAU_NVIDIA_NO_OVERLAY=1
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"

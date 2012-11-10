@@ -35,5 +35,4 @@ PS1='${PS[1]}'
 export EDITOR=vim
 export PAGER=vimpager
 export MANPAGER=vimmanpager
-export LANG=ru_RU.UTF-8
 export GTK_IM_MODULE=xim
