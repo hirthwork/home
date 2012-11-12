@@ -136,8 +136,9 @@ if exists("+showtabline")
 endif
 
 autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
-autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
+autocmd BufRead,BufNewFile *.proto setfiletype proto
+autocmd BufRead,BufNewFile *.rl setfiletype ragel
 autocmd BufRead,BufNewFile AUTHORS setfiletype txt
 autocmd BufRead,BufNewFile COPYING setfiletype txt
 autocmd BufRead,BufNewFile INSTALL setfiletype txt
