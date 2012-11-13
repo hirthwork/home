@@ -6,7 +6,7 @@ setopt APPEND_HISTORY
 
 bindkey -e
 
-if ! ssh-add -L >/dev/null
+if ! ssh-add -L >/dev/null 2>&1
 then
     sshinit=$(mktemp)
     ssh-agent>$sshinit
