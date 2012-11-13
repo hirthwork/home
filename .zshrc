@@ -6,7 +6,7 @@ setopt APPEND_HISTORY
 
 bindkey -e
 
-if [ $SSH_AGENT_PID"X" = "X" ]
+if ! ssh-add -L >/dev/null
 then
     sshinit=$(mktemp)
     ssh-agent>$sshinit
