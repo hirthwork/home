@@ -6,7 +6,7 @@ setopt APPEND_HISTORY
 
 bindkey -e
 
-if ! ssh-add -L >/dev/null 2>&1
+if ssh-add -L 2>&1 | fgrep -q "Could not open a connection to your authentication agent."
 then
     sshinit=$(mktemp)
     ssh-agent>$sshinit
