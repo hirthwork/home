@@ -518,11 +518,11 @@ set extsay_split_win = 1
 module load extsay
 
 module load commands
-add_custom_command pc psto@psto.net #[a-z]+(/[0-9]+)? sh .mcabber/sayto psto@psto.net "%s" reinventedcode
-add_custom_command pr psto@psto.net #[a-z]+(/[0-9]+)? sh .mcabber/sayto psto@psto.net "! %s" reinventedcode
-add_custom_command pf psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "%s+" reinventedcode
-add_custom_command ps psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "s %s" reinventedcode
-add_custom_command pu psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "u %s" reinventedcode
+add_custom_command pc psto@psto.net #[a-z]+(/[0-9]+)? sh .mcabber/sayto psto@psto.net "%s" rcode
+add_custom_command pr psto@psto.net #[a-z]+(/[0-9]+)? sh .mcabber/sayto psto@psto.net "! %s" rcode
+add_custom_command pf psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "%s+" rcode
+add_custom_command ps psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "s %s" rcode
+add_custom_command pu psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "u %s" rcode
 add_custom_command po .* https?://([a-zA-Z0-9_-]+[.])?psto[.]net/\S+ firefox "%s"
 
 source ~/.mcabber/linkscommands
