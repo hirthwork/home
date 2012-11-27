@@ -525,4 +525,25 @@ add_custom_command ps psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "s %
 add_custom_command pu psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "u %s" rcode
 add_custom_command po .* https?://([a-zA-Z0-9_-]+[.])?psto[.]net/\S+ firefox "%s"
 
+# user info and messages
+add_custom_command .i p@point.im [@][a-z0-9-]+ sh .mcabber/sayto p@point.im "%s" rcode
+# post operations; show full post, last 10 replies etc.
+add_custom_command .p p@point.im #[a-z]+ sh .mcabber/sayto p@point.im "%s" rcode
+# reply to post or reply
+add_custom_command .c p@point.im #[a-z]+(/[0-9]+)? sh .mcabber/sayto p@point.im "%s" rcode
+# retweet post or reply
+add_custom_command .r p@point.im #[a-z]+(/[0-9]+)? sh .mcabber/sayto p@point.im "! %s" rcode
+# subscribe to post
+add_custom_command .s p@point.im #[a-z]+ sh .mcabber/sayto p@point.im "s %s" rcode
+# unsubscribe
+add_custom_command .u p@point.im #[a-z]+ sh .mcabber/sayto p@point.im "u %s" rcode
+# follow the user
+add_custom_command .f p@point.im [@][a-z0-9-]+ sh .mcabber/sayto p@point.im "s %s" rcode
+# add user to the white list
+add_custom_command .w p@point.im [@][a-z0-9-]+ sh .mcabber/sayto p@point.im "wl %s" rcode
+# ban gay
+add_custom_command .b p@point.im [@][a-z0-9-]+ sh .mcabber/sayto p@point.im "bl %s" rcode
+# open link on point.im
+add_custom_command .o .* https?://([a-zA-Z0-9_-]+[.])?point[.]im/\S+ firefox "%s"
+
 source ~/.mcabber/linkscommands
