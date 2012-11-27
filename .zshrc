@@ -46,6 +46,12 @@ chpwd() {
         echo -ne "\ek"$short_pwd"\e\\"
     fi
     current_dir=`pwd`
+    local b="$(git symbolic-ref HEAD 2>/dev/null)"
+    if [ "X${b}X" != "XX" ]; then
+        psvar[1]=" (${b##refs/heads/})"
+    else
+        psvar[1]=
+    fi
 }
 
 preexec() {
@@ -74,9 +80,7 @@ precmd() {
     chpwd
 }
 
-prompt="%B%F{green}%n%b%F{yellow}@%B%F{red}%m%b %F{cyan}%~ %(?.%F{green}$.%F{red}%?)%f "
-
-prompt_opts=( cr percent )
+prompt='%B%F{green}%n%b%F{yellow}@%B%F{red}%m%b %F{cyan}%~%F{red}%v %(?.%F{green}$.%F{red}%?)%f '
 
 [[ ! -f ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} ]] && zkbd
 source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
