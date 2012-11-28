@@ -117,7 +117,7 @@ if exists("+showtabline")
             for current in tabnames
                 if current != file
                     let hit = 0
-                    while get(current, hit) == get(file, hit)
+                    while get(current, hit, '') == get(file, hit, '')
                         let hit = hit + 1
                     endwhile
                     if hit > maxhit
@@ -125,7 +125,11 @@ if exists("+showtabline")
                     endif
                 endif
             endfor
-            let s .= join(reverse(remove(file, 0, maxhit)), '/')
+            let name = join(reverse(file), '/')
+            if maxhit < len(file)
+                let name = join(reverse(remove(reverse(file), 0, maxhit)), '/')
+            endif
+            let s .= name
             let i = i + 1
         endwhile
         let s .= '%T%#TabLineFill#%='
