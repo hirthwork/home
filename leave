@@ -1,5 +1,6 @@
 #!/bin/sh
 killall skype
+killall irrsi
 for x in ~/.mcabber/*/mcabber.fifo
 do
     echo "/disconnect" > $x
