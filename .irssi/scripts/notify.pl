@@ -17,20 +17,33 @@ Irssi::signal_add('window activity', 'sig_window_activity');
 
 sub sig_window_activity {
     my @windows = Irssi::windows();
-    my $status = "";
+    my $status;
     foreach my $window (@windows)
     {
-        if ($window->{data_level} == 2)
-        {
-            $status = $status." ".$window->{refnum};
-        }
-        if ($window->{data_level} > 2)
-        {
-            $status = $status." !".$window->{refnum};
+        my $level = $window->{data_level};
+        if ($level >= 2) {
+            foreach my $item ($window->items())
+            {
+                my $name = $item->{name};
+                $name =~ s/^#+//;
+                my $info = "";
+                if ($level > 2)
+                {
+                    $info = "!";
+                }
+                $info = $info.$window->{refnum}.":".$name;
+                if (defined($status)) {
+                    $status = $status." ".$info;
+                } else {
+                    $status = $info;
+                }
+            }
         }
     }
     open(STATUS, ">$ENV{'HOME'}/.irssi/state");
-    print STATUS $status;
+    if (defined($status)) {
+        print STATUS $status;
+    }
     close(STATUS);
     my @args = ('sh', './.dwm.update');
     system(@args);
