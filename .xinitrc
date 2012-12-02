@@ -9,6 +9,7 @@ then
     xrdb -merge $HOME/.Xresources
     top -b -d 10 -p 1 >/tmp/.cpuusage&
     trayer --edge top --height 16 --widthtype pixel --width 66 --align right --alpha 255 --transparent true&
+    wmname LG3D
     while true
     do
         sh $HOME/.dwm.update
