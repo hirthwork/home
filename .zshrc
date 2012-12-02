@@ -103,6 +103,7 @@ export PAGER=vimpager
 export MANPAGER=vimmanpager
 export GTK_IM_MODULE=xim
 export VDPAU_NVIDIA_NO_OVERLAY=1
+export AWT_TOOLKIT=MToolkit
 alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
