@@ -1,1 +1,3 @@
 text/html; cat %s|enconv|elinks -dump -default-mime-type text/html; needsterminal; copiousoutput;
+image/gif; firefox %s;
+image/*; feh %s;
