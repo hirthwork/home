@@ -532,8 +532,8 @@ add_custom_command po .* https?://([a-zA-Z0-9_-]+[.])?psto[.]net/\S+ firefox "%s
 
 # user info and messages
 add_custom_command .i p@point.im [@][a-z0-9-]+ sh .mcabber/sayto p@point.im "%s" rcode
-# post operations; show full post, last 10 replies etc.
-add_custom_command .p p@point.im #[a-z]+ sh .mcabber/sayto p@point.im "%s" rcode
+# show full post
+add_custom_command .p p@point.im #[a-z]+ sh .mcabber/sayto p@point.im "%s++" rcode
 # reply to post or reply
 add_custom_command .c p@point.im #[a-z]+(/[0-9]+)? sh .mcabber/sayto p@point.im "%s" rcode
 # retweet post or reply
