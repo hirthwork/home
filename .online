@@ -3,5 +3,10 @@ screenrc=$(mktemp)
 cp $HOME/.screenrc $screenrc
 . ./.mutt/start
 . ./.mcabber/start
+echo -n "Irrsi password: "
+read -s irssi_pass
+export IRSSI_PASS=$irssi_pass
+echo "screen sh -c 'irssi --config .irssi/config --connect=holmes.freenode.net -n hirthwork -w \$IRSSI_PASS'">>$screenrc
+echo title irc@freenode>>$screenrc
 /usr/bin/screen -c $screenrc
-rm -f $file
+rm -f $screenrc
