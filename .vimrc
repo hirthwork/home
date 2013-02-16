@@ -135,7 +135,6 @@ if exists("+showtabline")
             let i = i + 1
         endwhile
         let s .= '%T%#TabLineFill#%='
-        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
         return s
     endfunction
     set tabline=%!MyTabLine()
