@@ -4,7 +4,7 @@ status=`$HOME/.status`
 cpu=
 if [ -f /tmp/.cpuusage ]
 then
-    cpu="CPU: `(echo -n 100- ;tail -n6 /tmp/.cpuusage|head -n1|sed 's/.*ni,//;s/%id,.*//')|calc -p`%"
+    cpu="CPU: `(echo -n 100- ;tail -n6 /tmp/.cpuusage|head -n1|sed 's/.*ni,//;s/ id,.*//;s/,/./g')|calc -p`%"
 fi
 
 mem="`free -m|(read;tr -d '\n'|sed 's/Mem:[^0-9]*//;s/Swap:.*//;s/\([0-9]\+\) .* \([0-9]\+\) \+[0-9]\+$/\2\/\1 MB/')`"
