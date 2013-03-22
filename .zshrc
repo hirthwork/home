@@ -85,7 +85,7 @@ source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 
 cd
 export EDITOR=vim
-export BROWSER=elinks
+export BROWSER=w3m
 if which vimpager >/dev/null 2>&1
 then
     export PAGER=vimpager
@@ -93,6 +93,11 @@ fi
 if which vimmanpager >/dev/null 2>&1
 then
     export MANPAGER=vimmanpager
+fi
+if which w3mman >/dev/null 2>&1
+then
+    export MANPAGER=less
+    alias man=w3mman
 fi
 export GTK_IM_MODULE=xim
 export VDPAU_NVIDIA_NO_OVERLAY=1
