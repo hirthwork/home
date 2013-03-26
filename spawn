@@ -1,0 +1,5 @@
+set -m
+copy=$(mktemp)
+/bin/mv -T $2 $copy
+($1 $copy >/dev/null 2>&1; /bin/rm $copy;) &
+disown -a
