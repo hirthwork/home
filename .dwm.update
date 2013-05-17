@@ -12,3 +12,8 @@ status="$status $cpu $mem `date -R|sed 's/:[^:]*$//'`"
 
 xsetroot -name "$status          "
 
+if [ -x ~/.dwm.postupdate ]
+then
+    ~/.dwm.postupdate
+fi
+
