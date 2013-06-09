@@ -1,5 +1,6 @@
 #!/bin/sh
 setxkbmap -option grp:caps_toggle,compose:menu,grp_led:scroll us,ru
+xmodmap -e "keycode 36 = Return bar"
 
 if [ "X${WOW}X" == "XX" ]
 then
