@@ -106,7 +106,7 @@ alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
 alias gimp="gimp -s"
 alias diff="diff -d -u"
-alias vim="vim -p"
+alias vim="vim -p -b"
 alias less="less -E"
 alias -s exe=wine
 alias -s {bat,BAT}=dosbox
