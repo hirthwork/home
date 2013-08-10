@@ -1,6 +1,7 @@
 filetype plugin on
 filetype indent on
 
+set binary
 set expandtab
 set smarttab
 set autoindent
