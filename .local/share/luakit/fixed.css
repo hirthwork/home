@@ -1,5 +1,5 @@
 * {
-    font-size: 15px !important;
+    font-size: 15px;
     color: #aaaaaa !important;
     background-color: #000 !important;
     background-image: none !important;
@@ -8,6 +8,6 @@
 }
 
 a:link {
-    color: #cccccc !important;
+    color: #8888aa !important;
 }
 
