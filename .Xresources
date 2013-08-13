@@ -1,8 +1,0 @@
-XTerm*eightBitInput: false
-XTerm*metaSendsEscape: true
-XTerm*fullscreen: never
-XTerm.omitTranslation: fullscreen
-UXTerm*eightBitInput: false
-UXTerm*metaSendsEscape: true
-UXTerm*fullscreen: never
-UXTerm.omitTranslation: fullscreen
