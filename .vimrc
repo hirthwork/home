@@ -30,9 +30,9 @@ imap <F6> <esc>:setlocal spell spelllang=en<CR>a
 imap <F7> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F8> <esc>:setlocal nospell<CR>a
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-highlight TabLine ctermfg=Gray ctermbg=Black cterm=none
-highlight TabLineFill ctermfg=Gray ctermbg=Black cterm=none
-highlight TabLineSel ctermfg=Green ctermbg=Black cterm=bold
+highlight TabLine ctermfg=Gray ctermbg=none cterm=none
+highlight TabLineFill ctermfg=Gray ctermbg=none cterm=none
+highlight TabLineSel ctermfg=Green ctermbg=none cterm=bold
 highlight TabNumber ctermfg=Black ctermbg=Gray
 highlight UglyLine ctermfg=Black ctermbg=Cyan
 highlight Pmenu ctermfg=Gray ctermbg=Blue
