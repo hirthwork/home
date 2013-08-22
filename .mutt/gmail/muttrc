@@ -1,37 +1,17 @@
 set from = "potapov.d@gmail.com"
 set realname = "Dmitry Potapov"
 
+set imap_authenticators = "login"
 set imap_user = "potapov.d@gmail.com"
 
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
-
 set header_cache = ~/.mutt/gmail/cache/headers
 set message_cachedir = ~/.mutt/gmail/cache/bodies
 set certificate_file = ~/.mutt/gmail/certificates
+fcc-save-hook . "+[Gmail]/Sent Mail"
 
 set smtp_url = "smtp://potapov.d@smtp.gmail.com:587/"
-unset imap_passive
-set imap_check_subscribed
-set mail_check = 60
-set timeout = 10
 
-set sort = threads
-set menu_scroll = yes
-set send_charset = "utf-8"
-set assumed_charset = "cp1251"
-set pager_format = " %C - %[%H:%M] %.20v, %s%* %?H? [%H] ?"
-set editor = "vim -c 'set syntax=mail ft=mail enc=utf-8'"
-set pager = vimpager
-set quit = ask-no
-
-bind index y next-unread
-bind index Y next-unread-mailbox
-
-set status_format="./.mutt/awesome-mutt gmail %u|"
-auto_view text/html
-set implicit_autoview
-
-color status brightwhite default
-color indicator brightgreen default
+source ~/.mutt/muttrc

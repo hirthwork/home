@@ -1,42 +1,18 @@
 set from = "analizer@yandex.ru"
 set realname = "Dmitry Potapov"
 
+set imap_authenticators = "login"
 set imap_user = "analizer"
 
-set imap_authenticators = "login"
 set folder = "imaps://imap.yandex.ru:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Yandex]/Drafts"
-
 set header_cache = ~/.mutt/yandex/cache/headers
 set message_cachedir = ~/.mutt/yandex/cache/bodies
 set certificate_file = ~/.mutt/yandex/certificates
-set include = yes
-set save_name = yes
-set force_name = yes
 fcc-save-hook . "+Отправленные"
 
 set smtp_url = "smtps://analizer@smtp.yandex.ru/"
-unset imap_passive
-set imap_check_subscribed
-set mail_check = 60
-set timeout = 10
-
-set sort = threads
-set menu_scroll = yes
-set send_charset = "utf-8"
-set assumed_charset = "cp1251"
-set pager_format = " %C - %[%H:%M] %.20v, %s%* %?H? [%H] ?"
-set editor = "vim -c 'set syntax=mail ft=mail enc=utf-8'"
-set pager = vimpager
-set quit = ask-no
-
-bind index y next-unread
-bind index Y next-unread-mailbox
-
 set status_format="./.mutt/awesome-mutt yandex %u|"
-auto_view text/html
-set implicit_autoview
 
-color status brightwhite default
-color indicator brightgreen default
+source ~/.mutt/muttrc

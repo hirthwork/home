@@ -1,0 +1,47 @@
+set include = yes
+set save_name = yes
+set force_name = yes
+
+unset imap_passive
+set imap_check_subscribed
+set mail_check = 0
+set timeout = 3
+set nomark_old
+
+set sort = threads
+set sort_aux = last-date-received
+set send_charset = "utf-8"
+set uncollapse_jump
+set assumed_charset = "koi8-r"
+set editor = "vim -c 'set syntax=mail ft=mail enc=utf-8'"
+set pager = vimpager
+set quit = ask-no
+
+bind index y next-unread
+bind index Y next-unread-mailbox
+
+auto_view text/html
+set implicit_autoview
+
+color status brightwhite default
+color indicator brightgreen default
+
+set sleep_time = 0
+set sendmail_wait = -1
+set nopipe_decode
+set read_inc = 1000
+set write_inc = 1000
+set index_format = '%Z %{%b %d} %-20.20L %s%?M? (%M)?'
+alternative_order text/enriched text/plain text/html
+folder-hook . "exec collapse-all"
+
+ignore *
+unignore From:
+unignore To:
+unignore Reply-To:
+unignore Subject:
+unignore Date:
+unignore CC:
+unignore BCC:
+
+set wait_key = no
