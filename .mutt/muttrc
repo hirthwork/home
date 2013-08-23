@@ -5,7 +5,7 @@ set tmpdir='/dev/shm'
 
 unset imap_passive
 set imap_check_subscribed
-set mail_check = 0
+set mail_check = 20
 set nomark_old
 set my_mail_pass = "`/home/dpotapov/askpass`"
 set imap_pass = $my_mail_pass
