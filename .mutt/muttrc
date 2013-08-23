@@ -31,7 +31,7 @@ set sendmail_wait = -1
 set nopipe_decode
 set read_inc = 1000
 set write_inc = 1000
-set index_format = '%Z %{%b %d} %-20.20L %s%?M? (%M)?'
+set index_format = '%Z %{%b %d} %-20.20L %s%?M? (#%M)?'
 alternative_order text/enriched text/plain text/html
 folder-hook . "exec collapse-all"
 
