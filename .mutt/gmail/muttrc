@@ -13,6 +13,6 @@ set certificate_file = ~/.mutt/gmail/certificates
 fcc-save-hook . "+[Gmail]/Sent Mail"
 
 set smtp_url = "smtp://potapov.d@smtp.gmail.com:587/"
-set status_format="./.mutt/awesome-mutt gmail %u|"
+set status_format="./.mutt/mutt-status gmail %u|"
 
 source ~/.mutt/muttrc
