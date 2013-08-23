@@ -1,12 +1,15 @@
 set include = yes
 set save_name = yes
 set force_name = yes
+set tmpdir='/dev/shm'
 
 unset imap_passive
 set imap_check_subscribed
 set mail_check = 0
-set timeout = 3
 set nomark_old
+set my_mail_pass = "`/home/dpotapov/askpass`"
+set imap_pass = $my_mail_pass
+set smtp_pass = $my_mail_pass
 
 set sort = threads
 set sort_aux = last-date-received
@@ -28,6 +31,8 @@ color indicator brightgreen default
 
 set sleep_time = 0
 set sendmail_wait = -1
+set timeout = 1
+set connect_timeout = 1
 set nopipe_decode
 set read_inc = 1000
 set write_inc = 1000
