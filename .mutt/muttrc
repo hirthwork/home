@@ -7,7 +7,7 @@ unset imap_passive
 set imap_check_subscribed
 set mail_check = 20
 set nomark_old
-set my_mail_pass = "`/home/dpotapov/askpass`"
+set my_mail_pass = "`~/askpass`"
 set imap_pass = $my_mail_pass
 set smtp_pass = $my_mail_pass
 
