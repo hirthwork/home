@@ -1,4 +1,4 @@
-text/html; cat %s|enconv|w3m -dump -o display_link_number=1 -T text/html; needsterminal; copiousoutput;
+text/html; cat %s|enconv|w3m -dump -T text/html; needsterminal; copiousoutput;
 image/gif; ~/spawn firefox %s;
 image/*; ~/spawn feh %s;
 application/vnd.tcpdump.pcap; ~/spawn wireshark %s;

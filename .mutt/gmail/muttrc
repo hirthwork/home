@@ -1,18 +1,17 @@
 set from = "potapov.d@gmail.com"
 set realname = "Dmitry Potapov"
 
-set imap_authenticators = "login"
-set imap_user = "potapov.d@gmail.com"
-
-set folder = "imaps://imap.gmail.com:993"
+set folder = ~/.mutt/gmail/offlineimap
+mailboxes `find .mutt/gmail/offlineimap/* -maxdepth 0 -type d|while read x; do echo -n "'~/$x' ";done`
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
+set mbox = "+[Gmail]/All Mail"
 set header_cache = ~/.mutt/gmail/cache/headers
 set message_cachedir = ~/.mutt/gmail/cache/bodies
 set certificate_file = ~/.mutt/gmail/certificates
+set smtp_url = "smtp://potapov.d@smtp.gmail.com:587/"
 fcc-save-hook . "+[Gmail]/Sent Mail"
 
-set smtp_url = "smtp://potapov.d@smtp.gmail.com:587/"
-set status_format="./.mutt/mutt-status gmail %u|"
+set my_status_format="gmail %u"
 
 source ~/.mutt/muttrc

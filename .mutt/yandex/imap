@@ -1,0 +1,4 @@
+type = IMAP
+remotehost = imap.yandex.ru
+ssl = yes
+remoteuser = analizer

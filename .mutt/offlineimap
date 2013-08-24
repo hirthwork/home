@@ -1,0 +1,35 @@
+#!/bin/sh
+offlineimaprc=$(mktemp --suffix=.offlineimaprc)
+echo '[general]' > $offlineimaprc
+echo 'maxsyncaccounts = 5' >> $offlineimaprc
+echo -n 'accounts = ' >> $offlineimaprc
+find .mutt/*/* -maxdepth 0 -name imap -type f|sed 's,.mutt/,,;s,/imap,,'|sort|tr '\n' ','|sed 's/,$/\n/' >> $offlineimaprc
+echo 'ui = ttyui' >> $offlineimaprc
+echo 'fsync = false' >> $offlineimaprc
+echo 'pythonfile = ~/.mutt/utf7.py' >> $offlineimaprc
+
+for x in $(find .mutt/*/ -maxdepth 2 -name imap -type f|sort)
+do
+    name=`echo $x|grep -o "[^/]*/imap$" | grep -o "^[^/]*"`
+    echo -e "\n[Account $name]" >> $offlineimaprc
+    echo "autorefresh = 1" >> $offlineimaprc
+    echo "quick = 10" >> $offlineimaprc
+    echo "localrepository = $name-local" >> $offlineimaprc
+    echo "remoterepository = $name-remote" >> $offlineimaprc
+    echo "status_backend = sqlite" >> $offlineimaprc
+    echo -e "\n[Repository $name-local]" >> $offlineimaprc
+    echo "type = Maildir" >> $offlineimaprc
+    echo "localfolders = ~/.mutt/$name/offlineimap" >> $offlineimaprc
+    echo "nametrans = lambda foldername: foldername.decode('utf-8').encode('imap4-utf-7')" >> $offlineimaprc
+    echo -e "\n[Repository $name-remote]" >> $offlineimaprc
+    echo "maxconnections = 1" >> $offlineimaprc
+    echo "sslcacertfile = /etc/ssl/certs/ca-certificates.crt" >> $offlineimaprc
+    echo "keepalive = 10" >> $offlineimaprc
+    echo "holdconnectionopen = yes" >> $offlineimaprc
+    echo "nametrans = lambda foldername: foldername.decode('imap4-utf-7').encode('utf-8')" >> $offlineimaprc
+    cat $(dirname $x)/imap >> $offlineimaprc
+done
+
+offlineimap -c $offlineimaprc
+
+rm -f $offlineimaprc
