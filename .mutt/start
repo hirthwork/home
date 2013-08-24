@@ -6,8 +6,8 @@ then
     should_start=yes
 fi
 
-echo "screen $HOME/.mutt/offlineimap" >> $screenrc
-echo title offlinerc >> $screenrc
+echo "screen $HOME/.mutt/imapsync" >> $screenrc
+echo title imapsync >> $screenrc
 
 for x in $(find .mutt/*/ -maxdepth 2 -name muttrc -type f|sort)
 do
