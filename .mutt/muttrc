@@ -24,11 +24,11 @@ set quit = ask-no
 set status_chars = ' +oA'
 set status_format="./.mutt/mutt-status $my_status_format '---[ Folder: %f ]---[ %r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>-%?p?( %p postponed )?---'|"
 
-bind index y next-unread
-bind index Y next-unread-mailbox
+bind index,pager y next-unread
+bind index,pager Y next-unread-mailbox
+bind index <space> collapse-thread
 
-macro index \cu |urlview\n
-macro pager \cu |urlview\n
+macro index,pager \cu |urlview\n
 
 auto_view text/html
 set implicit_autoview
