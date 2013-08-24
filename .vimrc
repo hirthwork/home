@@ -30,6 +30,7 @@ imap <F6> <esc>:setlocal spell spelllang=en<CR>a
 imap <F7> <esc>:setlocal spell spelllang=ru<CR>a
 imap <F8> <esc>:setlocal nospell<CR>a
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 highlight TabLine ctermfg=Gray ctermbg=none cterm=none
 highlight TabLineFill ctermfg=Gray ctermbg=none cterm=none
 highlight TabLineSel ctermfg=Green ctermbg=none cterm=bold
@@ -157,5 +158,5 @@ autocmd FileType python setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
-autocmd Filetype java setlocal completefunc=javacomplete#Complete | set makeprg=ant | set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%# | set kp=~/javaman
+autocmd Filetype java setlocal completefunc=javacomplete#Complete | set makeprg=ant | set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%# | set kp=~/javaman | map <C-j> <esc>:tabnew **/<cword>.java<CR> | imap <C-j> <esc>:tabnew **/<cword>.java<CR>
 
