@@ -1,4 +1,9 @@
 #!/bin/sh
+
+mark=dwm.update.mark
+test -f $mark && exit 0
+
+touch $mark
 status=`$HOME/.status`
 
 cpu=
@@ -16,4 +21,6 @@ if [ -x ~/.dwm.postupdate ]
 then
     ~/.dwm.postupdate
 fi
+
+rm -f $mark
 
