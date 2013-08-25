@@ -1,15 +1,14 @@
 #!/bin/sh
 
-mark=dwm.update.mark
-test -f $mark && exit 0
+test -f $DWM_UPDATE_MARK && exit 0
 
-touch $mark
+touch $DWM_UPDATE_MARK
 status=`$HOME/.status`
 
 cpu=
-if [ -f /tmp/.cpuusage ]
+if [ -f $DWM_CPU_USAGE ]
 then
-    cpu="CPU: `(echo -n 100- ;tail -n6 /tmp/.cpuusage|head -n1|sed 's/.*ni,//;s/ id,.*//;s/,/./g')|calc -p`%"
+    cpu="CPU: `(echo -n 100- ;tail -n6 $DWM_CPU_USAGE|head -n1|sed 's/.*ni,//;s/ id,.*//;s/,/./g')|calc -p`%"
 fi
 
 mem="`free -m|(read;tr -d '\n'|sed 's/Mem:[^0-9]*//;s/Swap:.*//;s/\([0-9]\+\) .* \([0-9]\+\) \+[0-9]\+$/\2\/\1 MB/')`"
@@ -22,5 +21,5 @@ then
     ~/.dwm.postupdate
 fi
 
-rm -f $mark
+rm -f $DWM_UPDATE_MARK
 
