@@ -43,7 +43,7 @@ set read_inc = 1000
 set write_inc = 1000
 
 set pipe_decode
-set index_format = '%Z %{%b %d} %-20.20L %s%?M? (#%M)?'
+set index_format = '%?M?(%-2.2M)&    ? %Z %{%b %d %R} %-20.20L %s'
 alternative_order text/enriched text/plain text/html
 folder-hook . "exec collapse-all"
 
