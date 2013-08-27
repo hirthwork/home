@@ -1,3 +1,0 @@
-#!/bin/sh
-read -s -p "Password: " password
-echo -n $password
