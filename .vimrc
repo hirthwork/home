@@ -158,5 +158,5 @@ autocmd FileType python setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
-autocmd Filetype java setlocal completefunc=javacomplete#Complete | set makeprg=ant | set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%# | set kp=~/javaman | map <C-j> <esc>:tabnew **/<cword>.java<CR> | imap <C-j> <esc>:tabnew **/<cword>.java<CR>
+autocmd Filetype java setlocal set makeprg=ant | set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%# | set kp=~/javaman | map <C-j> <esc>:tabnew **/<cword>.java<CR> | imap <C-j> <esc>:tabnew **/<cword>.java<CR>
 
