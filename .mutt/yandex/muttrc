@@ -11,6 +11,6 @@ set certificate_file = ~/.mutt/yandex/certificates
 set smtp_url = "smtps://analizer@smtp.yandex.ru/"
 fcc-save-hook . "+Отправленные"
 
-set my_status_format="yandex %u"
+set my_status_format="yandex %u 0"
 
 source ~/.mutt/muttrc

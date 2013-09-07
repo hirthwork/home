@@ -1,10 +1,11 @@
 #!/bin/sh
-if [ $2 -eq 0 ]
+total=$(($2 + $3))
+if [ $total -eq 0 ]
 then
-    rm $HOME/.mutt/$1/state 2>/dev/null
+    rm $HOME/.mutt/$1/state 2> /dev/null
 else
-    echo $2>$HOME/.mutt/$1/state
+    echo $total > $HOME/.mutt/$1/state
 fi
 
-nohup sh $HOME/.dwm.update 1>/dev/null 2>&1 &
-echo $3
+nohup sh $HOME/.dwm.update 1> /dev/null 2>&1 &
+echo $4
