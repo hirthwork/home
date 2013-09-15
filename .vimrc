@@ -144,6 +144,19 @@ if exists("+showtabline")
     set tabline=%!MyTabLine()
 endif
 
+command! -complete=file -nargs=+ Etabs call s:ETW(<f-args>)
+
+function! s:ETW(...)
+    for f1 in a:000
+        let files = glob(f1)
+        if files != ''
+            for f2 in split(files, "\n")
+                execute 'tabnew ' . escape(f2, '\ "')
+            endfor
+        endif
+    endfor
+endfunction
+
 autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile *.proto setfiletype proto
@@ -158,5 +171,6 @@ autocmd FileType python setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
-autocmd Filetype java setlocal makeprg=ant efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%# kp=~/javaman | map <C-j> <esc>:tabnew **/<cword>.java<CR> | imap <C-j> <esc>:tabnew **/<cword>.java<CR>
-
+autocmd Filetype java setlocal kp=~/javaman makeprg=ant efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#|
+    map <C-j> <esc>:Etabs **/<cword>.java<CR> |
+    imap <C-j> <esc>:Etabs **/<cword>.java<CR>
