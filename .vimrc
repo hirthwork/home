@@ -171,6 +171,7 @@ autocmd FileType python setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
+autocmd FileType make setlocal iskeyword+=-
 autocmd Filetype java setlocal kp=~/javaman makeprg=ant efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#|
     map <C-j> <esc>:Etabs **/<cword>.java<CR> |
     imap <C-j> <esc>:Etabs **/<cword>.java<CR>
