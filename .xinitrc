@@ -8,7 +8,6 @@ then
     xsetroot -solid "#444444"
     export DWM_CPU_USAGE=$(mktemp --suffix=.cpuusage)
     top -b -d 10 -p 1 > $DWM_CPU_USAGE &
-    trayer --tint 0x444444 --edge top --height 16 --widthtype pixel --width 66 --align right --transparent true&
     wmname LG3D
     export DWM_UPDATE_MARK=$(mktemp -u --suffix=.dwm)
     while true
