@@ -33,12 +33,6 @@ chpwd() {
         get_short_pwd
         echo -ne "\ek"$short_pwd"\e\\"
     fi
-    local b="$(git symbolic-ref HEAD 2>/dev/null)"
-    if [ "X${b}X" != "XX" ]; then
-        psvar[1]=" (${b##refs/heads/})"
-    else
-        psvar[1]=
-    fi
 }
 
 preexec() {
