@@ -83,3 +83,7 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <Cyrillic_YU> <Cyrillic_YU>: "»" # закрывающая кавычка-ёлочка (RUS)
 <Multi_key> <Cyrillic_ya> : "̶" # зачеркивание (комбинирующееся)
 <Multi_key> <Cyrillic_e> <Cyrillic_e> : "́" # ударениее (комбинирующееся)
+
+<Multi_key> <o> <k> : "✔"
+<Multi_key> <n> <o> <k> : "✘"
+
