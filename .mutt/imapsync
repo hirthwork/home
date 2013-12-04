@@ -16,7 +16,7 @@ do
     echo "quick = 10" >> $offlineimaprc
     echo "localrepository = $name-local" >> $offlineimaprc
     echo "remoterepository = $name-remote" >> $offlineimaprc
-    echo "status_backend = sqlite" >> $offlineimaprc
+    echo "status_backend = plain" >> $offlineimaprc
     echo -e "\n[Repository $name-local]" >> $offlineimaprc
     echo "type = Maildir" >> $offlineimaprc
     echo "localfolders = ~/.mutt/$name/offlineimap" >> $offlineimaprc
