@@ -528,7 +528,7 @@ add_custom_command pr psto@psto.net #[a-z]+(/[0-9]+)? sh .mcabber/sayto psto@pst
 add_custom_command pf psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "%s+" rcode
 add_custom_command ps psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "s %s" rcode
 add_custom_command pu psto@psto.net #[a-z]+ sh .mcabber/sayto psto@psto.net "u %s" rcode
-add_custom_command po .* https?://([a-zA-Z0-9_-]+[.])?psto[.]net/\S+ firefox-bin "%s"
+add_custom_command po .* https?://([a-zA-Z0-9_-]+[.])?psto[.]net/\S+ firefox "%s"
 
 # user info and messages
 add_custom_command .i p@point.im [@][a-z0-9-]+ sh .mcabber/sayto p@point.im "%s" rcode
@@ -549,6 +549,6 @@ add_custom_command .w p@point.im [@][a-z0-9-]+ sh .mcabber/sayto p@point.im "wl 
 # ban gay
 add_custom_command .b p@point.im [@][a-z0-9-]+ sh .mcabber/sayto p@point.im "bl %s" rcode
 # open link on point.im
-add_custom_command .o .* https?://([a-zA-Z0-9_-]+[.])?point[.]im/\S+ firefox-bin "%s"
+add_custom_command .o .* https?://([a-zA-Z0-9_-]+[.])?point[.]im/\S+ firefox "%s"
 
 source ~/.mcabber/linkscommands

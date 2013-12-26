@@ -1,1 +1,1 @@
-COMMAND firefox-bin %s
+COMMAND firefox %s
