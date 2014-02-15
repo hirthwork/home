@@ -560,7 +560,7 @@ add_custom_command br bnw.im [\x20][A-Z0-9]{6} sh .mcabber/sayto bnw.im "r -m %s
 # subscribe to post
 add_custom_command bs bnw.im [\x20][A-Z0-9]{6} sh .mcabber/sayto bnw.im "subscribe -m %s" rcode
 # unsubscribe from post
-add_custom_command bs bnw.im [\x20][A-Z0-9]{6} sh .mcabber/sayto bnw.im "unsubscribe -m %s" rcode
+add_custom_command bu bnw.im [\x20][A-Z0-9]{6} sh .mcabber/sayto bnw.im "unsubscribe -m %s" rcode
 # open link from bnw.im
 add_custom_command bo bnw.im https?://bnw[.]im/\S+ firefox "%s"
 
