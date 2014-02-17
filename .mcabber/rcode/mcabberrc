@@ -554,9 +554,9 @@ add_custom_command .o .* https?://([a-zA-Z0-9_-]+[.])?point[.]im/\S+ firefox "%s
 # show full post
 add_custom_command bp bnw.im [\x20][A-Z0-9]{6} sh .mcabber/sayto bnw.im "s -r -m %s" rcode
 # reply to post or reply
-add_custom_command bc bnw.im [\x20][A-Z0-9]{6}(/[A-Z0-9]{3})? sh .mcabber/sayto bnw.im "c -m %s" rcode
+add_custom_command bc bnw.im [\x20][A-Z0-9]{6}(/[A-Z0-9]{3})?[\x20] sh .mcabber/sayto bnw.im "c -m %s" rcode
 # retweet post
-add_custom_command br bnw.im [\x20][A-Z0-9]{6} sh .mcabber/sayto bnw.im "r -m %s" rcode
+add_custom_command br bnw.im [\x20][A-Z0-9]{6}[\x20] sh .mcabber/sayto bnw.im "r -m %s" rcode
 # subscribe to post
 add_custom_command bs bnw.im [\x20][A-Z0-9]{6} sh .mcabber/sayto bnw.im "subscribe -m %s" rcode
 # unsubscribe from post
