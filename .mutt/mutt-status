@@ -1,11 +1,28 @@
 #!/bin/sh
 total=$(($2 + $3))
+statefile=$HOME/.mutt/$1/state
 if [ $total -eq 0 ]
 then
-    rm $HOME/.mutt/$1/state 2> /dev/null
+    if [ -f $statefile ]
+    then
+        rm $HOME/.mutt/$1/state 2>/dev/null
+        nohup sh $HOME/.dwm.update 1>/dev/null 2>&1 &
+    fi
 else
-    echo $total > $HOME/.mutt/$1/state
+    oldtotal=0
+    if [ -f $statefile ]
+    then
+        oldtotal=$(cat $statefile)
+    fi
+    if [ $total -ne $oldtotal ]
+    then
+        echo $total > $HOME/.mutt/$1/state
+        nohup sh $HOME/.dwm.update 1>/dev/null 2>&1 &
+        if [ $total -gt $oldtotal ]
+        then
+            notify-send -t 5000 -i mail-unread -h int:transient:1 "$1" "$total unread messages"
+        fi
+    fi
 fi
 
-nohup sh $HOME/.dwm.update 1> /dev/null 2>&1 &
 echo $4
