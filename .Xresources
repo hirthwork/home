@@ -1,0 +1,12 @@
+XTerm*color4: rgb:34/65/a4
+XTerm*color12: rgb:72/9f/cf
+UXTerm*color4: rgb:34/65/a4
+UXTerm*color12: rgb:72/9f/cf
+XTerm*eightBitInput: false
+XTerm*metaSendsEscape: true
+XTerm*fullscreen: never
+XTerm.omitTranslation: fullscreen
+UXTerm*eightBitInput: false
+UXTerm*metaSendsEscape: true
+UXTerm*fullscreen: never
+UXTerm.omitTranslation: fullscreen
