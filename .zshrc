@@ -10,10 +10,6 @@ if ssh-add -L 2>&1 | fgrep -q "Could not open a connection to your authenticatio
 then
     eval $(ssh-agent)
 fi
-if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && type dbus-launch >/dev/null
-then
-    eval $(dbus-launch --sh-syntax --exit-with-session)
-fi
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob

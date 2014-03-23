@@ -15,7 +15,7 @@ then
         sh $HOME/.dwm.update
         sleep 10
     done &
-    dwm
+    dbus-launch --exit-with-session dwm
     rm -f $DWM_CPU_USAGE
 else
     wine ~/.wine/drive_c/Program\ Files/World\ of\ Warcraft/Wow.exe
