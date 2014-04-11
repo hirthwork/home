@@ -79,6 +79,12 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <P> <S> : "Ψ" # пси
 <Multi_key> <O> <M> : "Ω" # омега
 
+<Multi_key> <c> <c> : "ℂ" # комплексные числа
+<Multi_key> <n> <n> : "ℕ" # натуральные числа
+<Multi_key> <q> <q> : "ℚ" # рациональные числа
+<Multi_key> <r> <r> : "ℝ" # вещественные числа
+<Multi_key> <z> <z> : "ℤ" # целые числа
+
 <Multi_key> <Cyrillic_ie> <Cyrillic_ie> : "ѣ" # ять
 <Multi_key> <Cyrillic_IE> <Cyrillic_IE> : "Ѣ" # Ять
 <Multi_key> <Cyrillic_be> <Cyrillic_be> : "“"
