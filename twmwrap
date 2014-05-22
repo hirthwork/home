@@ -2,5 +2,5 @@
 file=$(mktemp)
 echo "$@&" > $file
 echo "twm" >> $file
-LANG=en_US.UTF-8 xinit $file -- /usr/bin/Xnest :3
+LANG=en_US.UTF-8 xinit $file -- /usr/bin/X :4
 rm -f $file
