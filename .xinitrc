@@ -13,6 +13,7 @@ do
     sh $HOME/.dwm.update
     sleep 10
 done &
+autocutsel&
 dbus-launch --exit-with-session dwm
 rm -f $DWM_CPU_USAGE
 

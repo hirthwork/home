@@ -5,4 +5,4 @@ backtick 2 15 15 $HOME/.uptime
 caption always '%{= dG}%H: %{C}[%= %{Y}%1` %=%{C}] %{R}%2`'
 hardstatus alwayslastline '%Lw'
 bufferfile /tmp/screen-exchange
-bind b eval writebuf 'exec /bin/sh -c "xsel -i < /tmp/screen-exchange;rm -f /tmp/screen-exchange"'
+bind b eval writebuf 'exec /bin/sh -c "xsel -b -i < /tmp/screen-exchange;rm -f /tmp/screen-exchange"'
