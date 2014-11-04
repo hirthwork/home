@@ -542,6 +542,9 @@ add_custom_command .b p@point.im [@][a-z0-9-]+\b sh .mcabber/sayto p@point.im "b
 # open link on point.im
 add_custom_command .o .* https?://([a-zA-Z0-9_-]+[.])?point[.]im/\S+ firefox %s
 
+spellcheck_enable .c 1
+spellcheck_enable .r 1
+
 # show full post
 add_custom_command bp bnw.im \b[A-Z0-9]{6}\b sh .mcabber/sayto bnw.im "s -r -m %s" rcode
 # reply to post or reply
@@ -555,3 +558,5 @@ add_custom_command bu bnw.im \b[A-Z0-9]{6}\b sh .mcabber/sayto bnw.im "unsubscri
 # open link from bnw.im
 add_custom_command bo .* https?://bnw[.]im/\S+ firefox %s
 
+spellcheck_enable br 1
+spellcheck_enable bc 1
