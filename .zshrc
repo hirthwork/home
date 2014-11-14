@@ -19,37 +19,44 @@ zle -N tetris
 compinit
 colors
 
-local short_pwd
-get_short_pwd() {
-    short_pwd=`pwd|sed "s,$HOME,~,"|grep -o "[^/]*\(/[^/]*\)\?$"`
+short_pwd() {
+    pwd|sed "s,$HOME,~,"|grep -o "[^/]*\(/[^/]*\)\?$"
 }
 
 chpwd() {
     if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
     then
-        get_short_pwd
-        echo -ne "\ek"$short_pwd"\e\\"
+        echo -ne "\ek"$(short_pwd)"\e\\"
     fi
 }
 
 preexec() {
     if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
     then
-        name=`echo $1|sed 's/^ *sudo\([ ]\+[-][^ ]*\)*//;s/^\([a-zA-Z0-9_-]\+=\( \|"[^"]*"\)[ ]*\)\+//;s/[ ]*\([&][&]\|[|][|]\|[;]\).*//;s/^ \+//'|sed "s/sh -c \?'\([^']*\)'/\1/"`
-        if ! echo "$name"|grep -qE "^(emerge|wine|layman|tail|sleep|qfile|list|screen|mutt|mcabber|man|less|vimpager|irssi)"
+        sed 's/[[:space:]]\+/\t/g;s/[^\t]\+=[^\t]*[\t]//;s/[\t][-][^\t]*//' <<< $1 | read first second third
+        if [ $first \=\= sudo ]
         then
-            get_short_pwd
-            name=`echo $name|sed 's/ .*//'`@$short_pwd
-        elif echo "$name"|grep -q "^mutt"
-        then
-            name=mail@`echo $name|sed 's/^[^/]*[/]//;s/[/].*//'`
-        elif echo "$name"|grep -q "^mcabber"
-        then
-            name=xmpp@`echo $name|sed 's/^[^/]*[/]//;s/[/].*//'`
-        elif echo "$name"|grep -q "^irssi"
-        then
-            name=irc@`echo $name|sed 's/.*--connect=//;s/[.][^.]\+ .*//;s/.*[.]//'`
+            first=$second
+            second=$third
         fi
+
+        case $first in
+            mutt)
+                name=mail@$(cut -d/ -f 2 <<< $second)
+                ;;
+            mcabber)
+                name=xmpp@$(cut -d/ -f 2 <<< $second)
+                ;;
+            ./.irssi/start)
+                name=irc
+                ;;
+            ssh)
+                name=ssh@$(sed 's/.*@//;s/[.].*//' <<< $second)
+                ;;
+            *)
+                name=$first@$(short_pwd)
+                ;;
+        esac
         echo -ne "\ek"$name"\e\\"
     fi
 }

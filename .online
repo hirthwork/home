@@ -4,7 +4,6 @@ cp $HOME/.screenrc $screenrc
 . ./.mutt/start
 . ./.mcabber/start
 echo screen .irssi/start >> $screenrc
-echo title irc@freenode >> $screenrc
-echo select 0 >> $screenrc
+echo title irc >> $screenrc
 /usr/bin/screen -c $screenrc
 rm -f $screenrc

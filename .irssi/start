@@ -2,4 +2,4 @@
 echo -n "Irrsi password: "
 read -s irssi_pass
 export IRSSI_PASS=$irssi_pass
-sh -c 'irssi --config .irssi/config --connect=holmes.freenode.net -n hirthwork -w $IRSSI_PASS'
+sh -c 'irssi --config .irssi/config --connect holmes.freenode.net -n hirthwork -w $IRSSI_PASS'
