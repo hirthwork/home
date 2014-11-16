@@ -20,7 +20,7 @@ else
         nohup sh $HOME/.dwm.update 1>/dev/null 2>&1 &
         if [ $total -gt $oldtotal ]
         then
-            notify-send -t 5000 -i mail-unread -h int:transient:1 "$1" "$total unread messages"
+            echo -e "$1\n$total unread messages" | osd_cat -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 30 -s 1 -c green -
         fi
     fi
 fi
