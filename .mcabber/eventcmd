@@ -11,26 +11,22 @@ if [ $event = "MSG" ]; then
     case "$arg1" in
         IN)
             # Incoming message from buddy $arg2
-            notify-send -i dialog-information -t 5000 -h int:transient:1 "$arg2" "$(cat $filename)"
-            if [ -n "$filename" -a -f "$filename" ]; then
-                # We could process filename here...
-                /bin/rm $filename
-            fi
+            cat - $filename <<< "$arg2" | osd_cat -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 20 -s 1 -c green -
             ;;
         MUC)
             # Incoming message from buddy $arg2
-            notify-send -i dialog-information -t 5000 -h int:transient:1 "$arg2" "$(cat $filename)"
-            if [ -n "$filename" -a -f "$filename" ]; then
-                # We could process filename here...
-                /bin/rm $filename
-            fi
+            cat - $filename <<< "$arg2" | osd_cat -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 20 -s 1 -c green -
             ;;
     esac
+    if [ -n "$filename" -a -f "$filename" ]; then
+        # We could process filename here...
+        /bin/rm $filename
+    fi
 elif [ $event = "UNREAD" ]; then
     # $arg1 contains 4 numbers separated with space chars:
     # Nr of unread buffers, nr of unread buffers with attention sign,
     # nr of MUC unread buffers, nr of MUC unread buffers with attention sign.
-    count=`echo $arg1|grep -o "^[0-9]*"`
+    read count other <<< $arg1
     if [ $count -eq 0 ]
     then
         rm $HOME/.mcabber/$account/state 2>/dev/null
