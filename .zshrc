@@ -33,7 +33,7 @@ chpwd() {
 preexec() {
     if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
     then
-        sed 's/[[:space:]]\+/\t/g;s/[^\t]\+=[^\t]*[\t]//;s/[\t][-][^\t]*//' <<< $1 | read first second third
+        sed 's/[[:space:]]\+/\t/g;s/[^\t]\+="[^"]*"\t//g;s/[^\t]\+=[^\t]*[\t]//g;s/[\t][-][^\t]*//g' <<< $1 | read first second third
         if [ $first \=\= sudo ]
         then
             first=$second
