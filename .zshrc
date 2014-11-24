@@ -107,3 +107,5 @@ alias -s {doc,rtf}=abiword
 alias -s {csv,xls}=gnumeric
 alias -s dia=dia
 
+unset LESSOPEN
+
