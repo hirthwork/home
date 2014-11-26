@@ -92,20 +92,12 @@ then
 fi
 export GTK_IM_MODULE=xim
 export VDPAU_NVIDIA_NO_OVERLAY=1
-alias update-tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=yes --languages=c++ . && cscope -Rqbk"
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
 alias gimp="gimp -s"
 alias diff="diff -d -u"
 alias vim="vim -p -b"
 alias less="less -E"
-alias -s exe=wine
-alias -s {bat,BAT}=dosbox
-alias -s {htm,html}=firefox
-alias -s {pdf,djvu}=evince
-alias -s {doc,rtf}=abiword
-alias -s {csv,xls}=gnumeric
-alias -s dia=dia
 
 unset LESSOPEN
 
