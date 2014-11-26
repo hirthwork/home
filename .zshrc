@@ -2,7 +2,7 @@
 HISTFILE=~/.zsh_history
 HISTSIZE=20000
 SAVEHIST=${HISTSIZE}
-setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 
 bindkey -e
 
