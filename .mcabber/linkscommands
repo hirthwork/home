@@ -1,4 +1,4 @@
 module load commands
-add_custom_command ff .* https?://(?!(((point|(meow[.])?bnw)[.]im)))[^\s()]+/([^\s()]*([(][^\s()]*[)])?)* firefox %s
-add_custom_command feh .* https?://([^\s()]+/([^\s()]*([(][^\s()]*[)])?)*[.](?i)(jpe?g|png)|(img-fotki.yandex.ru/get/|pics.livejournal.com/([^\s()]*([(][^\s()]*[)])?)*/pic/|l-userpic.livejournal.com)([^\s()]*([(][^\s()]*[)])?)*|img.leprosorium.com/[0-9]\+)(:large)? feh %s
-add_custom_command mpv .* https?://[^\s()]+/([^\s()]*([(][^\s()]*[)])?)*[.](?i)(gif|avi|mp4|webm) mpv --loop=inf %s
+add_custom_command ff .* https?://(?!(((point|(meow[.])?bnw)[.]im)))[^\s()]+/([^\s()]|[(][^\s()]*[)])* firefox %s
+add_custom_command feh .* https?://([^\s()]+/([^\s()]|[(][^\s()]*[)])+[.](?i)(jpe?g|png)|(img-fotki.yandex.ru/get/|pics.livejournal.com/([^\s()]|[(][^\s()]*[)])+/pic/|l-userpic.livejournal.com)([^\s()]|[(][^\s()]*[)])+|img.leprosorium.com/[0-9]\+)(:large)? feh %s
+add_custom_command mpv .* https?://[^\s()]+/([^\s()]|[(][^\s()]*[)])+[.](?i)(gif|avi|mp4|webm) mpv --loop=inf %s
