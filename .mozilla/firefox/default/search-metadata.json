@@ -1,0 +1,38 @@
+{
+  "[app]/google.xml": {
+    "order": 1,
+    "alias": "google"
+  },
+  "[profile]/multitran.xml": {
+    "order": 2,
+    "alias": "mt"
+  },
+  "[app]/wikipedia.xml": {
+    "order": 3,
+    "alias": "en"
+  },
+  "[profile]/wikipedia-ru.xml": {
+    "order": 4,
+    "alias": "ru"
+  },
+  "[profile]/duckduckgo.xml": {
+    "order": 5,
+    "alias": "ddg"
+  },
+  "[app]/amazondotcom.xml": {
+    "hidden": true
+  },
+  "[app]/bing.xml": {
+    "hidden": true
+  },
+  "[app]/eBay.xml": {
+    "hidden": true
+  },
+  "[app]/twitter.xml": {
+    "hidden": true
+  },
+  "[app]/yahoo.xml": {
+    "hidden": true
+  }
+}
+
