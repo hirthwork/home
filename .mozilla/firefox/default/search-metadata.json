@@ -23,6 +23,10 @@
     "order": 5,
     "alias": "yandex"
   },
+  "[profile]/intranet-search.xml": {
+    "order": 6,
+    "alias": "wiki"
+  },
   "[app]/amazondotcom.xml": {
     "hidden": true
   },
