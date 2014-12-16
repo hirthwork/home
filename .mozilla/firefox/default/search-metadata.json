@@ -23,12 +23,24 @@
     "order": 5,
     "alias": "yandex"
   },
-  "[profile]/intranet-search.xml": {
+  "[profile]/maps.xml": {
     "order": 6,
+    "alias": "maps"
+  },
+  "[profile]/gmaps.xml": {
+    "order": 7,
+    "alias": "gmaps"
+  },
+  "[profile]/market.xml": {
+    "order": 8,
+    "alias": "market"
+  },
+  "[profile]/intranet-search.xml": {
+    "order": 9,
     "alias": "wiki"
   },
   "[profile]/mail.xml": {
-    "order": 7,
+    "order": 10,
     "alias": "mail"
   },
   "[app]/amazondotcom.xml": {
