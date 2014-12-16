@@ -53,6 +53,9 @@ preexec() {
             ssh)
                 name=ssh@$(sed 's/.*@//;s/[.].*//' <<< $second)
                 ;;
+            ./.mutt/imapsync)
+                name=imapsync
+                ;;
             *)
                 name=$first@$(short_pwd)
                 ;;
