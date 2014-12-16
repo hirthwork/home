@@ -27,6 +27,10 @@
     "order": 6,
     "alias": "wiki"
   },
+  "[profile]/mail.xml": {
+    "order": 7,
+    "alias": "mail"
+  },
   "[app]/amazondotcom.xml": {
     "hidden": true
   },
