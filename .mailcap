@@ -1,6 +1,7 @@
 text/html; cat %s|enconv -L russian -x utf-8|w3m -dump -o display_link_number=1 -T text/html; needsterminal; copiousoutput;
-image/gif; ~/spawn firefox %s;
+image/gif; ~/spawn mpv %s;
+video/*; ~/spawn mpv %s;
 image/*; ~/spawn feh %s;
 application/vnd.tcpdump.pcap; ~/spawn wireshark %s;
 application/cap; ~/spawn wireshark %s;
-application/pdf; ~/spawn evince %s;
+application/pdf; ~/spawn acroread %s;
