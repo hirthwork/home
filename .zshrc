@@ -95,6 +95,7 @@ then
 fi
 export GTK_IM_MODULE=xim
 export VDPAU_NVIDIA_NO_OVERLAY=1
+export PULSE_LATENCY_MSEC=30
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
 alias gimp="gimp -s"
