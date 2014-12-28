@@ -39,12 +39,16 @@
     "order": 9,
     "alias": "imdb"
   },
-  "[profile]/intranet-search.xml": {
+  "[profile]/subscene.xml": {
     "order": 10,
+    "alias": "subscene"
+  },
+  "[profile]/intranet-search.xml": {
+    "order": 11,
     "alias": "wiki"
   },
   "[profile]/mail.xml": {
-    "order": 11,
+    "order": 12,
     "alias": "mail"
   },
   "[app]/amazondotcom.xml": {
