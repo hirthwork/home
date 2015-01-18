@@ -93,6 +93,13 @@ if which w3mman >/dev/null 2>&1
 then
     alias man=w3mman
 fi
+if [ -z $GIT_SSH ] && ! which ssh >/dev/null 2>&1
+then
+    if which dbclient >/dev/null 2>&1
+    then
+        export GIT_SSH=dbclient
+    fi
+fi
 export GTK_IM_MODULE=xim
 export VDPAU_NVIDIA_NO_OVERLAY=1
 export PULSE_LATENCY_MSEC=30
