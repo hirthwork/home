@@ -107,7 +107,7 @@ set nickname = hirthwork
 # checking with the following options (you can't change them once mcabber is
 # running).
 set spell_enable = 1
-set spell_lang = en_US ru_RU
+set spell_lang = en_US ru_RU la de
 set spell_encoding = UTF-8
 
 # History
