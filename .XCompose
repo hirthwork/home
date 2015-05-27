@@ -4,6 +4,7 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <minus> <Left> : "←"
 <Multi_key> <minus> <Up> : "↑"
 <Multi_key> <minus> <Down> : "↓"
+<Multi_key> <Left> <Right> : "↔"
 
 <Multi_key> <equal> <Right> : "⇒"
 <Multi_key> <equal> <Left> : "⇐"
