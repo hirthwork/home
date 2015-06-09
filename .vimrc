@@ -13,6 +13,9 @@ set showtabline=2
 
 set incsearch
 
+set splitbelow
+set splitright
+
 set wildmode=longest,list,full
 
 set backspace=eol,start,indent
