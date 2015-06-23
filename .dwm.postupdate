@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-wall=$(mktemp --suffix=.png)
-CutyCapt --max-wait=60000 --url="file:///home/dpotapov/dashboard.xhtml" --out=$wall
-feh --bg-scale $wall
-rm $wall
