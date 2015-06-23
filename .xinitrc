@@ -14,6 +14,7 @@ do
     sleep 10
 done &
 autocutsel&
+xcompmgr&
 dbus-launch --exit-with-session dwm
 rm -f $DWM_CPU_USAGE
 
