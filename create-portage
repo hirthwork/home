@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/sh -x
 umount /usr/portage
 rm portage.loop
+set -e
 truncate -s 1024M portage.loop
 mke2fs -b 1024 -I 128 -N 200000 -m 0 -E resize=2048000 -O "^ext_attr" -v portage.loop
 tune2fs -o "^acl,^user_xattr" portage.loop
