@@ -1,0 +1,7 @@
+[user]
+        name = Dmitry Potapov
+        email = potapov.d@gmail.com
+[merge]
+        tool = vimdiff
+[push]
+        default = simple
