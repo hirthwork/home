@@ -109,6 +109,7 @@ alias gimp="gimp -s"
 alias diff="diff -d -u"
 alias vim="vim -p -b"
 alias less="less -E"
+alias mpv="mpv --fs --osd-fractions"
 
 unset LESSOPEN
 
