@@ -5,4 +5,4 @@ then
 else
     bat=
 fi
-LANG= uptime|sed "s/,.*users.*: / /;s/$/$bat/"|tr -d ,
+LANG= uptime|sed "s/,.*users\?.*: / /;s/$/$bat/"|tr -d ,
