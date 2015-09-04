@@ -1,2 +1,8 @@
 #!/bin/sh
-LANG= uptime|sed 's/,//g;s/[[:space:]]*[[:digit:]]*[[:space:]]*user.\?[[:space:]]*/ /;s/[[:space:]]*average//;s/:[0-5][0-9][[:space:]]up[[:space:]]*/ /;s/^[[:space:]]*//'
+if [ -f /sys/class/power_supply/BAT0/capacity ]
+then
+    bat=" $(cat /sys/class/power_supply/BAT0/capacity)%"
+else
+    bat=
+fi
+LANG= uptime|sed "s/,.*users.*: / /;s/$/$bat/"|tr -d ,
