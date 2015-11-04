@@ -11,7 +11,7 @@ then
     cpu="CPU: `(echo -n 100- ;tail -n6 $DWM_CPU_USAGE|head -n1|sed 's/.*ni,//;s/ id,.*//;s/,/./g')|calc -p`%"
 fi
 
-mem="`free -m|(read;tr -d '\n'|sed 's/Mem:[^0-9]*//;s/Swap:.*//;s/\([0-9]\+\) .* \([0-9]\+\) \+[0-9]\+$/\2\/\1 MB/')`"
+mem=$(free -m|head -n2|tail -n1|awk '{print $3"/"$2" MB"}')
 if [ -f /sys/class/power_supply/BAT0/capacity ]
 then
     bat="$(cat /sys/class/power_supply/BAT0/capacity)% Bat "
