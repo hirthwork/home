@@ -11,16 +11,16 @@ fi
 xmpp=
 for x in `ls $HOME/.mcabber/*/state 2>/dev/null`
 do
-    xmpp="$xmpp `echo $x|sed 's/.*[/][.]mcabber[/]//;s/[/]state$//'`(`cat $x`)"
+    xmpp="$xmpp `echo $x|sed 's/.*[/][.]mcabber[/]/⎁/;s/[/]state$//'`(`cat $x`)"
 done
-[ X"$xmpp"X == XX ] || status="$status xmpp: $xmpp"
+[ X"$xmpp"X == XX ] || status="$status $xmpp"
 
 mail=
 for x in `ls $HOME/.mutt/*/state 2>/dev/null`
 do
-    mail="$mail `echo $x|sed 's/.*[/][.]mutt[/]//;s/[/]state$//'`(`cat $x`)"
+    mail="$mail `echo $x|sed 's/.*[/][.]mutt[/]/✉/;s/[/]state$//'`(`cat $x`)"
 done
-[ X"$mail"X == XX ] || status="$status mail: $mail"
+[ X"$mail"X == XX ] || status="$status $mail"
 
 echo $status
 

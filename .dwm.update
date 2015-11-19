@@ -11,14 +11,14 @@ then
     cpu="💻`(echo -n 100- ;tail -n6 $DWM_CPU_USAGE|head -n1|sed 's/.*ni,//;s/ id,.*//;s/,/./g')|calc -p`%"
 fi
 
-mem=$(free -m|head -n2|tail -n1|awk '{print $3"/"$2" MB"}')
+mem=$(free -m|head -n2|tail -n1|awk 'BEGIN{_[0]="○";_[1]="◔";_[2]="◑";_[3]="◕";_[4]="⏺"}{print _[int($3 * 5 / $2)]}')
 if [ -f /sys/class/power_supply/BAT0/capacity ]
 then
     bat="⚡$(cat /sys/class/power_supply/BAT0/capacity)% "
 else
     bat=
 fi
-status="$status $cpu $mem $bat$(date '+%R %a %F')"
+status="$status $mem$cpu $bat$(date '+%R %a %F')"
 
 xsetroot -name "$status"
 
