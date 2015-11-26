@@ -1,17 +1,17 @@
-#!/bin/sh
+#!/bin/sh -x
 (
     flock -n 9 || exit 1
 
     status=`$HOME/.status`
-    if [ -f $DWM_CPU_USAGE.data ]
+    if [ -f $DWM_CPU_USAGE ]
     then
-        read prev_uptime prev_idle < $DWM_CPU_USAGE.data
+        read prev_uptime prev_idle < $DWM_CPU_USAGE
     else
         prev_total=0
         prev_idle=0
     fi
-    cp /proc/uptime $DWM_CPU_USAGE.data
-    read uptime idle < $DWM_CPU_USAGE.data
+    cp -f /proc/uptime $DWM_CPU_USAGE
+    read uptime idle < $DWM_CPU_USAGE
     processors=$(fgrep -c 'model name' /proc/cpuinfo)
     cpu=$(echo $processors $prev_uptime $prev_idle $uptime $idle |
         awk '{diff=($4 - $2) * $1; print int(100 * (diff + $3 - $5) / diff)"%💻"}')
