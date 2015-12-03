@@ -11,11 +11,11 @@ if [ $event = "MSG" ]; then
     case "$arg1" in
         IN)
             # Incoming message from buddy $arg2
-            cat - $filename <<< "$arg2" | osd_cat -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 30 -s 1 -c green -
+            cat - $filename <<< "$arg2" | osd_cat -A right -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 30 -s 1 -c green -
             ;;
         MUC)
             # Incoming message from buddy $arg2
-            cat - $filename <<< "$arg2" | osd_cat -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 30 -s 1 -c green -
+            cat - $filename <<< "$arg2" | osd_cat -A right -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 30 -s 1 -c green -
             ;;
     esac
     if [ -n "$filename" -a -f "$filename" ]; then
