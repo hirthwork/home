@@ -86,7 +86,6 @@ source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 
 cd
 export EDITOR=vim
-export BROWSER=w3m
 export PAGER=less
 export MANPAGER=less
 if which w3mman >/dev/null 2>&1
