@@ -47,6 +47,7 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <asciicircum> <Right> : "⃗" U20D7 # COMBINING RIGHT ARROW ABOVE
 <Multi_key> <o> <period> : "Ꙭ" UA66C # CYRILLIC CAPITAL LETTER DOUBLE MONOCULAR O
 <Multi_key> <asciicircum> <minus> : "̅" U0305 # COMBINING OVERLINE
+<Multi_key> <underscore> <minus> : "̲" U0332 # COMBINING UNDERLINE
 <Multi_key> <asciicircum> <slash> : "̚" U031A # COMBINING LEFT ANGLE ABOVE
 
 <Multi_key> <a> <a> : "α" # альфа
