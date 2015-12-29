@@ -85,6 +85,7 @@ source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 [[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
 
 cd
+export BROWSER=yandex-browser-beta
 export EDITOR=vim
 export PAGER=less
 export MANPAGER=less
