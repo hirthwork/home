@@ -540,7 +540,7 @@ add_custom_command .w p@point.im [@][a-z0-9-]+\b sh .mcabber/sayto p@point.im "w
 # ban gay
 add_custom_command .b p@point.im [@][a-z0-9-]+\b sh .mcabber/sayto p@point.im "bl %s" rcode
 # open link on point.im
-add_custom_command .o .* https?://([a-zA-Z0-9_-]+[.])?point[.]im/\S+ firefox %s
+add_custom_command .o .* https?://([a-zA-Z0-9_-]+[.])?point[.]im/\S+ yandex-browser-beta %s
 
 spellcheck_enable .c 1
 spellcheck_enable .r 1
@@ -556,7 +556,7 @@ add_custom_command bs bnw.im \b[A-Z0-9]{6}\b sh .mcabber/sayto bnw.im "subscribe
 # unsubscribe from post
 add_custom_command bu bnw.im \b[A-Z0-9]{6}\b sh .mcabber/sayto bnw.im "unsubscribe -m %s" rcode
 # open link from bnw.im
-add_custom_command bo .* https?://bnw[.]im/\S+ firefox %s
+add_custom_command bo .* https?://bnw[.]im/\S+ yandex-browser-beta %s
 
 spellcheck_enable br 1
 spellcheck_enable bc 1

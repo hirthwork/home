@@ -1,4 +1,4 @@
 module load commands
-add_custom_command ff .* \b(?=\w)https?://(?!(((point|(meow[.])?bnw)[.]im)))[^\s()]+(\b(?<=\w)|/([,.!:]*[^\s.,!:()]|[(][^\s()]*[)])*) firefox %s
+add_custom_command ff .* \b(?=\w)https?://(?!(((point|(meow[.])?bnw)[.]im)))[^\s()]+(\b(?<=\w)|/([,.!:]*[^\s.,!:()]|[(][^\s()]*[)])*) yandex-browser-beta %s
 add_custom_command feh .* \b(?=\w)https?://([^\s()]+/([^\s()]|[(][^\s()]*[)])+[.](?i)(jpe?g|png)|(img-fotki.yandex.ru/get/|pics.livejournal.com/([,.!:]*[^\s.,!:()]|[(][^\s()]*[)])+/pic/|l-userpic.livejournal.com/)([,.!:]*[^\s.,!:()]|[(][^\s()]*[)])+|img.leprosorium.com/[0-9]\+)(:(large|orig))?\b(?<=\w) feh %s
 add_custom_command mpv .* \b(?=\w)https?://([^\s()]+/([^\s()]|[(][^\s()]*[)])+[.](?i)(gifv?|avi|mp[4g]|webm)|(www.youtube.com|youtu.be|coub.com|vimeo.com|www.liveleak.com)/([,.!:]*[^\s.,!:()])+)\b(?<=\w) mpv --loop-file=inf %s
