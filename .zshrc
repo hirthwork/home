@@ -84,15 +84,9 @@ source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 [[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
 [[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
 
-cd
-export BROWSER=yandex-browser-beta
 export EDITOR=vim
 export PAGER=less
 export MANPAGER=less
-if which w3mman >/dev/null 2>&1
-then
-    alias man=w3mman
-fi
 if [ -z $GIT_SSH ] && ! which ssh >/dev/null 2>&1
 then
     if which dbclient >/dev/null 2>&1
@@ -102,7 +96,11 @@ then
 fi
 export GTK_IM_MODULE=xim
 export VDPAU_NVIDIA_NO_OVERLAY=1
-export PULSE_LATENCY_MSEC=30
+
+if which w3mman >/dev/null 2>&1
+then
+    alias man=w3mman
+fi
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
 alias gimp="gimp -s"
@@ -110,6 +108,10 @@ alias diff="diff -d -u"
 alias vim="vim -p -b"
 alias less="less -E"
 alias mpv="mpv --fs --osd-fractions"
+alias cp="cp -i"
+alias mv="mv -i"
 
 unset LESSOPEN
+
+cd
 

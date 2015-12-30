@@ -1,1 +1,1 @@
-COMMAND yandex-browser-beta %s
+COMMAND chromium %s
