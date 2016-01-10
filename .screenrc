@@ -1,5 +1,6 @@
 vbell off
 deflogin off
+defscrollback 10000
 backtick 1 10 10 $HOME/.status
 backtick 2 15 15 $HOME/.uptime
 caption always '%{= dG}%H: %{C}[%= %{Y}%1` %=%{C}]%{R}%2`'
