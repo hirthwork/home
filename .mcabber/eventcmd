@@ -7,22 +7,31 @@ filename=$5
 # Note that the 4th argument is only provided for incoming messages
 # and when 'event_log_files' is set.
 
-if [ $event = "MSG" ]; then
-    case "$arg1" in
-        IN)
-            # Incoming message from buddy $arg2
-            cat - $filename <<< "$arg2" | osd_cat -i 800 -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 30 -s 1 -c green -
-            ;;
-        MUC)
-            # Incoming message from buddy $arg2
-            cat - $filename <<< "$arg2" | osd_cat -i 800 -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 30 -s 1 -c green -
-            ;;
-    esac
+if [ $event = "MSG" ]
+then
+    lockfile=$HOME/.mcabber/$account/.$arg2.lock
+    (
+        if flock -n 42
+        then
+            case "$arg1" in
+                IN)
+                    # Incoming message from buddy $arg2
+                    cat - $filename <<< "$arg2" | osd_cat -i 800 -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 30 -s 1 -c lightgreen -
+                    ;;
+                MUC)
+                    # Incoming message from buddy $arg2
+                    cat - $filename <<< "$arg2" | osd_cat -i 800 -f "-misc-fixed-bold-r-normal--15-140-75-75-c-90-*-*" -l100 -o 30 -s 1 -c lightgreen -
+                    ;;
+            esac
+            rm $lockfile
+        fi
+    ) 42>$lockfile
     if [ -n "$filename" -a -f "$filename" ]; then
         # We could process filename here...
         /bin/rm $filename
     fi
-elif [ $event = "UNREAD" ]; then
+elif [ $event = "UNREAD" ]
+then
     # $arg1 contains 4 numbers separated with space chars:
     # Nr of unread buffers, nr of unread buffers with attention sign,
     # nr of MUC unread buffers, nr of MUC unread buffers with attention sign.
