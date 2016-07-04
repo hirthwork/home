@@ -541,6 +541,8 @@ add_custom_command .w p@point.im [@][a-z0-9-]+\b sh .mcabber/sayto p@point.im "w
 add_custom_command .b p@point.im [@][a-z0-9-]+\b sh .mcabber/sayto p@point.im "bl %s" rcode
 # open link on point.im
 add_custom_command .o .* https?://([a-zA-Z0-9_-]+[.])?point[.]im/\S+ xdg-open %s
+# reply with "I'm sober" picture
+add_custom_command .v p@point.im #[a-z]+(/[0-9]+)?\b sh .mcabber/sayto p@point.im "%s https://i.point.im/m/h/hirthwork/fe/6f/5923/vegan.jpg" rcode
 
 spellcheck_enable .c 1
 spellcheck_enable .r 1
