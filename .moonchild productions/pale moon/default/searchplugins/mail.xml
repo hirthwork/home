@@ -1,0 +1,7 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>Mail Search</os:ShortName>
+<os:Description>Mail Search</os:Description>
+<os:InputEncoding>UTF-8</os:InputEncoding>
+<os:Image width="16" height="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARVJREFUeNpi/LhGoYqBgaEJiJkZCIPDQOwGxD9gAkxA3ECkZhCwBeICZAGQAawMpIFqIJZANoBUwAPEHTAOC4wR0/2KYfPJbww8nNjN/PL9H4OvORfDklIxEDcWiKcA8Rm4ASXBAgw68mwM7as+YDWgMkyAwcOEC9nlE0BhArfOvuwZWAFIIS7NIDVIwBqII1Dci80QHJphoIUFXQSk8GCXFAM/N8RsS00OXJpB4C9GiIE0gzSANMI0g8RwgHoGYEr8D8JAzn+gQjCNDcPkYOqB+CgQMzJCNTNcuPcLn1PhrjNQYgMx/wGxOSga4QaQCBYCcQK5KfELKHKQE8RvEg1oA+LnyAY0AvEvIjUfAOJ+ZAGAAAMAQr1jBtmcA5YAAAAASUVORK5CYII=</os:Image>
+<os:Url type="text/html" method="GET" template="https://mail.yandex-team.ru/neo2/#search/fid=2370000120000078571&amp;request={searchTerms}" resultDomain="mail.yandex-team.ru"/>
+</SearchPlugin>
