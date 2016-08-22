@@ -101,3 +101,5 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <o> <k> : "✔"
 <Multi_key> <n> <o> <k> : "✘"
 
+<Multi_key> <i> <n> <t> : "∫"
+
