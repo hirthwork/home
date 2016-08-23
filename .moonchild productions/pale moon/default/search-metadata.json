@@ -1,5 +1,5 @@
 {
-  "[app]/google.xml": {
+  "[profile]/google.xml": {
     "order": 1,
     "alias": "google"
   },
@@ -50,6 +50,10 @@
   "[profile]/mail.xml": {
     "order": 12,
     "alias": "mail"
+  },
+  "[profile]/java.xml": {
+    "order": 13,
+    "alias": "java"
   },
   "[app]/amazondotcom.xml": {
     "hidden": true
