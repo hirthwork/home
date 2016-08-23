@@ -55,6 +55,18 @@
     "order": 13,
     "alias": "java"
   },
+  "[profile]/urban-dictionary.xml": {
+    "order": 14,
+    "alias": "ub"
+  },
+  "[profile]/wiktionary.xml": {
+    "order": 15,
+    "alias": "wiktionary"
+  },
+  "[profile]/wiktionary-ru.xml": {
+    "order": 16,
+    "alias": "wiktionary-ru"
+  },
   "[app]/amazondotcom.xml": {
     "hidden": true
   },

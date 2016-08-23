@@ -1,8 +1,12 @@
 <SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
-<os:ShortName>IMDB</os:ShortName>
-<os:Description>IMDB</os:Description>
+<os:ShortName>IMDb</os:ShortName>
+<os:Description>IMDb</os:Description>
 <os:InputEncoding>UTF-8</os:InputEncoding>
-<os:Image width="16" height="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gwVFTs6poTKQgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAABWklEQVQ4y6VTPUsDQRB9txclAY2XpBACIuTaaySNH52k9D+oP8DCQrQVf4BN8A9oE7AUCyFik0aIjYEEEokWKohgiIHL5bIZi709c9kLfuTB8ZZl3sybuVlgQmhXZws0SYIIAKyuTfsXnHvsCu73PXa/Rf2e4FqjJxKECX8Sy3it0zTpL1WVQgc7CQJAhXyaAJARZ/R2bxIAAkD5o3n/nLWiVC1mCAA1bkyqFjPERofSag9Qq7vKsAr5NMqVLk5OPwAALhezj0i7EkacYXv3FUacodUe+PdZKxaIOzx+R/2xB8VBKqHj4clFKqGH/jbZe3JOR7nSVRMsL8UCzD2H0rJEbmUGAMD4SLtJQw+wxO1dN9SR4mBjfRbm4pQSuLn3gqwV9Stv7T+LPWiWTBruTVrljja0nRTYBQnHBtj55edYMecUKnZs8ZWqHbHKv63q2GMe08V159+v8QvdTrA1oj7g7QAAAABJRU5ErkJggg==</os:Image>
-<os:Url type="application/x-suggestions+json" method="GET" template="https://www.google.com/complete/search?q={searchTerms}+site:imdb.com&amp;btnI=1"/>
-<os:Url type="text/html" method="GET" template="https://www.google.com/search?q={searchTerms}+site:imdb.com&amp;btnI=1"/>
+<os:Image width="16" height="16">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABKUlEQVQ4jWNgoBTsWiL7nxLMsGuJ7P8v95Xh+OMdCH53HYJfXYbgZ+cQ+NEJCEYxAF0jIc33j0ININXW+0ch+M4BCGaoyBX8z8DA8H/lFKn/DAwM/wX4mP6/uqz8n4GB4T8DA8P/Kc3icLaxDsf/63uV/jMwMPy/c0AZwkY3gIGB4f+hdXIYBsDkcxMg6q/vVYIYUJKJ6QJledb/AnxMKAbcOaCMYkCED99/Yx0OTAOU5VlRaHQDsqIFUWgMA6ID+FDoifXicCcja1w3RRZiQGGKIFY/wmiYAQu7pYgzYOciuf/K8qwYBsBiAaaRjxsSRgzo8QoL3SvblOH44mal/xc3K/0/uxYVH1ui9J+hu1oMp2aYRnTNx5ZAcHe1GMQAYm2FacQwgBIMADGo++iPovPlAAAAAElFTkSuQmCC</os:Image>
+<SearchForm>http://www.imdb.com/?ref_=nv_home</SearchForm>
+<os:Url type="text/html" method="GET" template="http://www.imdb.com/find">
+  <os:Param name="ref_" value="nv_sr_fn"/>
+  <os:Param name="q" value="{searchTerms}"/>
+  <os:Param name="s" value="all"/>
+</os:Url>
 </SearchPlugin>
