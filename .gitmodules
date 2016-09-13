@@ -1,3 +1,6 @@
 [submodule ".vim/plugin/supertab"]
 	path = .vim/plugin/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule ".gdb-dashboard"]
+	path = .gdb-dashboard
+	url = https://github.com/cyrus-and/gdb-dashboard.git
