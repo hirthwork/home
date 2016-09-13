@@ -1,5 +1,5 @@
 #!/bin/sh -x
-PORTAGE_LOOP=portage.loop
+PORTAGE_LOOP=/portage.loop
 umount /usr/portage
 rm $PORTAGE_LOOP
 set -e
