@@ -1,23 +1,13 @@
-! jordyblue
-XTerm*color4: rgb:72/9f/cf
-XTerm*color12: rgb:72/9f/cf
-UXTerm*color4: rgb:72/9f/cf
-UXTerm*color12: rgb:72/9f/cf
-! red
-XTerm*color1: rgb:ff/00/00
-XTerm*color9: rgb:ff/00/00
-UXTerm*color1: rgb:ff/00/00
-UXTerm*color9: rgb:ff/00/00
-! green
-XTerm*color2: rgb:00/ff/00
-XTerm*color10: rgb:00/ff/00
-UXTerm*color2: rgb:00/ff/00
-UXTerm*color10: rgb:00/ff/00
-! magenta
-XTerm*color5: rgb:ff/00/ff
-XTerm*color13: rgb:ff/00/ff
-UXTerm*color5: rgb:ff/00/ff
-UXTerm*color13: rgb:ff/00/ff
+XTerm*color4: deep sky blue
+XTerm*color12: deep sky blue
+UXTerm*color4: deep sky blue
+UXTerm*color12: deep sky blue
+
+XTerm*color1: red
+UXTerm*color1: red
+
+XTerm*color5: magenta
+UXTerm*color5: magenta
 
 XTerm*eightBitInput: false
 XTerm*metaSendsEscape: true
