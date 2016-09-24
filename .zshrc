@@ -95,7 +95,6 @@ then
     fi
 fi
 export GTK_IM_MODULE=xim
-export VDPAU_NVIDIA_NO_OVERLAY=1
 
 if which w3mman >/dev/null 2>&1
 then
