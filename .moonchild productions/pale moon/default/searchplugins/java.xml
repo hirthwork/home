@@ -2,6 +2,7 @@
 <os:ShortName>Java</os:ShortName>
 <os:Description>Java</os:Description>
 <os:InputEncoding>UTF-8</os:InputEncoding>
+<os:Image width="16" height="16">data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiFO8AMSfuAEA38ABKRPMAWlXxAGZh9QB4cPQAhoD2AJyc9gCsq/cAu7f7AMXF/ADZ2PsA8fH+APz//gAAAAAAAAEAAAAAABAAAAAAABAQABAQAQEBAAAAAAa7u7u6YBARzu7u7u7pAAjsQAEABt1wDuIAEAAQTsAOsBAAAAAO4B7QAAAAEC7RC+kQEBABrpAT3su7u73uEABL7u7u7qMAAAAAAAAAAAAQEBAQEBAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</os:Image>
 <os:Url type="application/x-suggestions+json" method="GET" template="https://www.google.com/complete/search?q={searchTerms}+site:https://docs.oracle.com/javase/8/docs/api/java/&amp;btnI=1"/>
 <os:Url type="text/html" method="GET" template="https://www.google.com/search?q={searchTerms}+site:https://docs.oracle.com/javase/8/docs/api/java/&amp;btnI=1"/>
 </SearchPlugin>
