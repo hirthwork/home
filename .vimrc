@@ -165,6 +165,7 @@ autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.rl setfiletype ragel
 autocmd BufRead,BufNewFile *.lex setfiletype jflex | setlocal syntax=jflex
+autocmd BufRead,BufNewFile Dockerfile setfiletype dockerfile | setlocal syntax=dockerfile
 autocmd BufRead,BufNewFile AUTHORS setfiletype txt
 autocmd BufRead,BufNewFile COPYING setfiletype txt
 autocmd BufRead,BufNewFile INSTALL setfiletype txt
