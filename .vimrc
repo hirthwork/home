@@ -40,10 +40,17 @@ highlight TabLine ctermfg=Gray ctermbg=none cterm=none
 highlight TabLineFill ctermfg=Gray ctermbg=none cterm=none
 highlight TabLineSel ctermfg=Green ctermbg=none cterm=bold
 highlight TabNumber ctermfg=Black ctermbg=Gray
+
 highlight UglyLine ctermfg=Black ctermbg=Cyan
+
 highlight Pmenu ctermfg=Gray ctermbg=Blue
 highlight PmenuSel ctermfg=Blue ctermbg=Gray
 highlight PmenuSbar ctermbg=Cyan
+
+highlight DiffAdd cterm=bold ctermbg=Green
+highlight DiffChange cterm=bold ctermbg=none
+highlight DiffDelete cterm=bold ctermbg=Red
+highlight DiffText cterm=bold ctermbg=Blue
 
 set textwidth=79
 
