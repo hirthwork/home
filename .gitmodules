@@ -4,3 +4,6 @@
 [submodule ".gdb-dashboard"]
 	path = .gdb-dashboard
 	url = https://github.com/cyrus-and/gdb-dashboard.git
+[submodule ".emacs.d/emacs-point-el"]
+	path = .emacs.d/emacs-point-el
+	url = https://github.com/rayslava/emacs-point-el
