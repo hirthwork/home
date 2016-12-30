@@ -20,7 +20,7 @@ compinit
 colors
 
 short_pwd() {
-    pwd|sed "s,$HOME,~,"|grep -o "[^/]*\(/[^/]*\)\?$"
+    pwd|sed "s,$HOME,~,"|grep -o "\(^/[^/]\+/[^/]\+\|[^/]*\(/[^/]*\)\?\)$"
 }
 
 chpwd() {
