@@ -2,7 +2,8 @@
 screenrc=$(mktemp)
 cp $HOME/.screenrc $screenrc
 . ./.mutt/start
-. ./.mcabber/start
+echo screen emacs -nw>>$screenrc
+echo title emacs>>$screenrc
 echo screen .irssi/start >> $screenrc
 echo title irc >> $screenrc
 /usr/bin/screen -c $screenrc
