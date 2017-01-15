@@ -1,6 +1,7 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
 (setq-default indent-tabs-mode nil)
+(setq inhibit-startup-screen t)
 
 (savehist-mode t)
 
