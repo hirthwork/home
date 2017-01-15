@@ -18,3 +18,5 @@
     ("^https?://\\(www\\.youtube\\.com\\|youtu\\.be\\|coub\\.com\\|vimeo\\.com\\|www\\.liveleak\\.com\\)/" . mpv-browse)
     ("^https?://www\\.facebook\\.com/.*/videos?/" . mpv-browse)
     ("." . browse-url-xdg-open)))
+
+(global-set-key (kbd "C-c b") 'browse-url)

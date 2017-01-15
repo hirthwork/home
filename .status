@@ -13,7 +13,12 @@ for x in `ls $HOME/.mcabber/*/state 2>/dev/null`
 do
     xmpp="$xmpp `echo $x|sed 's/.*[/][.]mcabber[/]/⎁/;s/[/]state$//'`(`cat $x`)"
 done
-[ X"$xmpp"X == XX ] || status="$status $xmpp"
+if [ -f $HOME/.emacs.d/jabber-status ]
+then
+    test X"$xmpp"X == XX || xmpp=" "
+    xmpp="${xmpp}$(cat $HOME/.emacs.d/jabber-status)"
+fi
+test X"$xmpp"X == XX || status="$status $xmpp"
 
 mail=
 for x in `ls $HOME/.mutt/*/state 2>/dev/null`
