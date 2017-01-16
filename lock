@@ -1,13 +1,3 @@
 #!/bin/sh
-for x in ~/.mcabber/*/mcabber.fifo
-do
-    echo "/status away" > $x
-done
-
 while ! slock; do :; done;
-
-for x in ~/.mcabber/*/mcabber.fifo
-do
-    echo "/status online" > $x
-done
 
