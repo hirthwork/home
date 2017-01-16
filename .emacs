@@ -4,5 +4,6 @@
 (setq inhibit-startup-screen t)
 
 (savehist-mode t)
+(setq history-delete-duplicates t)
 
 (mapc (lambda (f) (load-file (concat "~/.emacs.d/" f))) (directory-files "~/.emacs.d/" nil "\\.el$"))
