@@ -1,5 +1,7 @@
 (defun dwm-status-update ()
-  (start-process-shell-command "dwm-update" nil "~/.dwm.update"))
+  (let
+    ((process-connection-type nil))
+    (start-process-shell-command "dwm-update" nil "~/.dwm.update")))
 
 (defun jabber-status-update ()
   "Updates dwm status with list of contacts with unread messages"
