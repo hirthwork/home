@@ -26,10 +26,13 @@
     status="$status $cpu$mem $bat$(date '+%R %a %F')"
 
     xsetroot -name "$status"
-
-    if [ -x ~/.dwm.postupdate ]
-    then
-        ~/.dwm.postupdate
-    fi
 ) 9>$DWM_UPDATE_MARK
+
+if [ -x ~/.dwm.postupdate ]
+then
+    (
+        flock -n 11 || exit 1
+        ~/.dwm.postupdate
+    ) 11>$DWM_UPDATE_MARK.postupdate
+fi
 
