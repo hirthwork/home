@@ -20,3 +20,6 @@
     ("." . browse-url-xdg-open)))
 
 (global-set-key (kbd "C-c b") 'browse-url)
+(global-set-key (kbd "C-c и") 'browse-url)
+(global-set-key (kbd "C-c B") 'browse-url-xdg-open)
+(global-set-key (kbd "C-c И") 'browse-url-xdg-open)
