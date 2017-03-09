@@ -84,6 +84,7 @@ source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 [[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
 [[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
 
+export GDBHISTFILE=~/.gdb_history
 export EDITOR=vim
 export PAGER=less
 export MANPAGER=less
