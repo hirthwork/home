@@ -4,7 +4,6 @@ cp $HOME/.screenrc $screenrc
 . ./.mutt/start
 echo screen emacs -nw>>$screenrc
 echo title emacs>>$screenrc
-echo screen .irssi/start >> $screenrc
 echo title irc >> $screenrc
 /usr/bin/screen -c $screenrc
 rm -f $screenrc
