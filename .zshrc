@@ -6,10 +6,9 @@ setopt INC_APPEND_HISTORY
 
 bindkey -e
 
-export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
 if ssh-add -L 2>&1 | fgrep -q "Could not open a connection to your authentication agent."
 then
-    eval $(ssh-agent -a "$SSH_AUTH_SOCK")
+    eval $(ssh-agent)
 fi
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
