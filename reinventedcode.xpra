@@ -1,0 +1,12 @@
+username=root
+encoding=
+ssh_port=22
+speed=0
+min-speed=30
+host=reinventedcode.com
+min-quality=30
+mode=ssh
+password=
+quality=0
+port=666
+autoconnect=True
