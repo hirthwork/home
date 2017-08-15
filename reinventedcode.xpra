@@ -10,3 +10,5 @@ password=
 quality=0
 port=666
 autoconnect=True
+compressors=lz4
+compress=1
