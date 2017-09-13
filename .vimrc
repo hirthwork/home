@@ -160,7 +160,7 @@ command! -complete=file -nargs=+ Etabs call s:ETW(<f-args>)
 
 function! s:ETW(...)
     for f1 in a:000
-        let files = glob(f1)
+        let files = glob('`find -type f -name ' . f1 . '`')
         if files != ''
             for f2 in split(files, "\n")
                 execute 'tabnew ' . escape(f2, '\ "')
@@ -187,5 +187,5 @@ autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
 autocmd FileType make setlocal iskeyword+=- | setlocal iskeyword+=.
 autocmd Filetype java setlocal kp=~/javaman makeprg=ant efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#|
-    map <C-j> <esc>:Etabs **/<cword>.java<CR> |
-    imap <C-j> <esc>:Etabs **/<cword>.java<CR>
+    map <C-j> <esc>:Etabs <cword>.java<CR> |
+    imap <C-j> <esc>:Etabs <cword>.java<CR>
