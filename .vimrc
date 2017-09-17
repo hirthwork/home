@@ -12,6 +12,7 @@ set tabpagemax=40
 set showtabline=2
 
 set incsearch
+set hlsearch
 
 set splitbelow
 set splitright
