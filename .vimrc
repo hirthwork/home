@@ -190,3 +190,10 @@ autocmd FileType make setlocal iskeyword+=- | setlocal iskeyword+=.
 autocmd Filetype java setlocal kp=~/javaman makeprg=ant efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#|
     map <C-j> <esc>:Etabs <cword>.java<CR> |
     imap <C-j> <esc>:Etabs <cword>.java<CR>
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+au Syntax * RainbowParenthesesLoadChevrons
+
