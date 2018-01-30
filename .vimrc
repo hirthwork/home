@@ -191,6 +191,25 @@ autocmd Filetype java setlocal kp=~/javaman makeprg=ant efm=%A\ %#[javac]\ %f:%l
     map <C-j> <esc>:Etabs <cword>.java<CR> |
     imap <C-j> <esc>:Etabs <cword>.java<CR>
 
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['red',         'firebrick3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['white',       'DarkOrchid3'],
+    \ ['cyan',        'DarkOrchid3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['brown',       'firebrick3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ]
+
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
