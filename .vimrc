@@ -159,15 +159,25 @@ endif
 
 command! -complete=file -nargs=+ Etabs call s:ETW(<f-args>)
 
-function! s:ETW(...)
-    for f1 in a:000
-        let files = glob('`find -type f -name ' . f1 . '`')
+function s:ETW(...)
+    let path = split(expand('%@:p:h') , '/')
+    let f = a:000[0]
+    let i = len(path)
+    while i >= 0
+        if i == 0
+            let folder = ''
+        else
+            let folder = join(path[:(i - 1)], '/')
+        endif
+        let files = glob('`find ' . folder . ' -type f -name ' . f . '`')
         if files != ''
-            for f2 in split(files, "\n")
+            for f2 in split(files, '\n')
                 execute 'tabnew ' . escape(f2, '\ "')
             endfor
+            return
         endif
-    endfor
+        let i = i - 1
+    endwhile
 endfunction
 
 autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
