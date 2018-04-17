@@ -103,6 +103,7 @@ then
     alias man=w3mman
 fi
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
+alias fgrep="fgrep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
 alias gimp="gimp -s"
 alias diff="diff -d -u"
