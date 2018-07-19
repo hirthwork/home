@@ -12,6 +12,5 @@ do
     sleep 10
 done &
 autocutsel&
-xcompmgr&
 dbus-launch --exit-with-session dwm
 
