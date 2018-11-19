@@ -1,8 +1,8 @@
 #!/bin/sh
 if [ -f /sys/class/power_supply/BAT0/capacity ]
 then
-    bat=" $(cat /sys/class/power_supply/BAT0/capacity)%"
+    bat=" $((cat /sys/class/power_supply/BAT*/energy_now|tr '\n' '+'|sed 's/^/(/;s/+$/)*100/';cat /sys/class/power_supply/BAT*/energy_full|tr '\n' '+'|sed 's#^#/(#;s/+$/)\n/')|bc)%"
 else
     bat=
 fi
-LANG= uptime|sed "s/,.*users\?.*: / /;s/$/$bat/"|tr -d ,
+LANG= uptime|sed "s/,.*users\?.*: / /;s/$/$(~/.battery)/"|tr -d ,

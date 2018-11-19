@@ -17,13 +17,7 @@
         awk '{diff=($4 - $2) * $1; print int(100 * (diff + $3 - $5) / diff)"%💻"}')
 
     mem=$(free -m|head -n2|tail -n1|awk 'BEGIN{_[0]="○";_[1]="◔";_[2]="◑";_[3]="◕";_[4]="⏺"}{print _[int($3 * 5 / $2)]}')
-    if [ -f /sys/class/power_supply/BAT0/capacity ]
-    then
-        bat="⚡$(cat /sys/class/power_supply/BAT0/capacity)% "
-    else
-        bat=
-    fi
-    status="$status $cpu$mem $bat$(date '+%R %a %F')"
+    status="$status $cpu$mem$(~/.battery) $(date '+%R %a %F')"
 
     xsetroot -name "$status"
 ) 9>$DWM_UPDATE_MARK
