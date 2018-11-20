@@ -1,5 +1,5 @@
 #!/bin/sh
-setxkbmap -option grp:caps_toggle,compose:menu,grp_led:scroll us,ru
+setxkbmap -option grp:caps_toggle,compose:menu,compose:prsc,grp_led:scroll us,ru
 xset r rate 300 50
 xsetroot -solid "#444444"
 xrdb -merge $HOME/.Xresources
