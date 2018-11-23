@@ -1,0 +1,1 @@
+../syntax/vim-openscad/ftdetect/openscad.vim
