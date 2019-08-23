@@ -9,6 +9,6 @@ fi
 
 if [ -n "$prefix" ]
 then
-    echo " $((cat /sys/class/power_supply/BAT*/${prefix}_now|tr '\n' '+'|sed 's/^/(/;s/+$/)*100/';cat /sys/class/power_supply/BAT*/${prefix}_full|tr '\n' '+'|sed 's#^#/(#;s/+$/)\n/')|bc)%"
+    echo " $( (cat /sys/class/power_supply/BAT*/${prefix}_now|tr '\n' '+'|sed 's/^/(/;s/+$/)*100/';cat /sys/class/power_supply/BAT*/${prefix}_full|tr '\n' '+'|sed 's#^#/(#;s/+$/)\n/')|bc)%"
 fi
 
