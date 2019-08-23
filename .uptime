@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [ -f /sys/class/power_supply/BAT0/capacity ]
 then
     bat=" $((cat /sys/class/power_supply/BAT*/energy_now|tr '\n' '+'|sed 's/^/(/;s/+$/)*100/';cat /sys/class/power_supply/BAT*/energy_full|tr '\n' '+'|sed 's#^#/(#;s/+$/)\n/')|bc)%"

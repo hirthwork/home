@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [ -f /sys/class/power_supply/BAT0/energy_now ]
 then
     prefix=energy
