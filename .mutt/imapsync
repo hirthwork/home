@@ -26,6 +26,7 @@ do
     echo "sslcacertfile = /etc/ssl/certs/ca-certificates.crt" >> $offlineimaprc
     echo "keepalive = 10" >> $offlineimaprc
     echo "holdconnectionopen = yes" >> $offlineimaprc
+    echo "ssl_version=tls1_2" >> $offlineimaprc
     echo "nametrans = lambda foldername: foldername.decode('imap4-utf-7').encode('utf-8')" >> $offlineimaprc
     cat $(dirname $x)/imap >> $offlineimaprc
 done
