@@ -103,3 +103,5 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 
 <Multi_key> <i> <n> <t> : "∫"
 
+<Multi_key> <space> <minus> : "‑" U2011 # неразрывный минус
+
