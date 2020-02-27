@@ -58,7 +58,7 @@ preexec() {
                 name=imapsync
                 ;;
             *)
-                name=$first@$(short_pwd)
+                name=$(sed 's#.*/\(.\+\)$#\1#;s#^\(..........\).*#\1~#' <<< $first)@$(short_pwd)
                 ;;
         esac
         echo -ne "\ek"$name"\e\\"
