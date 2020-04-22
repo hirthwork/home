@@ -9,7 +9,7 @@
   (start-process (concat "mpv --loop-file=inf" url) nil "mpv" "--loop-file=inf" url))
 
 (setq browse-url-browser-function
-  '(("\\.\\(jpe?g\\|png\\)\\(:large\\|:orig\\)?\\(\\?.*\\)?$" . feh-browse)
+  '(("\\.\\(jpe?g\\|jpe\\|png\\)\\(:large\\|:orig\\)?\\(\\?.*\\)?$" . feh-browse)
     ("^https?://img-fotki\\.yandex\\.ru/get/" . feh-browse)
     ("^https?://pics\\.livejournal\\.com/.*/pic/" . feh-browse)
     ("^https?://l-userpic\\.livejournal\\.com/" . feh-browse)
