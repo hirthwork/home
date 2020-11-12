@@ -43,6 +43,8 @@ highlight TabLineSel ctermfg=Green ctermbg=none cterm=bold
 highlight TabNumber ctermfg=Black ctermbg=Gray
 
 highlight UglyLine ctermfg=Black ctermbg=Cyan
+highlight ColorColumn ctermbg=Blue
+highlight HighlightLine ctermfg=Black ctermbg=Green
 
 highlight Pmenu ctermfg=Gray ctermbg=Blue
 highlight PmenuSel ctermfg=Blue ctermbg=Gray
@@ -54,6 +56,7 @@ highlight DiffDelete cterm=bold ctermbg=Red
 highlight DiffText cterm=bold ctermbg=Blue
 
 set textwidth=79
+set colorcolumn=80
 
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y%=\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l:%c%V\/%L
@@ -180,7 +183,29 @@ function s:ETW(...)
     endwhile
 endfunction
 
-autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('UglyLine', '\%>79v.\+', -1) | let w:m2=matchadd('UglyLine', '\s\+$') | endif
+let g:highlights={}
+
+function s:HighlightLine()
+    let lineno = line(".")
+    if has_key(g:highlights, lineno)
+        call matchdelete(get(g:highlights, lineno))
+        call remove(g:highlights, lineno)
+    else
+        let l:m = matchaddpos("HighlightLine", [lineno])
+        let g:highlights[lineno] = l:m
+    endif
+endfunction
+command HighlightLine call s:HighlightLine()
+
+function s:HighlightLineClear()
+    for k in keys(g:highlights)
+        call matchdelete(get(g:highlights, k))
+        call remove(g:highlights, k)
+    endfor
+endfunction
+command HighlightLineClear call s:HighlightLineClear()
+
+autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('UglyLine', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.rl setfiletype ragel
@@ -198,8 +223,14 @@ autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
 autocmd FileType make setlocal iskeyword+=- | setlocal iskeyword+=.
 autocmd Filetype java setlocal kp=~/javaman makeprg=ant efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#|
-    map <C-j> <esc>:Etabs <cword>.java<CR> |
-    imap <C-j> <esc>:Etabs <cword>.java<CR>
+    map <C-j> <esc>:Etabs <cword>.java<CR>|
+    imap <C-j> <esc>:Etabs <cword>.java<CR>|
+    map <C-f> <esc>:Etabs <cfile><CR>|
+    imap <C-f> <esc>:Etabs <cfile><CR>|
+    map <F4> <esc>:HighlightLine<CR>|
+    imap <F4> <esc>:HighlightLine<CR>|
+    map <F2> <esc>:HighlightLineClear<CR>|
+    imap <F2> <esc>:HighlightLineClear<CR>
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
