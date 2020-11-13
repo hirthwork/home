@@ -42,7 +42,6 @@ highlight TabLineFill ctermfg=Gray ctermbg=none cterm=none
 highlight TabLineSel ctermfg=Green ctermbg=none cterm=bold
 highlight TabNumber ctermfg=Black ctermbg=Gray
 
-highlight UglyLine ctermfg=Black ctermbg=Cyan
 highlight ColorColumn ctermbg=Blue
 highlight HighlightLine ctermfg=Black ctermbg=Green
 
@@ -205,7 +204,7 @@ function s:HighlightLineClear()
 endfunction
 command HighlightLineClear call s:HighlightLineClear()
 
-autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('UglyLine', '\s\+$') | endif
+autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('ErrorMsg', '\s\+$') | endif
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.rl setfiletype ragel
