@@ -204,7 +204,7 @@ function s:HighlightLineClear()
 endfunction
 command HighlightLineClear call s:HighlightLineClear()
 
-autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('ErrorMsg', '\s\+$') | endif
+autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('ErrorMsg', '\s\+$') | let w:m2=matchadd('WarningMsg', '\%>' . &cc . 'v.\+', -1) | endif
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.rl setfiletype ragel
