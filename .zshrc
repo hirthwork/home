@@ -70,7 +70,7 @@ precmd() {
 }
 
 prompt='%B%F{green}%n%b%F{yellow}@%B%F{red}%m%b %F{cyan}%~%F{red}%v %(?.%F{green}$.%F{red}%?)%f '
-rprompt='%b%F{yellow}[%b%F{gray}%D{%L:%M:%S}%b%F{yellow}]'
+RPROMPT='%b%F{yellow}[%b%F{gray}%D{%T}%b%F{yellow}]'
 
 [[ ! -f ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} ]] && zkbd
 source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
