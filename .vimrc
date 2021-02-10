@@ -207,7 +207,8 @@ command HighlightLineClear call s:HighlightLineClear()
 autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('ErrorMsg', '\s\+$') | let w:m2=matchadd('WarningMsg', '\%>' . &cc . 'v.\+', -1) | endif
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile *.proto setfiletype proto
-autocmd BufRead,BufNewFile *.rl setfiletype ragel
+autocmd BufRead,BufNewFile *.rl setfiletype ragel | setlocal syntax=ragel
+autocmd BufRead,BufNewFile *.rl6 setfiletype ragel | setlocal syntax=ragel
 autocmd BufRead,BufNewFile *.lex setfiletype jflex | setlocal syntax=jflex
 autocmd BufRead,BufNewFile Dockerfile setfiletype dockerfile | setlocal syntax=dockerfile
 autocmd BufRead,BufNewFile AUTHORS setfiletype txt
@@ -220,6 +221,7 @@ autocmd FileType python setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
+autocmd FileType proto setlocal shiftwidth=2 softtabstop=2
 autocmd FileType make setlocal iskeyword+=- | setlocal iskeyword+=.
 autocmd Filetype java setlocal kp=~/javaman makeprg=ant efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#|
     map <C-j> <esc>:Etabs <cword>.java<CR>|
