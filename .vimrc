@@ -182,6 +182,51 @@ function s:ETW(...)
     endwhile
 endfunction
 
+command! -complete=file -nargs=+ Gtabs call s:GTW(<f-args>)
+
+function! GoFind(findexpr, name)
+    let cmd = a:findexpr . "|xargs grep -n '\\(\\(func\\|type\\) " . a:name . "\\>\\|\\<" . a:name . "\\> =\\)'"
+    let matches = system(cmd)
+    if matches == ''
+        return 0
+    endif
+    for row in split(matches, '\n')
+        let items = split(row, ':')
+        execute 'tabnew ' . items[0]
+        execute items[1]
+    endfor
+    return 1
+endfunction
+
+function s:GTW(...)
+    let path = split(expand('%@:p:h') , '/')
+    let components = split(a:000[0], '\.')
+    if len(components) == 1
+        let folder = join(path[:-2], '/')
+        let res = GoFind("find " . folder . " -type f -name \\*.go", components[0])
+        return
+    endif
+    let package = components[0]
+    let name = components[1]
+    let res = GoFind("find library/go -type f -name \\*.go|fgrep /" . package . '/', name)
+    if res == 1
+        return
+    endif
+    let i = len(path)
+    while i >= 0
+        if i == 0
+            let folder = ''
+        else
+            let folder = join(path[:(i - 1)], '/')
+        endif
+        let res = GoFind("find " . folder . " -type f -name \\*.go|fgrep /" . package . '/', name)
+        if res == 1
+            return
+        endif
+        let i = i - 1
+    endwhile
+endfunction
+
 let g:highlights={}
 
 function s:HighlightLine()
@@ -232,7 +277,9 @@ autocmd Filetype java setlocal kp=~/javaman makeprg=ant efm=%A\ %#[javac]\ %f:%l
     imap <F4> <esc>:HighlightLine<CR>|
     map <F2> <esc>:HighlightLineClear<CR>|
     imap <F2> <esc>:HighlightLineClear<CR>
-autocmd FileType go setlocal noexpandtab
+autocmd FileType go setlocal noexpandtab|
+    map <C-g> <esc>:Gtabs <cfile><CR>|
+    imap <C-g> <esc>:Gtabs <cfile><CR>
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
