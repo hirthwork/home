@@ -185,7 +185,7 @@ endfunction
 command! -complete=file -nargs=+ Gtabs call s:GTW(<f-args>)
 
 function! GoFind(findexpr, name)
-    let cmd = a:findexpr . "|xargs grep -n '\\(\\(func\\|type\\) " . a:name . "\\>\\|\\<" . a:name . "\\> =\\)'"
+    let cmd = a:findexpr . "|xargs grep -n '\\(\\(func *\\(([^)]\\+)\\)\\?\\|type\\) \\+" . a:name . "\\>\\|\\<" . a:name . "\\> =\\)'"
     let matches = system(cmd)
     if matches == ''
         return 0
