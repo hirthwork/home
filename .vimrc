@@ -277,7 +277,9 @@ autocmd Filetype java setlocal kp=~/javaman makeprg=ant efm=%A\ %#[javac]\ %f:%l
     imap <F4> <esc>:HighlightLine<CR>|
     map <F2> <esc>:HighlightLineClear<CR>|
     imap <F2> <esc>:HighlightLineClear<CR>
-autocmd FileType go setlocal noexpandtab|
+autocmd FileType go set noexpandtab|
+    set softtabstop=8|
+    set shiftwidth=8|
     map <C-g> <esc>:Gtabs <cfile><CR>|
     imap <C-g> <esc>:Gtabs <cfile><CR>
 
