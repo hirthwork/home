@@ -183,7 +183,7 @@ function s:ETW(...)
 endfunction
 
 function! GoFind(findexpr, name)
-    let cmd = a:findexpr . "|xargs grep -n '\\(\\(func\\|type\\) " . a:name . "\\>\\|^\\s\\+\\<" . a:name . "\\>\\($\\|\\s\\+=\\)\\)'"
+    let cmd = a:findexpr . "|xargs grep -n '\\(\\(func\\|type\\) " . a:name . "\\>\\|^\\s\\+\\<" . a:name . "\\>\\($\\|\\s\\+[A-Za-z=]\\)\\)'"
     let matches = system(cmd)
     if matches == ''
         return 0
