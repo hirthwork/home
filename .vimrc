@@ -182,10 +182,8 @@ function s:ETW(...)
     endwhile
 endfunction
 
-command! -complete=file -nargs=+ Gtabs call s:GTW(<f-args>)
-
 function! GoFind(findexpr, name)
-    let cmd = a:findexpr . "|xargs grep -n '\\(\\(func\\|type\\) " . a:name . "\\>\\|\\<" . a:name . "\\> =\\)'"
+    let cmd = a:findexpr . "|xargs grep -n '\\(\\(func\\|type\\) " . a:name . "\\>\\|^\\s\\+\\<" . a:name . "\\>\\($\\|\\s\\+=\\)\\)'"
     let matches = system(cmd)
     if matches == ''
         return 0
@@ -197,6 +195,8 @@ function! GoFind(findexpr, name)
     endfor
     return 1
 endfunction
+
+command! -complete=file -nargs=+ Gtabs call s:GTW(<f-args>)
 
 function s:GTW(...)
     let path = split(expand('%@:p:h') , '/')
@@ -219,9 +219,18 @@ function s:GTW(...)
         else
             let folder = join(path[:(i - 1)], '/')
         endif
+
         let res = GoFind("find " . folder . " -type f -name \\*.go|fgrep /" . package . '/', name)
         if res == 1
             return
+        endif
+
+        " We are close to root, check if out target in vendor/
+        if i == 2
+            let res = GoFind("find vendor -type f -name \\*.go|fgrep /" . package . '/', name)
+            if res == 1
+                return
+            endif
         endif
         let i = i - 1
     endwhile
