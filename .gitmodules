@@ -13,6 +13,3 @@
 [submodule ".vim/syntax/vim-openscad"]
 	path = .vim/syntax/vim-openscad
 	url = https://github.com/sirtaj/vim-openscad
-[submodule ".vim/pack/plugins/start/vim-go"]
-	path = .vim/pack/plugins/start/vim-go
-	url = https://github.com/fatih/vim-go
