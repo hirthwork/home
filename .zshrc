@@ -99,10 +99,6 @@ then
 fi
 export GTK_IM_MODULE=xim
 
-if which w3mman >/dev/null 2>&1
-then
-    alias man=w3mman
-fi
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
 alias fgrep="fgrep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"

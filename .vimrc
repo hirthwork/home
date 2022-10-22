@@ -25,8 +25,6 @@ set langmap=№.\\,;#/?,ёйцукенгшщзхъфывапролджэячсм
 
 set switchbuf=usetab,newtab
 
-set kp=w3mman
-
 set showcmd
 
 map <F6> <esc>:setlocal spell spelllang=en<CR>
