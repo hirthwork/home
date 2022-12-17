@@ -40,7 +40,6 @@ highlight TabLineFill ctermfg=Gray ctermbg=none cterm=none
 highlight TabLineSel ctermfg=Green ctermbg=none cterm=bold
 highlight TabNumber ctermfg=Black ctermbg=Gray
 
-highlight ColorColumn ctermbg=Blue
 highlight HighlightLine ctermfg=Black ctermbg=Green
 
 highlight Pmenu ctermfg=Gray ctermbg=Blue
@@ -53,7 +52,6 @@ highlight DiffDelete cterm=bold ctermbg=Red
 highlight DiffText cterm=bold ctermbg=Blue
 
 set textwidth=79
-set colorcolumn=80
 
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y%=\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l:%c%V\/%L
@@ -85,6 +83,23 @@ function! TabExec(cmd)
   set nomodified
 endfunction
 command! -nargs=+ -complete=command TabExec call TabExec(<q-args>)
+
+function! ScratchExec(cmd)
+  echo "Executing: '".substitute(a:cmd, '^!', '', 'g')."'..."
+  split
+  noswapfile hide enew
+  setlocal buftype=nofile
+  setlocal bufhidden=hide
+  setlocal nobuflisted
+  silent! execute "read ".a:cmd
+  set nomodified
+endfunction
+command! -nargs=+ -complete=command ScratchExec call ScratchExec(<q-args>)
+
+function! CodeSearch(...)
+    call ScratchExec('!ya tool cs -w -m 1000 -j -c ' . a:000[0])
+endfunction
+command! -complete=file -nargs=+ CodeSearch call CodeSearch(<f-args>)
 
 let g:clang_complete_copen = 1
 let g:clang_no_cache = 1
@@ -256,7 +271,7 @@ function s:HighlightLineClear()
 endfunction
 command HighlightLineClear call s:HighlightLineClear()
 
-autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('ErrorMsg', '\s\+$') | let w:m2=matchadd('WarningMsg', '\%>' . &cc . 'v.\+', -1) | endif
+autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('ErrorMsg', '\s\+$') | let w:m2=matchadd('WarningMsg', '\%>79v.\+', -1) | endif
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.rl setfiletype ragel | setlocal syntax=ragel
@@ -280,6 +295,8 @@ autocmd FileType java setlocal shiftwidth=4 softtabstop=4 expandtab|
     imap <C-j> <esc>:Etabs <cword>.java<CR>|
     map <C-f> <esc>:Etabs <cfile><CR>|
     imap <C-f> <esc>:Etabs <cfile><CR>|
+    map <C-k> <esc>:CodeSearch <cword><CR>|
+    imap <C-k> <esc>:CodeSearch <cword><CR>|
     map <F4> <esc>:HighlightLine<CR>|
     imap <F4> <esc>:HighlightLine<CR>|
     map <F2> <esc>:HighlightLineClear<CR>|
