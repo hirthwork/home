@@ -15,7 +15,11 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
 
-autoload -Uz compinit zkbd colors tetris
+autoload -Uz compinit colors tetris
+if [ "x$SKIP_ZKBD" = "x" ]
+then
+    autoload -Uz zkbd
+fi
 zle -N tetris
 compinit
 colors
@@ -97,7 +101,6 @@ then
         export GIT_SSH=dbclient
     fi
 fi
-export GTK_IM_MODULE=xim
 
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
 alias fgrep="fgrep --color --exclude-dir=.svn --exclude-dir=.git"
