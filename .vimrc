@@ -97,6 +97,8 @@ function! ScratchExec(cmd)
 endfunction
 command! -nargs=+ -complete=command ScratchExec call ScratchExec(<q-args>)
 
+command! -nargs=+ -complete=file Fgrep call ScratchExec('!fgrep -r ' . <q-args>)
+
 function! CodeSearch(...)
     call ScratchExec('!ya tool cs -w -m 1000 -j -c ' . a:000[0])
 endfunction
