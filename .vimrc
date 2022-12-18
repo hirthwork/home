@@ -93,6 +93,7 @@ function! ScratchExec(cmd)
   setlocal nobuflisted
   silent! execute "read ".a:cmd
   set nomodified
+  :2
 endfunction
 command! -nargs=+ -complete=command ScratchExec call ScratchExec(<q-args>)
 
