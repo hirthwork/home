@@ -10,6 +10,11 @@ if which skotty >/dev/null
 then
     eval $(skotty ssh env)
 fi
+if ssh-add -L 2>&1 | fgrep -q "Could not open a connection to your authentication agent."
+then
+    eval $(ssh-agent)
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
