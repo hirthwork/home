@@ -20,5 +20,10 @@ do
     sleep 10
 done &
 autocutsel&
+
+if which skotty >/dev/null
+then
+    skotty start --daemonize
+fi
 dbus-launch --exit-with-session dwm
 

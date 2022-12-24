@@ -6,10 +6,9 @@ setopt INC_APPEND_HISTORY
 
 bindkey -e
 
-if ssh-add -L 2>&1 | fgrep -q "Could not open a connection to your authentication agent."
+if which skotty >/dev/null
 then
-    eval $(ssh-agent)
-    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+    eval $(skotty ssh env)
 fi
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
