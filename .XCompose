@@ -102,6 +102,20 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <n> <o> <k> : "✘"
 
 <Multi_key> <i> <n> <t> : "∫"
-
 <Multi_key> <space> <minus> : "‑" U2011 # неразрывный минус
 
+<Multi_key> <Cyrillic_DE> <Cyrillic_SOFTSIGN> : "Ђ"
+<Multi_key> <Cyrillic_DE> <Cyrillic_softsign> : "Ђ"
+<Multi_key> <Cyrillic_de> <Cyrillic_softsign> : "ђ"
+<Multi_key> <Cyrillic_EL> <Cyrillic_SOFTSIGN> : "Љ"
+<Multi_key> <Cyrillic_EL> <Cyrillic_softsign> : "Љ"
+<Multi_key> <Cyrillic_el> <Cyrillic_softsign> : "љ"
+<Multi_key> <Cyrillic_EN> <Cyrillic_SOFTSIGN> : "Њ"
+<Multi_key> <Cyrillic_EN> <Cyrillic_softsign> : "Њ"
+<Multi_key> <Cyrillic_en> <Cyrillic_softsign> : "њ"
+<Multi_key> <Cyrillic_CHE> <Cyrillic_SOFTSIGN> : "Ћ"
+<Multi_key> <Cyrillic_CHE> <Cyrillic_softsign> : "Ћ"
+<Multi_key> <Cyrillic_che> <Cyrillic_softsign> : "ћ"
+<Multi_key> <Cyrillic_DE> <Cyrillic_ZHE> : "Џ"
+<Multi_key> <Cyrillic_DE> <Cyrillic_zhe> : "Џ"
+<Multi_key> <Cyrillic_de> <Cyrillic_zhe> : "џ"
