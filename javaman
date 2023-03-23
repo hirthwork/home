@@ -1,8 +1,0 @@
-name=$1.html
-path=$(find /usr/share/doc/icedtea-3* -name $name|fgrep -v class-use)
-if [ -z $path ]
-then
-    echo JavaDoc for $1 not found
-    exit 1
-fi
-w3m -N $path

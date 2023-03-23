@@ -10,7 +10,7 @@ if which skotty >/dev/null
 then
     eval $(skotty ssh env)
 fi
-if ssh-add -L 2>&1 | fgrep -q "Could not open a connection to your authentication agent."
+if ssh-add -L 2>&1 | grep -Fq "Could not open a connection to your authentication agent."
 then
     eval $(ssh-agent)
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
@@ -107,7 +107,6 @@ then
 fi
 
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
-alias fgrep="fgrep --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
 alias gimp="gimp -s"
 alias diff="diff -d -u"
