@@ -7,8 +7,26 @@ then
     prefix=charge
 fi
 
+if [ -s /sys/class/power_supply/BAT0/status ]
+then
+    status=$(cat /sys/class/power_supply/BAT0/status)
+    if [ "$status" = "Discharging" ]
+    then
+        status="↓"
+    elif [ "$status" = "Charging" ]
+    then
+        status="↑"
+    elif [ "$status" = "Not charging" ]
+    then
+        status="="
+    elif [ "$status" = "Full" ]
+    then
+        status="✔"
+    fi
+fi
+
 if [ -n "$prefix" ]
 then
-    echo " $( (cat /sys/class/power_supply/BAT*/${prefix}_now|tr '\n' '+'|sed 's/^/(/;s/+$/)*100/';cat /sys/class/power_supply/BAT*/${prefix}_full|tr '\n' '+'|sed 's#^#/(#;s/+$/)\n/')|bc)%"
+    echo " $( (cat /sys/class/power_supply/BAT*/${prefix}_now|tr '\n' '+'|sed 's/^/(/;s/+$/)*100/';cat /sys/class/power_supply/BAT*/${prefix}_full|tr '\n' '+'|sed 's#^#/(#;s/+$/)\n/')|bc)%$status"
 fi
 
