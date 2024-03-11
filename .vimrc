@@ -97,7 +97,7 @@ function! ScratchExec(cmd)
 endfunction
 command! -nargs=+ -complete=command ScratchExec call ScratchExec(<q-args>)
 
-command! -nargs=+ -complete=file Fgrep call ScratchExec('!fgrep -r ' . <q-args>)
+command! -nargs=+ -complete=file Fgrep call ScratchExec('!grep -Fr ' . <q-args>)
 
 function! CodeSearch(...)
     call ScratchExec('!ya tool cs -w -m 1000 -j -c ' . a:000[0])
@@ -175,7 +175,7 @@ if exists("+showtabline")
     set tabline=%!MyTabLine()
 endif
 
-command! -complete=file -nargs=+ Etabs call s:ETW(<f-args>)
+command! -complete=file -nargs=1 Etabs call s:ETW(<f-args>)
 
 function s:ETW(...)
     let path = split(expand('%@:p:h') , '/')
@@ -198,21 +198,34 @@ function s:ETW(...)
     endwhile
 endfunction
 
-function! GoFind(findexpr, name)
-    let cmd = a:findexpr . "|xargs grep -n '\\(\\(func\\|type\\) " . a:name . "\\>\\|^\\s\\+\\<" . a:name . "\\>\\($\\|\\s\\+[A-Za-z=]\\)\\)'"
+function! GoFindAndOpen(findexpr, grepexpr)
+    let cmd = a:findexpr . "|xargs grep -nH '" . a:grepexpr . "'"
     let matches = system(cmd)
     if matches == ''
         return 0
     endif
+    let res = 0
     for row in split(matches, '\n')
         let items = split(row, ':')
-        execute 'tabnew ' . items[0]
-        execute items[1]
+        if expand('%@:p:h') != items[0]
+            let res = 1
+            execute 'tabnew ' . items[0]
+            execute items[1]
+        endif
     endfor
-    return 1
+    return res
 endfunction
 
-command! -complete=file -nargs=+ Gtabs call s:GTW(<f-args>)
+function! GoFind(findexpr, name)
+    let res = GoFindAndOpen(a:findexpr, "\\(func\\|type\\) " . a:name . "\\>")
+    if res == 1
+        return 1
+    else
+        return GoFindAndOpen(a:findexpr, "^\\s\\+\\<" . a:name . "\\>\\($\\|\\s\\+[A-Za-z=]\\)")
+    endif
+endfunction
+
+command! -complete=file -nargs=1 Gtabs call s:GTW(<f-args>)
 
 function s:GTW(...)
     let path = split(expand('%@:p:h') , '/')
@@ -224,7 +237,7 @@ function s:GTW(...)
     endif
     let package = components[0]
     let name = components[1]
-    let res = GoFind("find library/go -type f -name \\*.go|fgrep /" . package . '/', name)
+    let res = GoFind("find library/go -type f -name \\*.go|grep -F /" . package . '/', name)
     if res == 1
         return
     endif
@@ -236,14 +249,14 @@ function s:GTW(...)
             let folder = join(path[:(i - 1)], '/')
         endif
 
-        let res = GoFind("find " . folder . " -type f -name \\*.go|fgrep /" . package . '/', name)
+        let res = GoFind("find " . folder . " -type f -name \\*.go|grep -F /" . package . '/', name)
         if res == 1
             return
         endif
 
         " We are close to root, check if out target in vendor/
         if i == 2
-            let res = GoFind("find vendor -type f -name \\*.go|fgrep /" . package . '/', name)
+            let res = GoFind("find vendor -type f -name \\*.go|grep -F /" . package . '/', name)
             if res == 1
                 return
             endif
