@@ -142,5 +142,8 @@ if [ -f '$HOME/ycp/path.bash.inc' ]; then source '$HOME/ycp/path.bash.inc'; fi
 
 export PATH="$HOME/bin:${PATH}"
 
-eval "$(direnv hook zsh)"
+if which direnv >/dev/null 2>&1
+then
+    eval "$(direnv hook zsh)"
+fi
 
