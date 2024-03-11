@@ -15,6 +15,7 @@ then
     eval $(ssh-agent)
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 fi
+export PSSH_AUTH_SOCK=/tmp/pssh-agent.sock
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
@@ -32,14 +33,12 @@ short_pwd() {
     pwd|sed "s,$HOME,~,"|grep -o "\(^~\?/[^/]\+/[^/]\+\|[^/]*\(/[^/]*\)\?\)$"
 }
 
-chpwd() {
-    if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
-    then
-        echo -ne "\ek"$(short_pwd)"\e\\"
-    fi
-}
-
 preexec() {
+    if [[ ! -o interactive ]]
+    then
+        return
+    fi
+
     if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
     then
         sed 's/[[:space:]]\+/\t/g;s/[^\t]\+="[^"]*"\t//g;s/[^\t]\+=[^\t]*[\t]//g;s/[\t][-][^\t]*//g' <<< $1 | read first second third
@@ -74,7 +73,15 @@ preexec() {
 }
 
 precmd() {
-    chpwd
+    if [[ ! -o interactive ]]
+    then
+        return
+    fi
+
+    if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
+    then
+        echo -ne "\ek"$(short_pwd)"\e\\"
+    fi
 }
 
 prompt='%B%F{green}%n%b%F{yellow}@%B%F{red}%m%b %F{cyan}%~%F{red}%v %(?.%F{green}$.%F{red}%?)%f '
@@ -107,6 +114,7 @@ then
 fi
 
 alias grep="grep --color --exclude-dir=.svn --exclude-dir=.git"
+alias fgrep="grep -F --color --exclude-dir=.svn --exclude-dir=.git"
 alias ls="ls --color"
 alias gimp="gimp -s"
 alias diff="diff -d -u"
@@ -115,8 +123,24 @@ alias less="less -E -n"
 alias mpv="mpv --fs --osd-fractions"
 alias cp="cp -i"
 alias mv="mv -i"
+alias pssh="/usr/local/bin/pssh --auth-socket-path $PSSH_AUTH_SOCK"
 
 unset LESSOPEN
 
-cd
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '$HOME/yandex-cloud/path.bash.inc' ]; then source '$HOME/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '$HOME/yandex-cloud/completion.zsh.inc' ]; then source '$HOME/yandex-cloud/completion.zsh.inc'; fi
+
+# The next line include pssh aliases.
+if [ -f '$HOME/.pssh_aliases' ]; then source '$HOME/.pssh_aliases'; fi
+
+
+# The next line updates PATH for Yandex Cloud Private CLI.
+if [ -f '$HOME/ycp/path.bash.inc' ]; then source '$HOME/ycp/path.bash.inc'; fi
+
+export PATH="$HOME/bin:${PATH}"
+
+eval "$(direnv hook zsh)"
 
