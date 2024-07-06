@@ -3,6 +3,7 @@ setxkbmap -option grp:caps_toggle,compose:menu,compose:prsc,grp_led:scroll us,ru
 xset r rate 300 50
 xsetroot -solid "#444444"
 xrdb -merge $HOME/.Xresources
+export DWM_UPDATE_MARK=$(mktemp -u --suffix=.dwm)
 export DWM_CPU_USAGE=$(mktemp --suffix=.cpuusage)
 export LANG=en_US.UTF-8
 export LC_COLLATE=C

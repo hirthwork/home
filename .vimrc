@@ -2,6 +2,7 @@ filetype plugin on
 filetype indent on
 
 set binary
+set modeline
 set expandtab
 set smarttab
 set autoindent
@@ -237,9 +238,11 @@ function s:GTW(...)
     endif
     let package = components[0]
     let name = components[1]
-    let res = GoFind("find library/go -type f -name \\*.go|grep -F /" . package . '/', name)
-    if res == 1
-        return
+    if isdirectory("library/go")
+        let res = GoFind("find library/go -type f -name \\*.go|grep -F /" . package . '/', name)
+        if res == 1
+            return
+        endif
     endif
     let i = len(path)
     while i >= 0
@@ -255,7 +258,7 @@ function s:GTW(...)
         endif
 
         " We are close to root, check if out target in vendor/
-        if i == 2
+        if i == 2 && isdirectory("vendor")
             let res = GoFind("find vendor -type f -name \\*.go|grep -F /" . package . '/', name)
             if res == 1
                 return
@@ -287,7 +290,7 @@ function s:HighlightLineClear()
 endfunction
 command HighlightLineClear call s:HighlightLineClear()
 
-autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('ErrorMsg', '\s\+$') | let w:m2=matchadd('WarningMsg', '\%>79v.\+', -1) | endif
+autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('ErrorMsg', '\s\+$') | let w:tw = &tw | let w:m2=matchadd('WarningMsg', '\%>' . w:tw . 'v.\+', -1) | endif
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile *.proto setfiletype proto
 autocmd BufRead,BufNewFile *.rl setfiletype ragel | setlocal syntax=ragel
