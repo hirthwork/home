@@ -1,12 +1,6 @@
 [submodule ".vim/plugin/supertab"]
 	path = .vim/plugin/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule ".gdb-dashboard"]
-	path = .gdb-dashboard
-	url = https://github.com/cyrus-and/gdb-dashboard.git
-[submodule ".emacs.d/emacs-point-el"]
-	path = .emacs.d/emacs-point-el
-	url = https://github.com/rayslava/emacs-point-el
 [submodule ".vim/plugin/rainbow_parentheses.vim.plugin"]
 	path = .vim/plugin/rainbow_parentheses.vim.plugin
 	url = https://github.com/hirthwork/rainbow_parentheses.vim.git

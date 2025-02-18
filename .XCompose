@@ -99,6 +99,7 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <Cyrillic_e> <Cyrillic_e> : "́" # ударениее (комбинирующееся)
 
 <Multi_key> <o> <k> : "✔"
+#<Multi_key> <o> <k> : "✓"
 <Multi_key> <n> <o> <k> : "✘"
 
 <Multi_key> <i> <n> <t> : "∫"
@@ -119,3 +120,10 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <Cyrillic_DE> <Cyrillic_ZHE> : "Џ"
 <Multi_key> <Cyrillic_DE> <Cyrillic_zhe> : "Џ"
 <Multi_key> <Cyrillic_de> <Cyrillic_zhe> : "џ"
+<Multi_key> <Cyrillic_O> <Cyrillic_O> : "Ј" # CYRILLIC CAPITAL LETTER JE
+<Multi_key> <Cyrillic_o> <Cyrillic_o> : "ј" # CYRILLIC SMALL LETTER JE
+
+<Multi_key> <Cyrillic_I> <Cyrillic_I> : "І" # CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I
+<Multi_key> <Cyrillic_i> <Cyrillic_i> : "і" # CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
+
+<Multi_key> <u> <s> <s> <r> : "☭"

@@ -39,7 +39,7 @@ preexec() {
         return
     fi
 
-    if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
+    if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" || "$TERM" == "screen.xterm-256color" ]]
     then
         sed 's/[[:space:]]\+/\t/g;s/[^\t]\+="[^"]*"\t//g;s/[^\t]\+=[^\t]*[\t]//g;s/[\t][-][^\t]*//g' <<< $1 | read first second third
         if [ $first \=\= sudo ]
@@ -78,7 +78,7 @@ precmd() {
         return
     fi
 
-    if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" ]]
+    if [[ "$TERM" == "screen.linux" || "$TERM" == "screen" || "$TERM" == "screen.xterm-256color" ]]
     then
         echo -ne "\ek"$(short_pwd)"\e\\"
     fi
@@ -123,7 +123,6 @@ alias less="less -E -n"
 alias mpv="mpv --fs --osd-fractions"
 alias cp="cp -i"
 alias mv="mv -i"
-alias pssh="/usr/local/bin/pssh --auth-socket-path $PSSH_AUTH_SOCK"
 
 unset LESSOPEN
 

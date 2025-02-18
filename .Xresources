@@ -1,14 +1,17 @@
 ! jordy blue
-XTerm*color4: rgb:72/9f/cf
-XTerm*color12: rgb:72/9f/cf
-UXTerm*color4: rgb:72/9f/cf
+xterm*color4: rgb:50/70/92
+xterm*color12: rgb:72/9f/cf
+UXTerm*color4: rgb:50/70/92
 UXTerm*color12: rgb:72/9f/cf
+URxvt*color4: rgb:50/70/92
+URxvt*color12: rgb:72/9f/cf
+URxvt*color1: orange red
 
 XTerm*color1: orange red
 UXTerm*color1: orange red
 
-XTerm*color5: magenta
-UXTerm*color5: magenta
+! XTerm*color5: magenta
+! UXTerm*color5: magenta
 
 XTerm*eightBitInput: false
 XTerm*metaSendsEscape: true
