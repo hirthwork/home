@@ -239,7 +239,7 @@ function s:GTW(...)
     let package = components[0]
     let name = components[1]
     if isdirectory("library/go")
-        let res = GoFind("find library/go -type f -name \\*.go|grep -F /" . package . '/', name)
+        let res = GoFind("find library/go -type f -name \\*.go 2>/dev/null|grep -F /" . package . '/', name)
         if res == 1
             return
         endif
@@ -252,14 +252,14 @@ function s:GTW(...)
             let folder = join(path[:(i - 1)], '/')
         endif
 
-        let res = GoFind("find " . folder . " -type f -name \\*.go|grep -F /" . package . '/', name)
+        let res = GoFind("find " . folder . " -type f -name \\*.go 2>/dev/null|grep -F /" . package . '/', name)
         if res == 1
             return
         endif
 
         " We are close to root, check if out target in vendor/
         if i == 2 && isdirectory("vendor")
-            let res = GoFind("find vendor -type f -name \\*.go|grep -F /" . package . '/', name)
+            let res = GoFind("find vendor -type f -name \\*.go 2>/dev/null|grep -F /" . package . '/', name)
             if res == 1
                 return
             endif
