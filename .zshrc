@@ -123,26 +123,42 @@ alias less="less -E -n"
 alias mpv="mpv --fs --osd-fractions"
 alias cp="cp -i"
 alias mv="mv -i"
+alias pssh="$HOME/bin/pssh"
 
 unset LESSOPEN
-
-# The next line updates PATH for Yandex Cloud CLI.
-if [ -f '$HOME/yandex-cloud/path.bash.inc' ]; then source '$HOME/yandex-cloud/path.bash.inc'; fi
-
-# The next line enables shell command completion for yc.
-if [ -f '$HOME/yandex-cloud/completion.zsh.inc' ]; then source '$HOME/yandex-cloud/completion.zsh.inc'; fi
-
-# The next line include pssh aliases.
-if [ -f '$HOME/.pssh_aliases' ]; then source '$HOME/.pssh_aliases'; fi
-
-
-# The next line updates PATH for Yandex Cloud Private CLI.
-if [ -f '$HOME/ycp/path.bash.inc' ]; then source '$HOME/ycp/path.bash.inc'; fi
-
-export PATH="$HOME/bin:${PATH}"
 
 if which direnv >/dev/null 2>&1
 then
     eval "$(direnv hook zsh)"
 fi
 
+if test -d "$HOME/.zshenv.d/"
+then
+    typeset -a zshenv_files
+    find "$HOME/.zshenv.d/" -type f | while read f
+    do
+        zshenv_files+=$f
+    done
+    for f in $zshenv_files[@]
+    do
+        source $f
+    done
+fi
+
+# The next line include pssh aliases.
+if [ -f "$HOME/.pssh_aliases" ]; then source "$HOME/.pssh_aliases"; fi
+
+# The next line updates PATH for mdb cli tools.
+if [ -f "$HOME/mdb-scripts/path.zsh.inc" ]; then source "$HOME/mdb-scripts/path.zsh.inc"; fi
+
+# The next line enables shell command completion for mdb cli tools.
+if [ -f "$HOME/mdb-scripts/completion.zsh.inc" ]; then source "$HOME/mdb-scripts/completion.zsh.inc"; fi
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f "$HOME/yandex-cloud/path.bash.inc" ]; then source "$HOME/yandex-cloud/path.bash.inc"; fi
+
+# The next line enables shell command completion for yc.
+if [ -f "$HOME/yandex-cloud/completion.zsh.inc" ]; then source "$HOME/yandex-cloud/completion.zsh.inc"; fi
+
+# The next line updates PATH for Yandex Cloud Private CLI.
+if [ -f "$HOME/ycp/path.bash.inc" ]; then source "$HOME/ycp/path.bash.inc"; fi
