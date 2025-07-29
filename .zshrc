@@ -19,6 +19,7 @@ export PSSH_AUTH_SOCK=/tmp/pssh-agent.sock
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
+setopt interactivecomments
 
 autoload -Uz compinit colors tetris
 if [ "x$SKIP_ZKBD" = "x" ]
@@ -60,6 +61,9 @@ preexec() {
                 ;;
             ssh)
                 name=ssh@$(sed 's/.*@//;s/[.].*//' <<< $second)
+                ;;
+            pssh)
+                name=pssh@$(sed 's/.*@//;s/[.].*//' <<< $second)
                 ;;
             ./.mutt/imapsync)
                 name=imapsync
