@@ -88,8 +88,14 @@ precmd() {
     fi
 }
 
-prompt='%B%F{green}%n%b%F{yellow}@%B%F{red}%m%b %F{cyan}%~%F{red}%v %(?.%F{green}$.%F{red}%?)%f '
-RPROMPT='%b%F{yellow}[%b%F{gray}%D{%T}%b%F{yellow}]'
+prompt='%b%F{yellow}[%b%F{gray}%D{%T}%b%F{yellow}] %B%F{green}%n%b%F{yellow}@%B%F{red}%m%b %F{cyan}%~%F{red}%v %(?.%F{green}$.%F{red}$)%f '
+#RPROMPT='%b%F{yellow}[%b%F{gray}%D{%T}%b%F{yellow}]'
+
+TMOUT=1
+
+TRAPALRM() {
+    zle reset-prompt
+}
 
 [[ ! -f ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} ]] && zkbd
 source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
