@@ -1,8 +1,11 @@
-filetype plugin on
-filetype indent on
+set nocompatible
+
+set incsearch
+set hlsearch
 
 set binary
 set modeline
+
 set expandtab
 set smarttab
 set autoindent
@@ -11,9 +14,6 @@ set softtabstop=4
 set shiftwidth=4
 set tabpagemax=100
 set showtabline=2
-
-set incsearch
-set hlsearch
 
 set splitbelow
 set splitright
@@ -41,8 +41,6 @@ highlight TabLineFill ctermfg=Gray ctermbg=none cterm=none
 highlight TabLineSel ctermfg=Green ctermbg=none cterm=bold
 highlight TabNumber ctermfg=Black ctermbg=Gray
 
-highlight HighlightLine ctermfg=Black ctermbg=Green
-
 highlight Pmenu ctermfg=Gray ctermbg=Blue
 highlight PmenuSel ctermfg=Blue ctermbg=Gray
 highlight PmenuSbar ctermbg=Cyan
@@ -56,6 +54,12 @@ set textwidth=79
 
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y%=\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l:%c%V\/%L
+
+syntax on
+colorscheme peachpuff
+
+filetype plugin on
+filetype indent on
 
 function! <SID>is_pager_mode()
     let l:ppidc = ""
@@ -269,6 +273,8 @@ function s:GTW(...)
 endfunction
 
 let g:highlights={}
+
+highlight HighlightLine ctermfg=Black ctermbg=Green
 
 function s:HighlightLine()
     let lineno = line(".")
