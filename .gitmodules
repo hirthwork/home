@@ -1,15 +1,9 @@
-[submodule ".vim/plugin/supertab"]
-	path = .vim/plugin/supertab
-	url = https://github.com/ervandew/supertab.git
-[submodule ".vim/plugin/rainbow_parentheses.vim.plugin"]
-	path = .vim/plugin/rainbow_parentheses.vim.plugin
-	url = https://github.com/hirthwork/rainbow_parentheses.vim.git
-[submodule ".vim/syntax/vim-openscad"]
-	path = .vim/syntax/vim-openscad
-	url = https://github.com/sirtaj/vim-openscad
 [submodule ".local/share/nvim/site/pack/plugins/start/rainbow_parentheses.vim"]
 	path = .local/share/nvim/site/pack/plugins/start/rainbow_parentheses.vim
 	url = https://github.com/hirthwork/rainbow_parentheses.vim.git
 [submodule ".local/share/nvim/site/pack/plugins/start/supertab"]
 	path = .local/share/nvim/site/pack/plugins/start/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule ".local/share/nvim/site/pack/plugins/start/vim-openscad"]
+	path = .local/share/nvim/site/pack/plugins/start/vim-openscad
+	url = https://github.com/sirtaj/vim-openscad
