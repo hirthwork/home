@@ -50,6 +50,9 @@ highlight DiffChange cterm=bold ctermbg=none
 highlight DiffDelete cterm=bold ctermbg=Red
 highlight DiffText cterm=bold ctermbg=Blue
 
+" Prevent spaces at the end of line
+highlight Normal ctermbg=none
+
 set textwidth=79
 
 set laststatus=2
