@@ -531,6 +531,7 @@ awful.rules.rules = {
     { rule = { class = "zoom" }, properties = { tag = tags[4], ontop = true } },
     { rule = { class = "Gimp" }, properties = { tag = tags[7] } },
     { rule = { class = "Evince" }, properties = { tag = tags[8] } },
+    { rule = { class = "okular" }, properties = { tag = tags[8] } },
     { rule = { class = "TelegramDesktop" }, properties = { tag = tags[9] } },
 }
 -- }}}
