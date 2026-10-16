@@ -9,7 +9,7 @@ set autoindent
 set smartindent
 set softtabstop=4
 set shiftwidth=4
-set tabpagemax=100
+set tabpagemax=40
 set showtabline=2
 
 set incsearch
