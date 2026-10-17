@@ -28,6 +28,18 @@ set switchbuf=usetab,newtab
 
 set showcmd
 
+set textwidth=79
+
+set laststatus=2
+set statusline=%<%F%h%m%r%h%w%y%=\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l:%c%V\/%L
+
+set directory=~/.vim/swap//
+
+set foldmethod=syntax
+set foldtext=SimpleFoldText()
+set foldlevelstart=99
+let g:markdown_folding=1
+
 map <F6> <esc>:setlocal spell spelllang=en<CR>
 map <F7> <esc>:setlocal spell spelllang=ru<CR>
 map <F8> <esc>:setlocal nospell<CR>
@@ -52,10 +64,7 @@ highlight DiffChange cterm=bold ctermbg=none
 highlight DiffDelete cterm=bold ctermbg=Red
 highlight DiffText cterm=bold ctermbg=Blue
 
-set textwidth=79
-
-set laststatus=2
-set statusline=%<%F%h%m%r%h%w%y%=\ ascii:%3b[0x%2B]\ pos:%6o\ line:%4l:%c%V\/%L
+highlight Folded ctermbg=DarkGray ctermfg=White
 
 function! <SID>is_pager_mode()
     let l:ppidc = ""
@@ -290,6 +299,13 @@ function s:HighlightLineClear()
 endfunction
 command HighlightLineClear call s:HighlightLineClear()
 
+function! SimpleFoldText()
+  let size = 1 + v:foldend - v:foldstart
+  let line = getline(v:foldstart)
+  let line = substitute(line, '\t', onetab, 'g')
+  return line . ' [' . size . ' lines]'
+endfunction
+
 autocmd BufWinEnter,WinEnter * if bufname('') == '' || <SID>is_pager_mode() | call clearmatches() | else | let w:m1=matchadd('ErrorMsg', '\s\+$') | let w:tw = &tw | let w:m2=matchadd('WarningMsg', '\%>' . w:tw . 'v.\+', -1) | endif
 autocmd BufRead,BufNewFile *.nw setfiletype plaintex
 autocmd BufRead,BufNewFile *.proto setfiletype proto
@@ -303,25 +319,26 @@ autocmd BufRead,BufNewFile INSTALL setfiletype txt
 autocmd BufRead,BufNewFile README setfiletype txt
 autocmd BufRead,BufNewFile TODO setfiletype txt
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2
-autocmd FileType python setlocal shiftwidth=4 softtabstop=4
+autocmd FileType python setlocal shiftwidth=4 softtabstop=4 foldmethod=expr foldexpr=GetPythonFold(v:lnum) foldtext=PythonFoldText() tw=120
 autocmd FileType xml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
 autocmd FileType proto setlocal shiftwidth=2 softtabstop=2
-autocmd FileType make setlocal iskeyword+=- | setlocal iskeyword+=.
-autocmd FileType java setlocal shiftwidth=4 softtabstop=4 expandtab|
-    map <C-j> <esc>:Etabs <cword>.java<CR>|
-    imap <C-j> <esc>:Etabs <cword>.java<CR>|
-    map <C-f> <esc>:Etabs <cfile><CR>|
-    imap <C-f> <esc>:Etabs <cfile><CR>|
-    map <C-k> <esc>:CodeSearch <cword><CR>|
-    imap <C-k> <esc>:CodeSearch <cword><CR>|
-    map <F4> <esc>:HighlightLine<CR>|
-    imap <F4> <esc>:HighlightLine<CR>|
-    map <F2> <esc>:HighlightLineClear<CR>|
+autocmd FileType make setlocal iskeyword+=- iskeyword+=.
+autocmd FileType markdown setlocal spell spelllang=en tw=999
+autocmd FileType java setlocal shiftwidth=4 softtabstop=4 expandtab tw=140 |
+    map <C-j> <esc>:Etabs <cword>.java<CR> |
+    imap <C-j> <esc>:Etabs <cword>.java<CR> |
+    map <C-f> <esc>:Etabs <cfile><CR> |
+    imap <C-f> <esc>:Etabs <cfile><CR> |
+    map <C-k> <esc>:CodeSearch <cword><CR> |
+    imap <C-k> <esc>:CodeSearch <cword><CR> |
+    map <F4> <esc>:HighlightLine<CR> |
+    imap <F4> <esc>:HighlightLine<CR> |
+    map <F2> <esc>:HighlightLineClear<CR> |
     imap <F2> <esc>:HighlightLineClear<CR>
-autocmd FileType go setlocal noexpandtab softtabstop=8 shiftwidth=8|
-    map <C-g> <esc>:Gtabs <cfile><CR>|
+autocmd FileType go setlocal noexpandtab softtabstop=8 shiftwidth=8 tw=120 |
+    map <C-g> <esc>:Gtabs <cfile><CR> |
     imap <C-g> <esc>:Gtabs <cfile><CR>
 
 let g:rbpt_colorpairs = [
@@ -348,4 +365,3 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 au Syntax * RainbowParenthesesLoadChevrons
-
