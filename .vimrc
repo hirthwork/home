@@ -103,14 +103,28 @@ function! ScratchExec(cmd)
   setlocal nobuflisted
   silent! execute "read ".a:cmd
   set nomodified
-  :2
 endfunction
 command! -nargs=+ -complete=command ScratchExec call ScratchExec(<q-args>)
 
 command! -nargs=+ -complete=file Fgrep call ScratchExec('!grep -Fr ' . <q-args>)
 
+function! HandleCodeSearchAction()
+    let l:syntax_name = synIDattr(synID(line('.'), col('.'), 1), 'name')
+    if l:syntax_name ==# 'CodeSearchResult'
+        execute substitute(getline('.'), '^\([^:]\+\):\([0-9]\+\).*', 'tabnew \1 | :\2', 'g')
+    endif
+endfunction
+
 function! CodeSearch(...)
-    call ScratchExec('!ya tool cs -w -m 1000 -j -c ' . a:000[0])
+    let l:name = expand('%:t')
+    call ScratchExec('!ya tool cs -w -m 1000 -j -f "^cloud/(mdb|bitbucket)/" -c ' . a:000[0])
+    :$d
+    :0d
+    0|
+    execute 'file ' . l:name
+    syntax match CodeSearchResult /^[^:]\+:[0-9]\+/
+    highlight CodeSearchResult ctermfg=Cyan guifg=#00ffff gui=underline cterm=underline
+    nnoremap <buffer> <CR> :call HandleCodeSearchAction()<CR>
 endfunction
 command! -complete=file -nargs=+ CodeSearch call CodeSearch(<f-args>)
 
