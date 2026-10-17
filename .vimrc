@@ -123,11 +123,28 @@ function! ScratchWrapper(cmd)
 endfunction
 
 function! DoGrep(...)
-    let l:cmd = input('!', 'grep -Hnrw ' . a:000[0] . ' ' . expand('%@:p:h'))
-    silent! call ScratchWrapper('!' . l:cmd)
+    let l:file = input('!grep -Hnrw ' . a:000[0] . ' ', expand('%@:p:h'), 'file')
+    silent! call ScratchWrapper('! grep -Hnrw ' . a:000[0] . ' ' . escape(l:file, '\ "'''))
     :0d
 endfunction
 command! -complete=file -nargs=+ Grep call DoGrep(<q-args>)
+
+function! DoFlexGrep(...)
+    let l:args = input('!', 'grep -Hnrw ' . a:000[0], 'file')
+    let l:file = input('!' . l:args . ' ', expand('%@:p:h'), 'file')
+    let l:files = ''
+    while l:file != ''
+	if l:files == ''
+	    let l:files = escape(l:file, '\ "''')
+	else
+	    let l:files = l:files . ' ' . escape(l:file, '\ "''')
+	endif
+	let l:file = input('!' . l:args . ' ' . l:files . ' ', '', 'file')
+    endwhile
+    silent! call ScratchWrapper('!' . l:args . ' ' . l:files)
+    :0d
+endfunction
+command! -complete=file -nargs=+ FlexGrep call DoFlexGrep(<q-args>)
 
 function! CodeSearch(...)
     call ScratchWrapper('!ya tool cs -w -m 1000 -j -f "^cloud/(mdb|bitbucket)/" -c ' . a:000[0])
@@ -223,7 +240,7 @@ function s:ETW(...)
         let files = glob('`find ' . folder . ' -type f -name ' . f . '`')
         if files != ''
             for f2 in split(files, '\n')
-                execute 'tabnew ' . escape(f2, '\ "')
+                execute 'tabnew ' . escape(f2, '\ "''')
             endfor
             return
         endif
@@ -363,7 +380,10 @@ autocmd FileType java setlocal shiftwidth=4 softtabstop=4 expandtab tw=140 |
 autocmd FileType go setlocal noexpandtab softtabstop=8 shiftwidth=8 tw=120 |
     map <C-S-g> <esc>:Gtabs <cfile><CR> |
     imap <C-S-g> <esc>:Gtabs <cfile><CR>
-autocmd FileType * map <C-g> <esc>:Grep <cword><CR> | imap <C-g> <esc>:Grep <cword><CR>
+autocmd FileType * map <C-g> <esc>:Grep <cword><CR> |
+    imap <C-g> <esc>:Grep <cword><CR> |
+    map <C-S-f> <esc>:FlexGrep <cword><CR> |
+    imap <C-S-f> <esc>:FlexGrep <cword><CR> |
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
