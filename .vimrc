@@ -89,7 +89,7 @@ endfun
 function! TabExec(cmd)
   echo "Executing: '".substitute(a:cmd, '^!', '', 'g')."'..."
   tabnew
-  silent! execute "read ".a:cmd
+  silent! execute "read " . a:cmd
   set nomodified
 endfunction
 command! -nargs=+ -complete=command TabExec call TabExec(<q-args>)
@@ -101,30 +101,39 @@ function! ScratchExec(cmd)
   setlocal buftype=nofile
   setlocal bufhidden=hide
   setlocal nobuflisted
-  silent! execute "read ".a:cmd
+  silent! execute "read " . a:cmd
   set nomodified
 endfunction
-command! -nargs=+ -complete=command ScratchExec call ScratchExec(<q-args>)
 
-command! -nargs=+ -complete=file Fgrep call ScratchExec('!grep -Fr ' . <q-args>)
-
-function! HandleCodeSearchAction()
+function! ScratchAction()
     let l:syntax_name = synIDattr(synID(line('.'), col('.'), 1), 'name')
-    if l:syntax_name ==# 'CodeSearchResult'
-        execute substitute(getline('.'), '^\([^:]\+\):\([0-9]\+\).*', 'tabnew \1 | :\2', 'g')
+    if l:syntax_name ==# 'ScratchResult'
+        let l:line = getline('.')
+        :wincmd k
+        execute substitute(l:line, '^\([^:]\+\):\([0-9]\+\).*', 'tabnew \1 | :\2', 'g')
     endif
 endfunction
 
-function! CodeSearch(...)
+function! ScratchWrapper(cmd)
     let l:name = expand('%:t')
-    call ScratchExec('!ya tool cs -w -m 1000 -j -f "^cloud/(mdb|bitbucket)/" -c ' . a:000[0])
+    call ScratchExec(a:cmd)
+    syntax match ScratchResult /^[^:]\+:[0-9]\+/
+    highlight ScratchResult ctermfg=Cyan guifg=#00ffff gui=underline cterm=underline
+    nnoremap <buffer> <CR> :call ScratchAction()<CR>
+endfunction
+
+function! DoGrep(...)
+    let l:cmd = input('!', 'grep -Hnrw ' . a:000[0] . ' ' . expand('%@:p:h'))
+    silent! call ScratchWrapper('!' . l:cmd)
+    :0d
+endfunction
+command! -complete=file -nargs=+ Grep call DoGrep(<q-args>)
+
+function! CodeSearch(...)
+    call ScratchWrapper('!ya tool cs -w -m 1000 -j -f "^cloud/(mdb|bitbucket)/" -c ' . a:000[0])
     :$d
     :0d
     0|
-    execute 'file ' . l:name
-    syntax match CodeSearchResult /^[^:]\+:[0-9]\+/
-    highlight CodeSearchResult ctermfg=Cyan guifg=#00ffff gui=underline cterm=underline
-    nnoremap <buffer> <CR> :call HandleCodeSearchAction()<CR>
 endfunction
 command! -complete=file -nargs=+ CodeSearch call CodeSearch(<f-args>)
 
@@ -202,7 +211,7 @@ endif
 command! -complete=file -nargs=1 Etabs call s:ETW(<f-args>)
 
 function s:ETW(...)
-    let path = split(expand('%@:p:h') , '/')
+    let path = split(expand('%@:p:h'), '/')
     let f = a:000[0]
     let i = len(path)
     while i >= 0
@@ -352,8 +361,9 @@ autocmd FileType java setlocal shiftwidth=4 softtabstop=4 expandtab tw=140 |
     map <F2> <esc>:HighlightLineClear<CR> |
     imap <F2> <esc>:HighlightLineClear<CR>
 autocmd FileType go setlocal noexpandtab softtabstop=8 shiftwidth=8 tw=120 |
-    map <C-g> <esc>:Gtabs <cfile><CR> |
-    imap <C-g> <esc>:Gtabs <cfile><CR>
+    map <C-S-g> <esc>:Gtabs <cfile><CR> |
+    imap <C-S-g> <esc>:Gtabs <cfile><CR>
+autocmd FileType * map <C-g> <esc>:Grep <cword><CR> | imap <C-g> <esc>:Grep <cword><CR>
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
