@@ -130,7 +130,7 @@ endfunction
 command! -complete=file -nargs=+ Grep call DoGrep(<q-args>)
 
 function! DoFlexGrep(...)
-    let l:args = input('!', 'grep -Hnrw ' . a:000[0], 'file')
+    let l:args = input('!', 'grep -Hnr ' . a:000[0], 'file')
     let l:file = input('!' . l:args . ' ', expand('%@:p:h'), 'file')
     let l:files = ''
     while l:file != ''
@@ -141,6 +141,7 @@ function! DoFlexGrep(...)
 	endif
 	let l:file = input('!' . l:args . ' ' . l:files . ' ', '', 'file')
     endwhile
+    call histadd('input', l:args . ' ' . l:files)
     silent! call ScratchWrapper('!' . l:args . ' ' . l:files)
     :0d
 endfunction
