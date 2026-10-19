@@ -108,9 +108,7 @@ endfunction
 function! ScratchAction()
     let l:syntax_name = synIDattr(synID(line('.'), col('.'), 1), 'name')
     if l:syntax_name ==# 'ScratchResult'
-        let l:line = getline('.')
-        :wincmd k
-        execute substitute(l:line, '^\([^:]\+\):\([0-9]\+\).*', 'tabnew \1 | :\2', 'g')
+        execute substitute(getline('.'), '^\([^:]\+\):\([0-9]\+\).*', 'tabnew \1 | :\2', 'g')
     endif
 endfunction
 
@@ -378,13 +376,13 @@ autocmd FileType java setlocal shiftwidth=4 softtabstop=4 expandtab tw=140 |
     imap <F4> <esc>:HighlightLine<CR> |
     map <F2> <esc>:HighlightLineClear<CR> |
     imap <F2> <esc>:HighlightLineClear<CR>
-autocmd FileType go setlocal noexpandtab softtabstop=8 shiftwidth=8 tw=120 |
-    map <C-S-g> <esc>:Gtabs <cfile><CR> |
-    imap <C-S-g> <esc>:Gtabs <cfile><CR>
+autocmd FileType go setlocal noexpandtab softtabstop=8 shiftwidth=8 tw=140 |
+    map <C-b> <esc>:Gtabs <cfile><CR> |
+    imap <C-b> <esc>:Gtabs <cfile><CR>
 autocmd FileType * map <C-g> <esc>:Grep <cword><CR> |
     imap <C-g> <esc>:Grep <cword><CR> |
-    map <C-S-f> <esc>:FlexGrep <cword><CR> |
-    imap <C-S-f> <esc>:FlexGrep <cword><CR> |
+    map <C-f> <esc>:FlexGrep <cword><CR> |
+    imap <C-f> <esc>:FlexGrep <cword><CR> |
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
