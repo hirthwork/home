@@ -40,11 +40,9 @@ set foldtext=SimpleFoldText()
 set foldlevelstart=99
 let g:markdown_folding=1
 
-map <F6> <esc>:setlocal spell spelllang=en<CR>
-map <F7> <esc>:setlocal spell spelllang=ru<CR>
+map <F6> <esc>:setlocal spell spelllang=en,ru<CR>
 map <F8> <esc>:setlocal nospell<CR>
-imap <F6> <esc>:setlocal spell spelllang=en<CR>a
-imap <F7> <esc>:setlocal spell spelllang=ru<CR>a
+imap <F6> <esc>:setlocal spell spelllang=en,ru<CR>a
 imap <F8> <esc>:setlocal nospell<CR>a
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
@@ -364,7 +362,8 @@ autocmd FileType xslt setlocal shiftwidth=2 softtabstop=2
 autocmd FileType xsd setlocal shiftwidth=2 softtabstop=2
 autocmd FileType proto setlocal shiftwidth=2 softtabstop=2
 autocmd FileType make setlocal iskeyword+=- iskeyword+=.
-autocmd FileType markdown setlocal spell spelllang=en tw=999
+autocmd FileType gitcommit setlocal spell spelllang=en,ru tw=999
+autocmd FileType markdown setlocal spell spelllang=en,ru tw=999
 autocmd FileType java setlocal shiftwidth=4 softtabstop=4 expandtab tw=140 |
     map <C-j> <esc>:Etabs <cword>.java<CR> |
     imap <C-j> <esc>:Etabs <cword>.java<CR> |
